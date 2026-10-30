@@ -1,0 +1,16 @@
+pose_variant.py: OK
+test_pose_variant.py: OK
+validate_pose_variant.py: OK
+validation-pose-variant.json: OK
+release_gate_v5_1.py: OK
+release_gate_v5.py: OK
+stages_r2.py: OK
+stages.py: OK
+score_step8.py: OK
+validate_score_step8.py: OK
+test_release_gate_v5.py: OK
+../bowl_step8/classify_abort.py: OK
+../bowl_step5/release_gate_v4.py: OK
+../bowl_step5/release_gate_v3.py: OK
+../bowl_step5/stability.py: OK
+../bowl_step5/rim_support.py: OK

@@ -1,0 +1,58 @@
+{"id": 1, "state": "reserved", "charge_usd": 0.003, "tick": 672, "model": "nvidia/Nemotron-3.5-Super-VL"}
+{"id": 1, "state": "settled", "charge_usd": 0.0007640999999999999, "prompt_tokens": 2346, "completion_tokens": 67, "model": "nvidia/Nemotron-3.5-Super-VL", "latency_s": 2.642840903000092}
+{"id": 3, "state": "reserved", "charge_usd": 0.003, "tick": 684, "model": "nvidia/Nemotron-3.5-Super-VL"}
+{"id": 3, "state": "settled", "charge_usd": 0.0007712999999999999, "prompt_tokens": 2346, "completion_tokens": 75, "model": "nvidia/Nemotron-3.5-Super-VL", "latency_s": 3.5052349009999944}
+{"id": 5, "state": "reserved", "charge_usd": 0.003, "tick": 696, "model": "nvidia/Nemotron-3.5-Super-VL"}
+{"id": 5, "state": "settled", "charge_usd": 0.0007712999999999999, "prompt_tokens": 2346, "completion_tokens": 75, "model": "nvidia/Nemotron-3.5-Super-VL", "latency_s": 1.9448842309999463}
+{"id": 7, "state": "reserved", "charge_usd": 0.003, "tick": 708, "model": "nvidia/Nemotron-3.5-Super-VL"}
+{"id": 7, "state": "settled", "charge_usd": 0.0007712999999999999, "prompt_tokens": 2346, "completion_tokens": 75, "model": "nvidia/Nemotron-3.5-Super-VL", "latency_s": 1.9167766990000246}
+{"id": 9, "state": "reserved", "charge_usd": 0.003, "tick": 720, "model": "nvidia/Nemotron-3.5-Super-VL"}
+{"id": 9, "state": "settled", "charge_usd": 0.0007704, "prompt_tokens": 2346, "completion_tokens": 74, "model": "nvidia/Nemotron-3.5-Super-VL", "latency_s": 1.9079982150000205}
+{"id": 11, "state": "reserved", "charge_usd": 0.003, "tick": 732, "model": "nvidia/Nemotron-3.5-Super-VL"}
+{"id": 11, "state": "settled", "charge_usd": 0.0007704, "prompt_tokens": 2346, "completion_tokens": 74, "model": "nvidia/Nemotron-3.5-Super-VL", "latency_s": 1.9449295699999993}
+{"id": 13, "state": "reserved", "charge_usd": 0.003, "tick": 744, "model": "nvidia/Nemotron-3.5-Super-VL"}
+{"id": 13, "state": "settled", "charge_usd": 0.0007730999999999999, "prompt_tokens": 2346, "completion_tokens": 77, "model": "nvidia/Nemotron-3.5-Super-VL", "latency_s": 1.919233630000008}
+{"id": 15, "state": "reserved", "charge_usd": 0.003, "tick": 756, "model": "nvidia/Nemotron-3.5-Super-VL"}
+{"id": 15, "state": "settled", "charge_usd": 0.0007677, "prompt_tokens": 2346, "completion_tokens": 71, "model": "nvidia/Nemotron-3.5-Super-VL", "latency_s": 1.8464841039999556}
+{"id": 17, "state": "reserved", "charge_usd": 0.003, "tick": 768, "model": "nvidia/Nemotron-3.5-Super-VL"}
+{"id": 17, "state": "settled", "charge_usd": 0.0007677, "prompt_tokens": 2346, "completion_tokens": 71, "model": "nvidia/Nemotron-3.5-Super-VL", "latency_s": 1.6721220019999237}
+{"id": 19, "state": "reserved", "charge_usd": 0.003, "tick": 780, "model": "nvidia/Nemotron-3.5-Super-VL"}
+{"id": 19, "state": "settled", "charge_usd": 0.0007677, "prompt_tokens": 2346, "completion_tokens": 71, "model": "nvidia/Nemotron-3.5-Super-VL", "latency_s": 1.9143829399999959}
+{"id": 21, "state": "reserved", "charge_usd": 0.003, "tick": 792, "model": "nvidia/Nemotron-3.5-Super-VL"}
+{"id": 21, "state": "settled", "charge_usd": 0.0007677, "prompt_tokens": 2346, "completion_tokens": 71, "model": "nvidia/Nemotron-3.5-Super-VL", "latency_s": 1.9168756220000205}
+{"id": 23, "state": "reserved", "charge_usd": 0.003, "tick": 804, "model": "nvidia/Nemotron-3.5-Super-VL"}
+{"id": 23, "state": "settled", "charge_usd": 0.0007677, "prompt_tokens": 2346, "completion_tokens": 71, "model": "nvidia/Nemotron-3.5-Super-VL", "latency_s": 1.880917466000028}
+{"id": 25, "state": "reserved", "charge_usd": 0.003, "tick": 816, "model": "nvidia/Nemotron-3.5-Super-VL"}
+{"id": 25, "state": "settled", "charge_usd": 0.0007677, "prompt_tokens": 2346, "completion_tokens": 71, "model": "nvidia/Nemotron-3.5-Super-VL", "latency_s": 1.6637119900000243}
+{"id": 27, "state": "reserved", "charge_usd": 0.003, "tick": 828, "model": "nvidia/Nemotron-3.5-Super-VL"}
+{"id": 27, "state": "settled", "charge_usd": 0.0007677, "prompt_tokens": 2346, "completion_tokens": 71, "model": "nvidia/Nemotron-3.5-Super-VL", "latency_s": 1.6856768320000128}
+{"id": 29, "state": "reserved", "charge_usd": 0.003, "tick": 840, "model": "nvidia/Nemotron-3.5-Super-VL"}
+{"id": 29, "state": "settled", "charge_usd": 0.0007677, "prompt_tokens": 2346, "completion_tokens": 71, "model": "nvidia/Nemotron-3.5-Super-VL", "latency_s": 1.849959030999912}
+{"id": 31, "state": "reserved", "charge_usd": 0.003, "tick": 852, "model": "nvidia/Nemotron-3.5-Super-VL"}
+{"id": 31, "state": "settled", "charge_usd": 0.0007677, "prompt_tokens": 2346, "completion_tokens": 71, "model": "nvidia/Nemotron-3.5-Super-VL", "latency_s": 1.8617056929999762}
+{"id": 33, "state": "reserved", "charge_usd": 0.003, "tick": 864, "model": "nvidia/Nemotron-3.5-Super-VL"}
+{"id": 33, "state": "settled", "charge_usd": 0.0007677, "prompt_tokens": 2346, "completion_tokens": 71, "model": "nvidia/Nemotron-3.5-Super-VL", "latency_s": 1.8870372730000327}
+{"id": 35, "state": "reserved", "charge_usd": 0.003, "tick": 876, "model": "nvidia/Nemotron-3.5-Super-VL"}
+{"id": 35, "state": "settled", "charge_usd": 0.0007677, "prompt_tokens": 2346, "completion_tokens": 71, "model": "nvidia/Nemotron-3.5-Super-VL", "latency_s": 1.9231702770000538}
+{"id": 37, "state": "reserved", "charge_usd": 0.003, "tick": 888, "model": "nvidia/Nemotron-3.5-Super-VL"}
+{"id": 37, "state": "settled", "charge_usd": 0.0007614, "prompt_tokens": 2346, "completion_tokens": 64, "model": "nvidia/Nemotron-3.5-Super-VL", "latency_s": 1.831921368000053}
+{"id": 39, "state": "reserved", "charge_usd": 0.003, "tick": 900, "model": "nvidia/Nemotron-3.5-Super-VL"}
+{"id": 39, "state": "settled", "charge_usd": 0.0007631999999999999, "prompt_tokens": 2346, "completion_tokens": 66, "model": "nvidia/Nemotron-3.5-Super-VL", "latency_s": 1.874860879000039}
+{"id": 41, "state": "reserved", "charge_usd": 0.003, "tick": 912, "model": "nvidia/Nemotron-3.5-Super-VL"}
+{"id": 41, "state": "settled", "charge_usd": 0.0007677, "prompt_tokens": 2346, "completion_tokens": 71, "model": "nvidia/Nemotron-3.5-Super-VL", "latency_s": 1.8904861119999623}
+{"id": 43, "state": "reserved", "charge_usd": 0.003, "tick": 924, "model": "nvidia/Nemotron-3.5-Super-VL"}
+{"id": 43, "state": "settled", "charge_usd": 0.0007677, "prompt_tokens": 2346, "completion_tokens": 71, "model": "nvidia/Nemotron-3.5-Super-VL", "latency_s": 1.643999248}
+{"id": 45, "state": "reserved", "charge_usd": 0.003, "tick": 936, "model": "nvidia/Nemotron-3.5-Super-VL"}
+{"id": 45, "state": "settled", "charge_usd": 0.0007685999999999999, "prompt_tokens": 2346, "completion_tokens": 72, "model": "nvidia/Nemotron-3.5-Super-VL", "latency_s": 1.9184119640001427}
+{"id": 47, "state": "reserved", "charge_usd": 0.003, "tick": 948, "model": "nvidia/Nemotron-3.5-Super-VL"}
+{"id": 47, "state": "settled", "charge_usd": 0.000774, "prompt_tokens": 2346, "completion_tokens": 78, "model": "nvidia/Nemotron-3.5-Super-VL", "latency_s": 1.903779577000023}
+{"id": 49, "state": "reserved", "charge_usd": 0.003, "tick": 960, "model": "nvidia/Nemotron-3.5-Super-VL"}
+{"id": 49, "state": "settled", "charge_usd": 0.0007677, "prompt_tokens": 2346, "completion_tokens": 71, "model": "nvidia/Nemotron-3.5-Super-VL", "latency_s": 2.0310387059998902}
+{"id": 51, "state": "reserved", "charge_usd": 0.003, "tick": 972, "model": "nvidia/Nemotron-3.5-Super-VL"}
+{"id": 51, "state": "settled", "charge_usd": 0.0007704, "prompt_tokens": 2346, "completion_tokens": 74, "model": "nvidia/Nemotron-3.5-Super-VL", "latency_s": 1.7300143400000252}
+{"id": 53, "state": "reserved", "charge_usd": 0.003, "tick": 984, "model": "nvidia/Nemotron-3.5-Super-VL"}
+{"id": 53, "state": "settled", "charge_usd": 0.000774, "prompt_tokens": 2346, "completion_tokens": 78, "model": "nvidia/Nemotron-3.5-Super-VL", "latency_s": 1.9282652839999628}
+{"id": 55, "state": "reserved", "charge_usd": 0.003, "tick": 996, "model": "nvidia/Nemotron-3.5-Super-VL"}
+{"id": 55, "state": "settled", "charge_usd": 0.0007802999999999999, "prompt_tokens": 2346, "completion_tokens": 85, "model": "nvidia/Nemotron-3.5-Super-VL", "latency_s": 1.9215334379998694}
+{"id": 57, "state": "reserved", "charge_usd": 0.003, "tick": 1005, "model": "nvidia/Nemotron-3.5-Super-VL"}
+{"id": 57, "state": "settled", "charge_usd": 0.0007749, "prompt_tokens": 2352, "completion_tokens": 77, "model": "nvidia/Nemotron-3.5-Super-VL", "latency_s": 1.9568521909998253}

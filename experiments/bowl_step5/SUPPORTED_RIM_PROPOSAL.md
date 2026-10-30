@@ -1,0 +1,13 @@
+# Proposed v4 refinement after frozen v3 pilot
+
+No v3 result is replaced. Base1 is a documented development counterexample: a supported, deliberately released rim placement rejected by the centroid-in-hull proxy. New results would use a separately frozen v4 and fresh layouts; replay of old traces is development validation only.
+
+Keep the existing held-lift, eligible opening command, measured opening/detachment, regrasp veto, finite checks,1s duration,0.03m/s linear and0.3rad/s angular thresholds. Keep the initial near-bowl requirement for eligible opening/detachment.
+
+For an already verified release, define bowl support as the net force **on banana from bowl** having upward z>0.1N and an angle within45degrees of world up. The45degree cone follows pinned World's supported-surface convention. Our strict Fz>0.1N vertical-noise rule is stronger than upstream's force-magnitude>=0.1N with Fz>0; the cone boundary is inclusive (Fz>=horizontal force magnitude). Sensor reversal must be explicitly corrected. Record net force and sensor order. Force alone is insufficient.
+
+Define a rim-support alternative as bowl support AND intersection of the convex projections of banana and bowl bounding boxes onto the tabletop XY plane AND banana's upper bounding-box height reaching the bowl rim (banana max z >= bowl max z -0.005m). A centroid need not be inside. The convex-footprint overlap is a bounding-box approximation and must remain disclosed and visually audited. The5mm tolerance is geometric noise allowance, not a learned parameter.
+
+After verified release, rim support may retain near-bowl eligibility if the centroid predicate becomes false. Otherwise the existing geometric escape/regrasp behavior remains. Stable qualification requires detachment and bowl support plus either the original native bowl predicate or the rim-support alternative. A table-supported object merely touching the bowl wall laterally fails the upward-force cone or rim-height condition. Mixed table/bowl support can qualify, matching the accepted rim-placement scope. A collision bounce with upward force cannot qualify until the full low-velocity1s interval is satisfied.
+
+Before new GPU runs: independent review of source conventions/force direction, pure geometry/force tests including lateral tabletop touching, rotated/disjoint footprints, below-rim side contact, reversed sensor, transient bounce, no prior release, regrasp and complete departure; replay preserved development traces with both old/new scores shown. Review both videos for each proposed fresh training-layout success. The force/OBB proxy is not a proof of exact contact location on the rim.

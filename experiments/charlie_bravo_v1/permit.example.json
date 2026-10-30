@@ -1,0 +1,15 @@
+{
+  "review_status": "PENDING_CLAUDE",
+  "human_paid_approval": false,
+  "model": "nvidia/Nemotron-3.5-Super-VL",
+  "endpoint": "https://api.tokenfactory.nebius.com/v1/chat/completions",
+  "prices_verified_date": "UNVERIFIED",
+  "expires_unix": 0,
+  "api_cap_usd": 0.5,
+  "reserve_per_call_usd": 0.003,
+  "input_usd_per_million": 0.3,
+  "output_usd_per_million": 0.9,
+  "source_lock_sha256": "PENDING",
+  "note": "Historical prices, proposed allowance only; no paid launch authorized by this example. Token Factory balance must cover allowance independently of cloud credit.",
+  "ledger_path": "UNSET_PIN_ABSOLUTE_ASSISTED_LEDGER"
+}

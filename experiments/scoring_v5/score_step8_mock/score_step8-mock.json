@@ -1,0 +1,1402 @@
+{
+ "phase": "mock",
+ "stamp_utc": "2026-10-23 19:54 UTC",
+ "roots": [
+  "<project-root>/assets/report/evidence/2026-10-23/bowl-step6/paint_live_v1/runs",
+  "<project-root>/assets/report/evidence/2026-10-21/bowl-controlled-v2",
+  "<project-root>/assets/report/evidence/2026-10-21/bowl-controlled-v3",
+  "<project-root>/assets/report/evidence/2026-10-21/bowl-training-feasibility-v4"
+ ],
+ "code_sha256": {
+  "release_gate_v5_1.py": "5e900d6e6f48a7aa1fed17cdaa253f86451e13dedd8e0e4059553c6d09692876",
+  "stages_r2.py": "4c08f687449e60ec5c3315247e69df349f93cce8ce1db6ef8d68221aadc46e56",
+  "stages.py": "f8c835b33240d1218df35e020d9840ec94fdb1edaef23c918061cb3e97ebd7a6",
+  "score_step8.py": "8406460be54e1481c517e259981b7e9e061b71a64345180a6978cb10356186e1"
+ },
+ "problems": [],
+ "notes": {
+  "contact_flag": "The contact flag is not shared: A's 'gripper' sensor is one finger, B's flag is either of two tip pads. Within-robot comparisons are unaffected; A-vs-B stage rates carry a B-lenient bias.",
+  "target_limits": "A has no target-limit check, so the same out-of-limit target ends a B episode but not an A episode. Within-robot \u0394B is unaffected.",
+  "safety_abort": "scored from the files on disk; a :298 abort leaves one more gate row than tracking rows, and that row (the aborted control) is dropped; under 3 scored rows it is a fail with no stage (empty_trace)",
+  "times": "control/15 s on both robots; B simulation_s = (control+1)/15 is not used",
+  "M2": "descriptive only, among winners, no test",
+  "headline": "score()['pass']; stages win only cross-checked"
+ },
+ "episodes": [
+  {
+   "case": "step5_controlled_base_s0_v2",
+   "robot": "A",
+   "condition": "P0",
+   "layout": "base_s0_v2",
+   "dirs": [
+    "<project-root>/assets/report/evidence/2026-10-21/bowl-controlled-v2/step5_controlled_base_s0_v2"
+   ],
+   "episodes_tsv": null,
+   "scored": true,
+   "complete": true,
+   "trace": "<project-root>/assets/report/evidence/2026-10-21/bowl-controlled-v2/step5_controlled_base_s0_v2/BananaInBowlTask/strict-metric.json",
+   "trace_sha256": "571b21d44266260f3ec44aa860a6e3294b759c42da9b778f2da9fb8b056ee6d0",
+   "live_v4": {
+    "gate": "command-linked-release-v2, live",
+    "pass": false,
+    "success_s": null,
+    "complete": true
+   },
+   "v5_1_pass": true,
+   "v5_1_pass_at_end": true,
+   "win_control": 162,
+   "fail_reason": null,
+   "gate_fail_reason": null,
+   "qualifying_open": {
+    "control": 126,
+    "dxy_root_m": 0.0086,
+    "centre_above_bowl_top_m": 0.0484
+   },
+   "M2": {
+    "qualifying_open_control": 126,
+    "time_to_win_P0_s": 8.4,
+    "win_control": 162,
+    "qualifying_open_s": 8.4,
+    "win_s": 10.8
+   },
+   "furthest": "win",
+   "stage_controls": {
+    "grasp": 76,
+    "lift": 84,
+    "over_bowl": 95,
+    "open": 126,
+    "landed": 126,
+    "win": 162
+   },
+   "attempts": 13,
+   "stages": {
+    "grasp": true,
+    "lift": true,
+    "over_bowl": true,
+    "open": true,
+    "landed": true,
+    "win": true
+   },
+   "review_flags": [
+    "v5.1 pass"
+   ]
+  },
+  {
+   "case": "step5_controlled_base_s0_v3",
+   "robot": "A",
+   "condition": "P0",
+   "layout": "base_s0_v3",
+   "dirs": [
+    "<project-root>/assets/report/evidence/2026-10-21/bowl-controlled-v3/step5_controlled_base_s0_v3"
+   ],
+   "episodes_tsv": null,
+   "scored": true,
+   "complete": true,
+   "trace": "<project-root>/assets/report/evidence/2026-10-21/bowl-controlled-v3/step5_controlled_base_s0_v3/BananaInBowlTask/strict-metric.json",
+   "trace_sha256": "c80bb397f5a5fb34b1b2a8dc35bc15617c9a125867aff6cbbd8ef80c923e6b7f",
+   "live_v4": {
+    "gate": "command-linked-release-v3, live",
+    "pass": false,
+    "success_s": null,
+    "complete": true
+   },
+   "v5_1_pass": false,
+   "v5_1_pass_at_end": false,
+   "win_control": null,
+   "fail_reason": "no_open_while_held",
+   "gate_fail_reason": "no_open_while_held",
+   "qualifying_open": null,
+   "M2": {},
+   "furthest": "over_bowl",
+   "stage_controls": {
+    "grasp": 720,
+    "lift": 731,
+    "over_bowl": 731
+   },
+   "attempts": 21,
+   "stages": {
+    "grasp": true,
+    "lift": true,
+    "over_bowl": true,
+    "open": false,
+    "landed": false,
+    "win": false
+   },
+   "review_flags": []
+  },
+  {
+   "case": "step5_controlled_base_s1_v3",
+   "robot": "A",
+   "condition": "P0",
+   "layout": "base_s1_v3",
+   "dirs": [
+    "<project-root>/assets/report/evidence/2026-10-21/bowl-controlled-v3/step5_controlled_base_s1_v3"
+   ],
+   "episodes_tsv": null,
+   "scored": true,
+   "complete": true,
+   "trace": "<project-root>/assets/report/evidence/2026-10-21/bowl-controlled-v3/step5_controlled_base_s1_v3/BananaInBowlTask/strict-metric.json",
+   "trace_sha256": "165f6372abedecd4e16c3075f5fc3b0bd18b000673ccb47617ca7ae6fc83c24d",
+   "live_v4": {
+    "gate": "command-linked-release-v3, live",
+    "pass": false,
+    "success_s": null,
+    "complete": true
+   },
+   "v5_1_pass": true,
+   "v5_1_pass_at_end": true,
+   "win_control": 169,
+   "fail_reason": null,
+   "gate_fail_reason": null,
+   "qualifying_open": {
+    "control": 140,
+    "dxy_root_m": 0.0083,
+    "centre_above_bowl_top_m": 0.0426
+   },
+   "M2": {
+    "qualifying_open_control": 140,
+    "time_to_win_P0_s": 9.333,
+    "win_control": 169,
+    "qualifying_open_s": 9.333,
+    "win_s": 11.267
+   },
+   "furthest": "win",
+   "stage_controls": {
+    "grasp": 83,
+    "lift": 88,
+    "over_bowl": 106,
+    "open": 140,
+    "landed": 140,
+    "win": 169
+   },
+   "attempts": 11,
+   "stages": {
+    "grasp": true,
+    "lift": true,
+    "over_bowl": true,
+    "open": true,
+    "landed": true,
+    "win": true
+   },
+   "review_flags": [
+    "v5.1 pass"
+   ]
+  },
+  {
+   "case": "step5_controlled_layout1000_v3",
+   "robot": "A",
+   "condition": "P0",
+   "layout": "layout1000_v3",
+   "dirs": [
+    "<project-root>/assets/report/evidence/2026-10-21/bowl-controlled-v3/step5_controlled_layout1000_v3"
+   ],
+   "episodes_tsv": null,
+   "scored": false,
+   "complete": false,
+   "unscored_reason": [
+    "no trace found"
+   ],
+   "live_v4": null
+  },
+  {
+   "case": "step5_controlled_layout1000_v3_retry1",
+   "robot": "A",
+   "condition": "P0",
+   "layout": "layout1000_v3_retry1",
+   "dirs": [
+    "<project-root>/assets/report/evidence/2026-10-21/bowl-controlled-v3/step5_controlled_layout1000_v3_retry1"
+   ],
+   "episodes_tsv": null,
+   "scored": true,
+   "complete": true,
+   "trace": "<project-root>/assets/report/evidence/2026-10-21/bowl-controlled-v3/step5_controlled_layout1000_v3_retry1/BananaInBowlUniformInitPose10cmTask/strict-metric.json",
+   "trace_sha256": "9b87ee0ec8786a0133b607c78f811704985fe5da1956598609148ec90e1f4268",
+   "live_v4": {
+    "gate": "command-linked-release-v3, live",
+    "pass": false,
+    "success_s": null,
+    "complete": true
+   },
+   "v5_1_pass": true,
+   "v5_1_pass_at_end": true,
+   "win_control": 152,
+   "fail_reason": null,
+   "gate_fail_reason": null,
+   "qualifying_open": {
+    "control": 128,
+    "dxy_root_m": 0.0095,
+    "centre_above_bowl_top_m": 0.062
+   },
+   "M2": {
+    "qualifying_open_control": 128,
+    "time_to_win_P0_s": 8.533,
+    "win_control": 152,
+    "qualifying_open_s": 8.533,
+    "win_s": 10.133
+   },
+   "furthest": "win",
+   "stage_controls": {
+    "grasp": 69,
+    "lift": 78,
+    "over_bowl": 91,
+    "open": 128,
+    "landed": 129,
+    "win": 152
+   },
+   "attempts": 6,
+   "stages": {
+    "grasp": true,
+    "lift": true,
+    "over_bowl": true,
+    "open": true,
+    "landed": true,
+    "win": true
+   },
+   "review_flags": [
+    "v5.1 pass"
+   ]
+  },
+  {
+   "case": "step5_controlled_layout1001_v3",
+   "robot": "A",
+   "condition": "P0",
+   "layout": "layout1001_v3",
+   "dirs": [
+    "<project-root>/assets/report/evidence/2026-10-21/bowl-controlled-v3/step5_controlled_layout1001_v3"
+   ],
+   "episodes_tsv": null,
+   "scored": true,
+   "complete": true,
+   "trace": "<project-root>/assets/report/evidence/2026-10-21/bowl-controlled-v3/step5_controlled_layout1001_v3/BananaInBowlUniformInitPose10cmTask/strict-metric.json",
+   "trace_sha256": "66198b691517ddfd79dc73ff128cf5be19ae831de526896e38c9ab88ba782559",
+   "live_v4": {
+    "gate": "command-linked-release-v3, live",
+    "pass": false,
+    "success_s": null,
+    "complete": true
+   },
+   "v5_1_pass": false,
+   "v5_1_pass_at_end": false,
+   "win_control": null,
+   "fail_reason": "never_lifted",
+   "gate_fail_reason": "never_lifted",
+   "qualifying_open": null,
+   "M2": {},
+   "furthest": "lift",
+   "stage_controls": {
+    "grasp": 329,
+    "lift": 335
+   },
+   "attempts": 14,
+   "stages": {
+    "grasp": true,
+    "lift": true,
+    "over_bowl": false,
+    "open": false,
+    "landed": false,
+    "win": false
+   },
+   "review_flags": []
+  },
+  {
+   "case": "step5_controlled_layout1002_v3",
+   "robot": "A",
+   "condition": "P0",
+   "layout": "layout1002_v3",
+   "dirs": [
+    "<project-root>/assets/report/evidence/2026-10-21/bowl-controlled-v3/step5_controlled_layout1002_v3"
+   ],
+   "episodes_tsv": null,
+   "scored": true,
+   "complete": true,
+   "trace": "<project-root>/assets/report/evidence/2026-10-21/bowl-controlled-v3/step5_controlled_layout1002_v3/BananaInBowlUniformInitPose10cmTask/strict-metric.json",
+   "trace_sha256": "fca4aba071a84970d67e046d808ab7b6ea52483e5c7731f37413492fca16e52f",
+   "live_v4": {
+    "gate": "command-linked-release-v3, live",
+    "pass": false,
+    "success_s": null,
+    "complete": true
+   },
+   "v5_1_pass": false,
+   "v5_1_pass_at_end": false,
+   "win_control": null,
+   "fail_reason": "never_lifted",
+   "gate_fail_reason": "never_lifted",
+   "qualifying_open": null,
+   "M2": {},
+   "furthest": "lift",
+   "stage_controls": {
+    "grasp": 68,
+    "lift": 78
+   },
+   "attempts": 3,
+   "stages": {
+    "grasp": true,
+    "lift": true,
+    "over_bowl": false,
+    "open": false,
+    "landed": false,
+    "win": false
+   },
+   "review_flags": []
+  },
+  {
+   "case": "step5_controlled_layout1003_v3",
+   "robot": "A",
+   "condition": "P0",
+   "layout": "layout1003_v3",
+   "dirs": [
+    "<project-root>/assets/report/evidence/2026-10-21/bowl-controlled-v3/step5_controlled_layout1003_v3"
+   ],
+   "episodes_tsv": null,
+   "scored": true,
+   "complete": true,
+   "trace": "<project-root>/assets/report/evidence/2026-10-21/bowl-controlled-v3/step5_controlled_layout1003_v3/BananaInBowlUniformInitPose10cmTask/strict-metric.json",
+   "trace_sha256": "19b3ad10361c877695bbe25088ae698080841120e80c97ea8c203c9fd54b9c60",
+   "live_v4": {
+    "gate": "command-linked-release-v3, live",
+    "pass": false,
+    "success_s": null,
+    "complete": true
+   },
+   "v5_1_pass": false,
+   "v5_1_pass_at_end": false,
+   "win_control": null,
+   "fail_reason": "regrasp_after_release",
+   "gate_fail_reason": "regrasp_after_release",
+   "qualifying_open": null,
+   "M2": {},
+   "furthest": "landed",
+   "stage_controls": {
+    "grasp": 88,
+    "lift": 94,
+    "over_bowl": 118,
+    "open": 144,
+    "landed": 145
+   },
+   "attempts": 22,
+   "stages": {
+    "grasp": true,
+    "lift": true,
+    "over_bowl": true,
+    "open": true,
+    "landed": true,
+    "win": false
+   },
+   "review_flags": [
+    "fail, had an eligible open"
+   ]
+  },
+  {
+   "case": "step5_controlled_layout1004_v3",
+   "robot": "A",
+   "condition": "P0",
+   "layout": "layout1004_v3",
+   "dirs": [
+    "<project-root>/assets/report/evidence/2026-10-21/bowl-controlled-v3/step5_controlled_layout1004_v3"
+   ],
+   "episodes_tsv": null,
+   "scored": true,
+   "complete": true,
+   "trace": "<project-root>/assets/report/evidence/2026-10-21/bowl-controlled-v3/step5_controlled_layout1004_v3/BananaInBowlUniformInitPose10cmTask/strict-metric.json",
+   "trace_sha256": "f1e1fcd5d408d2cd65dad885593cdf7b2dcec202ae6d1c2ee32d9581562855af",
+   "live_v4": {
+    "gate": "command-linked-release-v3, live",
+    "pass": false,
+    "success_s": null,
+    "complete": true
+   },
+   "v5_1_pass": false,
+   "v5_1_pass_at_end": false,
+   "win_control": null,
+   "fail_reason": "never_lifted",
+   "gate_fail_reason": "never_lifted",
+   "qualifying_open": null,
+   "M2": {},
+   "furthest": null,
+   "stage_controls": {},
+   "attempts": 0,
+   "stages": {
+    "grasp": false,
+    "lift": false,
+    "over_bowl": false,
+    "open": false,
+    "landed": false,
+    "win": false
+   },
+   "review_flags": []
+  },
+  {
+   "case": "step5_controlled_layout1005_v3",
+   "robot": "A",
+   "condition": "P0",
+   "layout": "layout1005_v3",
+   "dirs": [
+    "<project-root>/assets/report/evidence/2026-10-21/bowl-controlled-v3/step5_controlled_layout1005_v3"
+   ],
+   "episodes_tsv": null,
+   "scored": true,
+   "complete": true,
+   "trace": "<project-root>/assets/report/evidence/2026-10-21/bowl-controlled-v3/step5_controlled_layout1005_v3/BananaInBowlUniformInitPose10cmTask/strict-metric.json",
+   "trace_sha256": "c1b1b4db78a10bdedff3e8cdfa1f9babc46a79943e352ae9dd074f70e69c802c",
+   "live_v4": {
+    "gate": "command-linked-release-v3, live",
+    "pass": false,
+    "success_s": null,
+    "complete": true
+   },
+   "v5_1_pass": true,
+   "v5_1_pass_at_end": true,
+   "win_control": 153,
+   "fail_reason": null,
+   "gate_fail_reason": null,
+   "qualifying_open": {
+    "control": 128,
+    "dxy_root_m": 0.0139,
+    "centre_above_bowl_top_m": 0.0751
+   },
+   "M2": {
+    "qualifying_open_control": 128,
+    "time_to_win_P0_s": 8.533,
+    "win_control": 153,
+    "qualifying_open_s": 8.533,
+    "win_s": 10.2
+   },
+   "furthest": "win",
+   "stage_controls": {
+    "grasp": 83,
+    "lift": 91,
+    "over_bowl": 104,
+    "open": 128,
+    "landed": 129,
+    "win": 153
+   },
+   "attempts": 2,
+   "stages": {
+    "grasp": true,
+    "lift": true,
+    "over_bowl": true,
+    "open": true,
+    "landed": true,
+    "win": true
+   },
+   "review_flags": [
+    "v5.1 pass"
+   ]
+  },
+  {
+   "case": "step5_controlled_layout1006_v3",
+   "robot": "A",
+   "condition": "P0",
+   "layout": "layout1006_v3",
+   "dirs": [
+    "<project-root>/assets/report/evidence/2026-10-21/bowl-controlled-v3/step5_controlled_layout1006_v3"
+   ],
+   "episodes_tsv": null,
+   "scored": true,
+   "complete": true,
+   "trace": "<project-root>/assets/report/evidence/2026-10-21/bowl-controlled-v3/step5_controlled_layout1006_v3/BananaInBowlUniformInitPose10cmTask/strict-metric.json",
+   "trace_sha256": "18709dcf0512665f88a248f4f230784241ca40a7532fb39d923eb4ffa3689b36",
+   "live_v4": {
+    "gate": "command-linked-release-v3, live",
+    "pass": false,
+    "success_s": null,
+    "complete": true
+   },
+   "v5_1_pass": false,
+   "v5_1_pass_at_end": false,
+   "win_control": null,
+   "fail_reason": "lost_contact_before_open",
+   "gate_fail_reason": "lost_contact_before_open",
+   "qualifying_open": null,
+   "M2": {},
+   "furthest": "over_bowl",
+   "stage_controls": {
+    "grasp": 67,
+    "lift": 73,
+    "over_bowl": 82
+   },
+   "attempts": 9,
+   "stages": {
+    "grasp": true,
+    "lift": true,
+    "over_bowl": true,
+    "open": false,
+    "landed": false,
+    "win": false
+   },
+   "review_flags": []
+  },
+  {
+   "case": "step5_controlled_layout1007_v3",
+   "robot": "A",
+   "condition": "P0",
+   "layout": "layout1007_v3",
+   "dirs": [
+    "<project-root>/assets/report/evidence/2026-10-21/bowl-controlled-v3/step5_controlled_layout1007_v3"
+   ],
+   "episodes_tsv": null,
+   "scored": true,
+   "complete": true,
+   "trace": "<project-root>/assets/report/evidence/2026-10-21/bowl-controlled-v3/step5_controlled_layout1007_v3/BananaInBowlUniformInitPose10cmTask/strict-metric.json",
+   "trace_sha256": "45fbfe96600fcbda2db583d5af1861af675d501da10068f6d1ab60f426377500",
+   "live_v4": {
+    "gate": "command-linked-release-v3, live",
+    "pass": false,
+    "success_s": null,
+    "complete": true
+   },
+   "v5_1_pass": false,
+   "v5_1_pass_at_end": false,
+   "win_control": null,
+   "fail_reason": "lost_contact_before_open",
+   "gate_fail_reason": "lost_contact_before_open",
+   "qualifying_open": null,
+   "M2": {},
+   "furthest": "over_bowl",
+   "stage_controls": {
+    "grasp": 106,
+    "lift": 114,
+    "over_bowl": 139
+   },
+   "attempts": 11,
+   "stages": {
+    "grasp": true,
+    "lift": true,
+    "over_bowl": true,
+    "open": false,
+    "landed": false,
+    "win": false
+   },
+   "review_flags": [
+    "fail, ends on bowl",
+    "fail, upstream predicate true at end"
+   ]
+  },
+  {
+   "case": "step5_training_layout2000_v4",
+   "robot": "A",
+   "condition": "P0",
+   "layout": "layout2000_v4",
+   "dirs": [
+    "<project-root>/assets/report/evidence/2026-10-21/bowl-training-feasibility-v4/step5_training_layout2000_v4"
+   ],
+   "episodes_tsv": null,
+   "scored": true,
+   "complete": true,
+   "trace": "<project-root>/assets/report/evidence/2026-10-21/bowl-training-feasibility-v4/step5_training_layout2000_v4/BananaInBowlUniformInitPose10cmTask/strict-metric.json",
+   "trace_sha256": "00b6dd039af175621bee52bdbcba1657267a39506fdfa7a44414b5c40dfa5042",
+   "live_v4": {
+    "gate": "command-linked-supported-release-v4, live",
+    "pass": false,
+    "success_s": null,
+    "complete": true
+   },
+   "v5_1_pass": false,
+   "v5_1_pass_at_end": false,
+   "win_control": null,
+   "fail_reason": "never_lifted",
+   "gate_fail_reason": "never_lifted",
+   "qualifying_open": null,
+   "M2": {},
+   "furthest": "over_bowl",
+   "stage_controls": {
+    "grasp": 428,
+    "lift": 435,
+    "over_bowl": 461
+   },
+   "attempts": 15,
+   "stages": {
+    "grasp": true,
+    "lift": true,
+    "over_bowl": true,
+    "open": false,
+    "landed": false,
+    "win": false
+   },
+   "review_flags": [
+    "fail, ends on bowl",
+    "fail, upstream predicate true at end"
+   ]
+  },
+  {
+   "case": "step5_training_layout2001_v4",
+   "robot": "A",
+   "condition": "P0",
+   "layout": "layout2001_v4",
+   "dirs": [
+    "<project-root>/assets/report/evidence/2026-10-21/bowl-training-feasibility-v4/step5_training_layout2001_v4"
+   ],
+   "episodes_tsv": null,
+   "scored": true,
+   "complete": true,
+   "trace": "<project-root>/assets/report/evidence/2026-10-21/bowl-training-feasibility-v4/step5_training_layout2001_v4/BananaInBowlUniformInitPose10cmTask/strict-metric.json",
+   "trace_sha256": "2528b586811c91082ed8f031b7e6ff45c6872aad8bb6c8dd15afc77559329a7c",
+   "live_v4": {
+    "gate": "command-linked-supported-release-v4, live",
+    "pass": false,
+    "success_s": null,
+    "complete": true
+   },
+   "v5_1_pass": true,
+   "v5_1_pass_at_end": true,
+   "win_control": 308,
+   "fail_reason": null,
+   "gate_fail_reason": null,
+   "qualifying_open": {
+    "control": 285,
+    "dxy_root_m": 0.0612,
+    "centre_above_bowl_top_m": 0.0662
+   },
+   "M2": {
+    "qualifying_open_control": 285,
+    "time_to_win_P0_s": 19.0,
+    "win_control": 308,
+    "qualifying_open_s": 19.0,
+    "win_s": 20.533
+   },
+   "furthest": "win",
+   "stage_controls": {
+    "grasp": 208,
+    "lift": 214,
+    "over_bowl": 264,
+    "open": 285,
+    "landed": 285,
+    "win": 308
+   },
+   "attempts": 7,
+   "stages": {
+    "grasp": true,
+    "lift": true,
+    "over_bowl": true,
+    "open": true,
+    "landed": true,
+    "win": true
+   },
+   "review_flags": [
+    "v5.1 pass"
+   ]
+  },
+  {
+   "case": "step5_training_layout2002_v4",
+   "robot": "A",
+   "condition": "P0",
+   "layout": "layout2002_v4",
+   "dirs": [
+    "<project-root>/assets/report/evidence/2026-10-21/bowl-training-feasibility-v4/step5_training_layout2002_v4"
+   ],
+   "episodes_tsv": null,
+   "scored": true,
+   "complete": true,
+   "trace": "<project-root>/assets/report/evidence/2026-10-21/bowl-training-feasibility-v4/step5_training_layout2002_v4/BananaInBowlUniformInitPose10cmTask/strict-metric.json",
+   "trace_sha256": "76c1196df8640dd4f7649d9a015ea618d11b7997e17d8d6df73840fbef273514",
+   "live_v4": {
+    "gate": "command-linked-supported-release-v4, live",
+    "pass": true,
+    "success_s": 20.066666666666666,
+    "complete": true
+   },
+   "v5_1_pass": true,
+   "v5_1_pass_at_end": true,
+   "win_control": 301,
+   "fail_reason": null,
+   "gate_fail_reason": null,
+   "qualifying_open": {
+    "control": 280,
+    "dxy_root_m": 0.0172,
+    "centre_above_bowl_top_m": 0.0443
+   },
+   "M2": {
+    "qualifying_open_control": 280,
+    "time_to_win_P0_s": 18.667,
+    "win_control": 301,
+    "qualifying_open_s": 18.667,
+    "win_s": 20.067
+   },
+   "furthest": "win",
+   "stage_controls": {
+    "grasp": 217,
+    "lift": 225,
+    "over_bowl": 235,
+    "open": 280,
+    "landed": 280,
+    "win": 301
+   },
+   "attempts": 2,
+   "stages": {
+    "grasp": true,
+    "lift": true,
+    "over_bowl": true,
+    "open": true,
+    "landed": true,
+    "win": true
+   },
+   "review_flags": [
+    "v5.1 pass"
+   ]
+  },
+  {
+   "case": "step5_training_layout2003_v4",
+   "robot": "A",
+   "condition": "P0",
+   "layout": "layout2003_v4",
+   "dirs": [
+    "<project-root>/assets/report/evidence/2026-10-21/bowl-training-feasibility-v4/step5_training_layout2003_v4"
+   ],
+   "episodes_tsv": null,
+   "scored": true,
+   "complete": true,
+   "trace": "<project-root>/assets/report/evidence/2026-10-21/bowl-training-feasibility-v4/step5_training_layout2003_v4/BananaInBowlUniformInitPose10cmTask/strict-metric.json",
+   "trace_sha256": "07046ea6d764f71445509abf456fbc5c83097727c28cf9baa58f24874562f7cb",
+   "live_v4": {
+    "gate": "command-linked-supported-release-v4, live",
+    "pass": false,
+    "success_s": null,
+    "complete": true
+   },
+   "v5_1_pass": false,
+   "v5_1_pass_at_end": false,
+   "win_control": null,
+   "fail_reason": "no_open_while_held",
+   "gate_fail_reason": "no_open_while_held",
+   "qualifying_open": null,
+   "M2": {},
+   "furthest": "over_bowl",
+   "stage_controls": {
+    "grasp": 684,
+    "lift": 695,
+    "over_bowl": 715
+   },
+   "attempts": 13,
+   "stages": {
+    "grasp": true,
+    "lift": true,
+    "over_bowl": true,
+    "open": false,
+    "landed": false,
+    "win": false
+   },
+   "review_flags": []
+  },
+  {
+   "case": "step6_B_paint_live_base_s0_painted_v1",
+   "robot": "B",
+   "condition": "painted",
+   "layout": "base_s0",
+   "dirs": [
+    "<project-root>/assets/report/evidence/2026-10-23/bowl-step6/paint_live_v1/runs/step6_B_paint_live_base_s0_painted_v1"
+   ],
+   "episodes_tsv": {
+    "tsv": "<project-root>/assets/report/evidence/2026-10-23/bowl-step6/paint_live_v1/runs/step6_B_paint_live_v1-supervisor/episodes.tsv",
+    "exit": "0",
+    "failure": "no",
+    "v4": "False"
+   },
+   "scored": true,
+   "complete": true,
+   "trace": "<project-root>/assets/report/evidence/2026-10-23/bowl-step6/paint_live_v1/runs/step6_B_paint_live_base_s0_painted_v1/gate_trace.jsonl",
+   "trace_sha256": "7aff134f9a938763511002978bf144e5534c92be44000f1d081b5856e3faf1a5",
+   "live_v4": {
+    "gate": "v4 (B port), live",
+    "pass": false,
+    "success_control": null,
+    "complete": true
+   },
+   "v5_1_pass": false,
+   "v5_1_pass_at_end": false,
+   "win_control": null,
+   "fail_reason": "lost_contact_before_open",
+   "gate_fail_reason": "lost_contact_before_open",
+   "qualifying_open": null,
+   "M2": {},
+   "furthest": "over_bowl",
+   "stage_controls": {
+    "grasp": 1248,
+    "lift": 1313,
+    "over_bowl": 1444
+   },
+   "attempts": 16,
+   "stages": {
+    "grasp": true,
+    "lift": true,
+    "over_bowl": true,
+    "open": false,
+    "landed": false,
+    "win": false
+   },
+   "review_flags": [
+    "fail, ends on bowl"
+   ]
+  },
+  {
+   "case": "step6_B_paint_live_base_s1_painted_v1",
+   "robot": "B",
+   "condition": "painted",
+   "layout": "base_s1",
+   "dirs": [
+    "<project-root>/assets/report/evidence/2026-10-23/bowl-step6/paint_live_v1/runs/step6_B_paint_live_base_s1_painted_v1"
+   ],
+   "episodes_tsv": {
+    "tsv": "<project-root>/assets/report/evidence/2026-10-23/bowl-step6/paint_live_v1/runs/step6_B_paint_live_v1-supervisor/episodes.tsv",
+    "exit": "0",
+    "failure": "no",
+    "v4": "False"
+   },
+   "scored": true,
+   "complete": true,
+   "trace": "<project-root>/assets/report/evidence/2026-10-23/bowl-step6/paint_live_v1/runs/step6_B_paint_live_base_s1_painted_v1/gate_trace.jsonl",
+   "trace_sha256": "6ae3ae6bec59f157c3b30e99fc92ce6e66e7342769e8a835eebacbb9bdd78db9",
+   "live_v4": {
+    "gate": "v4 (B port), live",
+    "pass": false,
+    "success_control": null,
+    "complete": true
+   },
+   "v5_1_pass": false,
+   "v5_1_pass_at_end": false,
+   "win_control": null,
+   "fail_reason": "lost_contact_before_open",
+   "gate_fail_reason": "lost_contact_before_open",
+   "qualifying_open": null,
+   "M2": {},
+   "furthest": "over_bowl",
+   "stage_controls": {
+    "grasp": 652,
+    "lift": 679,
+    "over_bowl": 868
+   },
+   "attempts": 13,
+   "stages": {
+    "grasp": true,
+    "lift": true,
+    "over_bowl": true,
+    "open": false,
+    "landed": false,
+    "win": false
+   },
+   "review_flags": [
+    "fail, ends on bowl",
+    "fail, upstream predicate true at end"
+   ]
+  },
+  {
+   "case": "step6_B_paint_live_l2002_s0_painted_v1",
+   "robot": "B",
+   "condition": "painted",
+   "layout": "l2002_s0",
+   "dirs": [
+    "<project-root>/assets/report/evidence/2026-10-23/bowl-step6/paint_live_v1/runs/step6_B_paint_live_l2002_s0_painted_v1"
+   ],
+   "episodes_tsv": {
+    "tsv": "<project-root>/assets/report/evidence/2026-10-23/bowl-step6/paint_live_v1/runs/step6_B_paint_live_v1-supervisor/episodes.tsv",
+    "exit": "0",
+    "failure": "no",
+    "v4": "False"
+   },
+   "scored": true,
+   "complete": true,
+   "trace": "<project-root>/assets/report/evidence/2026-10-23/bowl-step6/paint_live_v1/runs/step6_B_paint_live_l2002_s0_painted_v1/gate_trace.jsonl",
+   "trace_sha256": "fa826dfe908b1eaac7bf27148b3923dca5dfda5c16af9ea55b34f540737776aa",
+   "live_v4": {
+    "gate": "v4 (B port), live",
+    "pass": false,
+    "success_control": null,
+    "complete": true
+   },
+   "v5_1_pass": false,
+   "v5_1_pass_at_end": false,
+   "win_control": null,
+   "fail_reason": "lost_contact_before_open",
+   "gate_fail_reason": "lost_contact_before_open",
+   "qualifying_open": null,
+   "M2": {},
+   "furthest": "over_bowl",
+   "stage_controls": {
+    "grasp": 3879,
+    "lift": 3987,
+    "over_bowl": 4227
+   },
+   "attempts": 14,
+   "stages": {
+    "grasp": true,
+    "lift": true,
+    "over_bowl": true,
+    "open": false,
+    "landed": false,
+    "win": false
+   },
+   "review_flags": [
+    "fail, ends on bowl",
+    "fail, upstream predicate true at end"
+   ]
+  },
+  {
+   "case": "step6_B_paint_live_base_s0_unpainted_v1",
+   "robot": "B",
+   "condition": "unpainted",
+   "layout": "base_s0",
+   "dirs": [
+    "<project-root>/assets/report/evidence/2026-10-23/bowl-step6/paint_live_v1/runs/step6_B_paint_live_base_s0_unpainted_v1"
+   ],
+   "episodes_tsv": {
+    "tsv": "<project-root>/assets/report/evidence/2026-10-23/bowl-step6/paint_live_v1/runs/step6_B_paint_live_v1-supervisor/episodes.tsv",
+    "exit": "0",
+    "failure": "no",
+    "v4": "False"
+   },
+   "scored": true,
+   "complete": true,
+   "trace": "<project-root>/assets/report/evidence/2026-10-23/bowl-step6/paint_live_v1/runs/step6_B_paint_live_base_s0_unpainted_v1/gate_trace.jsonl",
+   "trace_sha256": "5b9e797a9b640fe16dadbe488b310785cf42161732027dcc367cf96bc7e30da8",
+   "live_v4": {
+    "gate": "v4 (B port), live",
+    "pass": false,
+    "success_control": null,
+    "complete": true
+   },
+   "v5_1_pass": false,
+   "v5_1_pass_at_end": false,
+   "win_control": null,
+   "fail_reason": "never_lifted",
+   "gate_fail_reason": "never_lifted",
+   "qualifying_open": null,
+   "M2": {},
+   "furthest": "grasp",
+   "stage_controls": {
+    "grasp": 2007
+   },
+   "attempts": 1,
+   "stages": {
+    "grasp": true,
+    "lift": false,
+    "over_bowl": false,
+    "open": false,
+    "landed": false,
+    "win": false
+   },
+   "review_flags": []
+  },
+  {
+   "case": "step6_B_paint_live_base_s1_unpainted_v1",
+   "robot": "B",
+   "condition": "unpainted",
+   "layout": "base_s1",
+   "dirs": [
+    "<project-root>/assets/report/evidence/2026-10-23/bowl-step6/paint_live_v1/runs/step6_B_paint_live_base_s1_unpainted_v1"
+   ],
+   "episodes_tsv": {
+    "tsv": "<project-root>/assets/report/evidence/2026-10-23/bowl-step6/paint_live_v1/runs/step6_B_paint_live_v1-supervisor/episodes.tsv",
+    "exit": "0",
+    "failure": "no",
+    "v4": "False"
+   },
+   "scored": true,
+   "complete": true,
+   "trace": "<project-root>/assets/report/evidence/2026-10-23/bowl-step6/paint_live_v1/runs/step6_B_paint_live_base_s1_unpainted_v1/gate_trace.jsonl",
+   "trace_sha256": "64894fdeb6b8f777efa66ba9711a76c6b35e61c16ade9bc5edde10095598de22",
+   "live_v4": {
+    "gate": "v4 (B port), live",
+    "pass": false,
+    "success_control": null,
+    "complete": true
+   },
+   "v5_1_pass": false,
+   "v5_1_pass_at_end": false,
+   "win_control": null,
+   "fail_reason": "never_lifted",
+   "gate_fail_reason": "never_lifted",
+   "qualifying_open": null,
+   "M2": {},
+   "furthest": null,
+   "stage_controls": {},
+   "attempts": 1,
+   "stages": {
+    "grasp": false,
+    "lift": false,
+    "over_bowl": false,
+    "open": false,
+    "landed": false,
+    "win": false
+   },
+   "review_flags": []
+  },
+  {
+   "case": "step6_B_paint_live_l2002_s0_unpainted_v1",
+   "robot": "B",
+   "condition": "unpainted",
+   "layout": "l2002_s0",
+   "dirs": [
+    "<project-root>/assets/report/evidence/2026-10-23/bowl-step6/paint_live_v1/runs/step6_B_paint_live_l2002_s0_unpainted_v1"
+   ],
+   "episodes_tsv": {
+    "tsv": "<project-root>/assets/report/evidence/2026-10-23/bowl-step6/paint_live_v1/runs/step6_B_paint_live_v1-supervisor/episodes.tsv",
+    "exit": "0",
+    "failure": "no",
+    "v4": "False"
+   },
+   "scored": true,
+   "complete": true,
+   "trace": "<project-root>/assets/report/evidence/2026-10-23/bowl-step6/paint_live_v1/runs/step6_B_paint_live_l2002_s0_unpainted_v1/gate_trace.jsonl",
+   "trace_sha256": "171d5eb65e320c0bed5c4545eaf49455534ea38343baf91aecae58d98f35d4cd",
+   "live_v4": {
+    "gate": "v4 (B port), live",
+    "pass": false,
+    "success_control": null,
+    "complete": true
+   },
+   "v5_1_pass": false,
+   "v5_1_pass_at_end": false,
+   "win_control": null,
+   "fail_reason": "never_lifted",
+   "gate_fail_reason": "never_lifted",
+   "qualifying_open": null,
+   "M2": {},
+   "furthest": null,
+   "stage_controls": {},
+   "attempts": 1,
+   "stages": {
+    "grasp": false,
+    "lift": false,
+    "over_bowl": false,
+    "open": false,
+    "landed": false,
+    "win": false
+   },
+   "review_flags": []
+  }
+ ],
+ "per_condition": {
+  "A/P0": {
+   "n": 15,
+   "unscored": [
+    "step5_controlled_layout1000_v3"
+   ],
+   "wins": 6,
+   "wilson95": [
+    0.1982,
+    0.6425
+   ],
+   "wins_at_end": 6,
+   "safety_aborts": {
+    "n": 0,
+    "wins": 0,
+    "by_kind": {},
+    "empty_trace": 0,
+    "aborted_row_dropped": 0
+   },
+   "crashes": 0,
+   "abort_markers_unscored_other": 0,
+   "live_v4_passes": 1,
+   "live_v4_not_reached": 0,
+   "M2_among_winners_descriptive": {
+    "n": 6,
+    "time_to_win_P0_s": [
+     8.4,
+     8.533,
+     8.533,
+     9.333,
+     18.667,
+     19.0
+    ],
+    "median": 8.933
+   },
+   "furthest": {
+    "null": 1,
+    "grasp": 0,
+    "lift": 2,
+    "over_bowl": 5,
+    "open": 0,
+    "landed": 1,
+    "win": 6
+   },
+   "stage_rates": {
+    "grasp": {
+     "k": 14,
+     "n": 15,
+     "wilson95": [
+      0.7018,
+      0.9881
+     ]
+    },
+    "lift": {
+     "k": 14,
+     "n": 15,
+     "wilson95": [
+      0.7018,
+      0.9881
+     ]
+    },
+    "over_bowl": {
+     "k": 12,
+     "n": 15,
+     "wilson95": [
+      0.5481,
+      0.9295
+     ]
+    },
+    "open": {
+     "k": 7,
+     "n": 15,
+     "wilson95": [
+      0.2481,
+      0.6988
+     ]
+    },
+    "landed": {
+     "k": 7,
+     "n": 15,
+     "wilson95": [
+      0.2481,
+      0.6988
+     ]
+    },
+    "win": {
+     "k": 6,
+     "n": 15,
+     "wilson95": [
+      0.1982,
+      0.6425
+     ]
+    }
+   }
+  },
+  "B/painted": {
+   "n": 3,
+   "unscored": [],
+   "wins": 0,
+   "wilson95": [
+    0.0,
+    0.5615
+   ],
+   "wins_at_end": 0,
+   "safety_aborts": {
+    "n": 0,
+    "wins": 0,
+    "by_kind": {},
+    "empty_trace": 0,
+    "aborted_row_dropped": 0
+   },
+   "crashes": 0,
+   "abort_markers_unscored_other": 0,
+   "live_v4_passes": 0,
+   "live_v4_not_reached": 0,
+   "M2_among_winners_descriptive": {
+    "n": 0,
+    "time_to_win_P0_s": [],
+    "median": null
+   },
+   "furthest": {
+    "null": 0,
+    "grasp": 0,
+    "lift": 0,
+    "over_bowl": 3,
+    "open": 0,
+    "landed": 0,
+    "win": 0
+   },
+   "stage_rates": {
+    "grasp": {
+     "k": 3,
+     "n": 3,
+     "wilson95": [
+      0.4385,
+      1.0
+     ]
+    },
+    "lift": {
+     "k": 3,
+     "n": 3,
+     "wilson95": [
+      0.4385,
+      1.0
+     ]
+    },
+    "over_bowl": {
+     "k": 3,
+     "n": 3,
+     "wilson95": [
+      0.4385,
+      1.0
+     ]
+    },
+    "open": {
+     "k": 0,
+     "n": 3,
+     "wilson95": [
+      0.0,
+      0.5615
+     ]
+    },
+    "landed": {
+     "k": 0,
+     "n": 3,
+     "wilson95": [
+      0.0,
+      0.5615
+     ]
+    },
+    "win": {
+     "k": 0,
+     "n": 3,
+     "wilson95": [
+      0.0,
+      0.5615
+     ]
+    }
+   }
+  },
+  "B/unpainted": {
+   "n": 3,
+   "unscored": [],
+   "wins": 0,
+   "wilson95": [
+    0.0,
+    0.5615
+   ],
+   "wins_at_end": 0,
+   "safety_aborts": {
+    "n": 0,
+    "wins": 0,
+    "by_kind": {},
+    "empty_trace": 0,
+    "aborted_row_dropped": 0
+   },
+   "crashes": 0,
+   "abort_markers_unscored_other": 0,
+   "live_v4_passes": 0,
+   "live_v4_not_reached": 0,
+   "M2_among_winners_descriptive": {
+    "n": 0,
+    "time_to_win_P0_s": [],
+    "median": null
+   },
+   "furthest": {
+    "null": 2,
+    "grasp": 1,
+    "lift": 0,
+    "over_bowl": 0,
+    "open": 0,
+    "landed": 0,
+    "win": 0
+   },
+   "stage_rates": {
+    "grasp": {
+     "k": 1,
+     "n": 3,
+     "wilson95": [
+      0.0615,
+      0.7923
+     ]
+    },
+    "lift": {
+     "k": 0,
+     "n": 3,
+     "wilson95": [
+      0.0,
+      0.5615
+     ]
+    },
+    "over_bowl": {
+     "k": 0,
+     "n": 3,
+     "wilson95": [
+      0.0,
+      0.5615
+     ]
+    },
+    "open": {
+     "k": 0,
+     "n": 3,
+     "wilson95": [
+      0.0,
+      0.5615
+     ]
+    },
+    "landed": {
+     "k": 0,
+     "n": 3,
+     "wilson95": [
+      0.0,
+      0.5615
+     ]
+    },
+    "win": {
+     "k": 0,
+     "n": 3,
+     "wilson95": [
+      0.0,
+      0.5615
+     ]
+    }
+   }
+  }
+ },
+ "paired": {
+  "B: painted vs unpainted": {
+   "scored_layouts": [
+    "base_s0",
+    "base_s1",
+    "l2002_s0"
+   ],
+   "unscored_layouts": [],
+   "win": {
+    "stage": "win",
+    "layouts": 3,
+    "delta": 0.0,
+    "only_first": 0,
+    "only_second": 0,
+    "p_exact_mcnemar": 1.0
+   },
+   "stages": [
+    {
+     "stage": "grasp",
+     "layouts": 3,
+     "delta": 0.6666666666666666,
+     "only_first": 2,
+     "only_second": 0,
+     "p_exact_mcnemar": 0.5
+    },
+    {
+     "stage": "lift",
+     "layouts": 3,
+     "delta": 1.0,
+     "only_first": 3,
+     "only_second": 0,
+     "p_exact_mcnemar": 0.25
+    },
+    {
+     "stage": "over_bowl",
+     "layouts": 3,
+     "delta": 1.0,
+     "only_first": 3,
+     "only_second": 0,
+     "p_exact_mcnemar": 0.25
+    },
+    {
+     "stage": "open",
+     "layouts": 3,
+     "delta": 0.0,
+     "only_first": 0,
+     "only_second": 0,
+     "p_exact_mcnemar": 1.0
+    },
+    {
+     "stage": "landed",
+     "layouts": 3,
+     "delta": 0.0,
+     "only_first": 0,
+     "only_second": 0,
+     "p_exact_mcnemar": 1.0
+    },
+    {
+     "stage": "win",
+     "layouts": 3,
+     "delta": 0.0,
+     "only_first": 0,
+     "only_second": 0,
+     "p_exact_mcnemar": 1.0
+    }
+   ]
+  }
+ }
+}

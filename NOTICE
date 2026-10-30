@@ -1,0 +1,127 @@
+Cross-Embodiment Policy Transfer
+Copyright 2026 Miodrag Tasic
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE). That license covers the code and
+records written for this project. It does not cover the third-party software, models, data and assets below.
+
+Third-party software, models, data and assets (none included in this repository)
+----------------------------------------------------------------------------------
+The code here runs against, but does not contain, the following. Each keeps its own license. Licenses were checked
+on 25 October 2026 (the Nemotron entry on 26 October) against the primary sources named in brackets.
+
+- NVIDIA RoboLab, https://github.com/NVlabs/RoboLab, pinned at b6cfcf6ccd2113c4cd1216d35b33024a7d5691da.
+  Code: Apache License 2.0, Copyright (c) 2026 NVIDIA CORPORATION & AFFILIATES [LICENSE at that commit].
+  Bundled assets carry their own licenses [THIRD_PARTY_NOTICES.md at that commit]. The ones this task uses:
+    - assets/scenes (the banana_bowl.usda task scene), assets/fixtures, assets/materials and assets/robots,
+      including the Franka with Robotiq 2F-85 used as robot A: CC BY-NC-SA 4.0, (c) 2026 NVIDIA Corporation;
+    - assets/robots/kinova_gen3_robotiq_2f85 (robot B): BSD-3-Clause, derived from Kinova ros2_kortex and
+      PickNik ros2_robotiq_gripper;
+    - assets/objects/ycb (the banana and bowl): MIT, Copyright (c) 2017 Yu Xiang, converted to USD from the
+      YCB-Video dataset [assets/objects/ycb/LICENSE at that commit];
+    - assets/backgrounds: CC0 1.0 (Poly Haven).
+  No RoboLab asset is included here.
+- NVIDIA Isaac Sim 5.1.0, installed as the pip package isaacsim[all,extscache]==5.1.0 through RoboLab's isaac51
+  extra. The Isaac Sim source on GitHub is Apache License 2.0; building or using it requires further NVIDIA
+  components (the Omniverse Kit SDK, 3D models and textures) under the NVIDIA Isaac Sim Additional Software and
+  Materials License (v. June 9, 2025), which does not permit redistributing them [isaac-sim/IsaacSim LICENSE at
+  tag v5.1.0; https://www.nvidia.com/en-us/agreements/enterprise-software/isaac-sim-additional-software-and-materials-license/].
+  The PyPI metadata for isaacsim 5.1.0.0 lists "NVIDIA Proprietary Software". The runners set
+  OMNI_KIT_ACCEPT_EULA=Y, which accepts these terms without a prompt; read them before running.
+- NVIDIA Isaac Lab 2.3.2.post1, installed the same way. Source: BSD-3-Clause, Copyright (c) 2022-2025 The Isaac
+  Lab Project Developers [isaac-sim/IsaacLab LICENSE at tag v2.3.2]. The PyPI metadata for isaaclab 2.3.2.post1
+  lists "NVIDIA Proprietary Software".
+- NVIDIA Isaac-GR00T, https://github.com/NVIDIA/Isaac-GR00T, pinned at dac54b313160c201c450f97df0fd74ebd379c892.
+  Apache License 2.0, Copyright (c) 2026 NVIDIA CORPORATION & AFFILIATES [LICENSE at that commit].
+- Model weights nvidia/GR00T-N1.7-DROID (revision 05e7cc97e40dbd33b0890c35cc0214fcb0547ab5) and
+  nvidia/Cosmos-Reason2-2B (revision 9ce19a195e423419c349abfc86fd07178b230561), distributed by NVIDIA under the
+  NVIDIA Open Model License Agreement [GR00T-N1.7-DROID model card; Cosmos-Reason2-2B Hugging Face license
+  metadata, a gated repository; https://www.nvidia.com/en-us/agreements/enterprise-software/nvidia-open-model-license/,
+  version of October 24, 2025]. No weights are included here, and the fine-tuned P1 checkpoint is not
+  distributed. If it ever is, that agreement requires a copy of the agreement, the notice "Licensed by NVIDIA
+  Corporation under the NVIDIA Open Model License" and, for models built on Cosmos, "Built on NVIDIA Cosmos".
+- DROID dataset (A. Khazatsky et al., RSS 2024, arXiv:2403.12945). Not used directly and not included: it reaches
+  this project only as the post-training data of NVIDIA's GR00T-N1.7-DROID checkpoint. Its project page states
+  no license; the authors' Hugging Face copy (KarlP/droid) is tagged CC BY 4.0. Credited by citation.
+- NVIDIA Nemotron 3.5 models, called only as hosted APIs on Nebius Token Factory: nvidia/Nemotron-3_5-Lightning
+  (the annotation add-on) and nvidia/Nemotron-3.5-Super-VL (ABBA). No weights, model code or other model
+  materials are included here. NVIDIA's model cards state "Use of this model is governed by the OpenMDW License
+  Agreement, version 1.1" [Hugging Face cards and license metadata, fetched 26 October 2026:
+  nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-BF16 at revision fb0ee0bc6b3f70342afd8d84cb80dbadbaa8a1fe and
+  nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16 at revision a9904d24bcc1d289a1950fa9d2b978c47cf903b9; license
+  text at https://openmdw.ai/license/1-1/]. The Token Factory model catalog captured on 24 October 2026 lists
+  OpenMDW-1.1 for both served model IDs. Which checkpoint and precision Token Factory serves under each ID was not
+  verified. OpenMDW-1.1 "does not impose any restrictions or obligations with respect to any use, modification, or
+  sharing of any outputs generated by using the Model Materials"; the 29 ABBA replies under evidence/abba_l4003/drop/
+  are such outputs. Use of the hosted service is governed by the Nebius Token Factory Terms of Service
+  (https://docs.tokenfactory.nebius.com/legal/terms-of-service, publication and effective date 20 August 2026), which
+  were not reviewed clause by clause for this repository.
+- Python packages installed by uv from the two pinned lockfiles keep their own licenses; RoboLab's
+  THIRD_PARTY_NOTICES.md lists its direct dependencies.
+
+Upstream files
+--------------
+- frozen_B_adapter_v1r2/lock-relative.sha256 pins RoboLab/policies/gr00t/client.py, an unmodified upstream RoboLab file
+  (Apache License 2.0, Copyright (c) 2026 NVIDIA CORPORATION & AFFILIATES). It is not copied here; it comes with a
+  RoboLab checkout at the pinned commit. The pinned sha256 equals that of a copy fetched from the pinned commit during
+  the project.
+- What was checked, on 24 October 2026:
+  - Exact copies. Every file here was compared by git blob hash with the full RoboLab and Isaac-GR00T trees at the
+    pinned commits (2,690 and 441 files). None is byte-identical to an upstream file, apart from LICENSE, which is the
+    standard Apache License 2.0 text.
+  - Upstream headers. No file here carried an upstream SPDX copyright header. The one header now present was
+    added on purpose, to the derived file listed below.
+  - Line overlap. This was checked only against the 35 upstream files captured during the project (RoboLab,
+    Isaac-GR00T, MuJoCo Menagerie and Kortex). Lines of 25 characters or more were compared. The only shared lines
+    are import statements, `export OMNI_KIT_ACCEPT_EULA=Y` and a Markdown table rule.
+  - Not checked. Other upstream files were not compared line by line, so modified copies of them are not ruled out.
+- Files added on 25 October 2026 (setup/, prerequisites/ and the score outputs under experiments/scoring_v5/) are
+  the project's own scripts and records; none is an upstream file.
+- Files added on 26 October 2026 (experiments/roger_bravo_one_shot_v1/ and evidence/abba_l4003/) are the project's own
+  code and run records. They were not compared with the upstream trees.
+
+Derived files
+-------------
+- experiments/bowl_step6/inspect_kinova_mechanics.py is a modified work based on NVIDIA RoboLab
+  examples/run_kinova_jointpos.py at commit b6cfcf6ccd2113c4cd1216d35b33024a7d5691da (Copyright (c) 2026 NVIDIA
+  CORPORATION & AFFILIATES, Apache License 2.0). RoboLab's LICENSE at that commit is Apache 2.0, and its
+  THIRD_PARTY_NOTICES.md applies other licenses only to assets, not to examples/. The copy in this repository
+  carries an SPDX header with both copyright lines and a note that it was modified. The upstream file's contents
+  were not captured, so how much code the two share has not been measured; the file is listed here as derived
+  either way. The project's working copy, outside this repository, is unchanged; only this exported copy has the
+  header, so its sha256 differs from the working copy's. No lock pins this file.
+
+Data derived from simulator assets
+----------------------------------
+frozen_B_adapter_v1r2/files/runs/step6_fixed_frames_cpu_v1/frame_proposal.json and ik_results.json contain frame
+offsets and IK solutions computed from the RoboLab Franka (CC BY-NC-SA 4.0) and Kinova (BSD-3-Clause) robot assets.
+They are numeric measurements, not geometry, meshes or textures. The full body-frame dump (joint_graphs.json) is left
+out; experiments/bowl_step6/extract_arm_kinematics.py regenerates it from a RoboLab checkout. Rendered images and
+videos appear only in the website folder, docs/ (next section).
+
+Website (docs/)
+---------------
+docs/ is the project web page, not Apache-licensed code:
+- Layout and styles: adapted from keunhong.github.io by Keunhong Park, CC BY-SA 4.0, changes made
+  (https://github.com/keunhong/keunhong.github.io); shared under CC BY-SA 4.0.
+- docs/assets/media/*.mp4 and *.jpg (13 clips and 13 posters): recordings of NVIDIA RoboLab's banana-bowl scene and
+  robot assets (commit b6cfcf6c, copyright 2026 NVIDIA Corporation, CC BY-NC-SA 4.0), cropped, labelled and edited
+  for this project. As adapted material they are shared under CC BY-NC-SA 4.0
+  (https://creativecommons.org/licenses/by-nc-sa/4.0/): attribution, non-commercial use, share-alike.
+- docs/assets/notes/ (13 notebook photographs and transcripts): (c) 2026 Miodrag Tasic, all rights reserved.
+- docs/assets/media/why/miodrag-seoul-kickoff.jpg: photograph by Bloom, from https://blog.bloomworld.ai/en/physical-ai-is-this-years-christmas-gift-en/
+  credited on the Why page; not covered by any licence in this repository.
+- docs/LICENSE.md repeats these terms for readers of the site.
+
+Method credit
+-------------
+Exterior cross-painting follows Mirage: L. Y. Chen, K. Hari, K. Dharmarajan, C. Xu, Q. Vuong and K. Goldberg,
+"Mirage: Cross-Embodiment Zero-Shot Policy Transfer with Cross-Painting", RSS 2024, arXiv:2402.19249.
+No Mirage code is included; this repository implements a simulator version that renders from ground truth.
+
+Code-export supplement (25 October 2026, updated 26 October): authored Nemotron annotation, intent-demo and Charlie
+DROP/perception tooling are included as source-only snapshots; the Charlie packages and the intent demo were prepared
+and never run in the simulator. ABBA (experiments/roger_bravo_one_shot_v1/) is the project's own code and ran once;
+evidence/abba_l4003/ holds that run's trace, score, API ledger and the text of its 29 Nemotron requests and replies.
+The images sent to Nemotron are renders of the RoboLab scene and robot assets and are not included; their sha256
+values appear in each request.json. No provider SDK source or model weights are included, and no rendered media outside docs/. Original
+third-party dependencies retain their own licences. Offline tests are described in OFFLINE_EXPORT_CHECKS.md.

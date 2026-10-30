@@ -1,0 +1,1721 @@
+{
+ "phase": "before",
+ "stamp_utc": "Sat 24 Oct 2026 02:11:08 UTC",
+ "roots": [
+  "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1"
+ ],
+ "code_sha256": {
+  "release_gate_v5_1.py": "5e900d6e6f48a7aa1fed17cdaa253f86451e13dedd8e0e4059553c6d09692876",
+  "stages_r2.py": "4c08f687449e60ec5c3315247e69df349f93cce8ce1db6ef8d68221aadc46e56",
+  "stages.py": "f8c835b33240d1218df35e020d9840ec94fdb1edaef23c918061cb3e97ebd7a6",
+  "score_step8.py": "8406460be54e1481c517e259981b7e9e061b71a64345180a6978cb10356186e1"
+ },
+ "problems": [],
+ "notes": {
+  "contact_flag": "The contact flag is not shared: A's 'gripper' sensor is one finger, B's flag is either of two tip pads. Within-robot comparisons are unaffected; A-vs-B stage rates carry a B-lenient bias.",
+  "target_limits": "A has no target-limit check, so the same out-of-limit target ends a B episode but not an A episode. Within-robot \u0394B is unaffected.",
+  "safety_abort": "scored from the files on disk; a :298 abort leaves one more gate row than tracking rows, and that row (the aborted control) is dropped; under 3 scored rows it is a fail with no stage (empty_trace)",
+  "times": "control/15 s on both robots; B simulation_s = (control+1)/15 is not used",
+  "M2": "descriptive only, among winners, no test",
+  "headline": "score()['pass']; stages win only cross-checked"
+ },
+ "episodes": [
+  {
+   "case": "step8_A_P0_l4000_s0_v1",
+   "robot": "A",
+   "condition": "P0",
+   "layout": "l4000",
+   "dirs": [
+    "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/RoboLab/output/step8_A_P0_l4000_s0_v1",
+    "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/runs/step8_A_P0_l4000_s0_v1"
+   ],
+   "episodes_tsv": {
+    "tsv": "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/runs/step8_before_v1-supervisor/episodes.tsv",
+    "exit": "0",
+    "failure": "no",
+    "v4": "False"
+   },
+   "scored": true,
+   "complete": true,
+   "trace": "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/RoboLab/output/step8_A_P0_l4000_s0_v1/BananaInBowlUniformInitPose10cmTask/strict-metric.json",
+   "trace_sha256": "a487a75e8dd8db67850e0c0277dde04107d74aa57c8ab6359167ae8c20dbbc6c",
+   "live_v4": {
+    "gate": "command-linked-supported-release-v4, live",
+    "pass": false,
+    "success_s": null,
+    "complete": true
+   },
+   "v5_1_pass": false,
+   "v5_1_pass_at_end": false,
+   "win_control": null,
+   "fail_reason": "never_lifted",
+   "gate_fail_reason": "never_lifted",
+   "qualifying_open": null,
+   "M2": {},
+   "furthest": "over_bowl",
+   "stage_controls": {
+    "grasp": 158,
+    "lift": 171,
+    "over_bowl": 187
+   },
+   "attempts": 7,
+   "stages": {
+    "grasp": true,
+    "lift": true,
+    "over_bowl": true,
+    "open": false,
+    "landed": false,
+    "win": false
+   },
+   "review_flags": [
+    "fail, ends on bowl",
+    "fail, upstream predicate true at end"
+   ]
+  },
+  {
+   "case": "step8_A_P0_l4001_s0_v1",
+   "robot": "A",
+   "condition": "P0",
+   "layout": "l4001",
+   "dirs": [
+    "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/RoboLab/output/step8_A_P0_l4001_s0_v1",
+    "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/runs/step8_A_P0_l4001_s0_v1"
+   ],
+   "episodes_tsv": {
+    "tsv": "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/runs/step8_before_v1-supervisor/episodes.tsv",
+    "exit": "0",
+    "failure": "no",
+    "v4": "False"
+   },
+   "scored": true,
+   "complete": true,
+   "trace": "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/RoboLab/output/step8_A_P0_l4001_s0_v1/BananaInBowlUniformInitPose10cmTask/strict-metric.json",
+   "trace_sha256": "4f87281ea0e852d7eed0eda1d46920fde318349a7596426e22878ec10cbf0049",
+   "live_v4": {
+    "gate": "command-linked-supported-release-v4, live",
+    "pass": false,
+    "success_s": null,
+    "complete": true
+   },
+   "v5_1_pass": false,
+   "v5_1_pass_at_end": false,
+   "win_control": null,
+   "fail_reason": "never_lifted",
+   "gate_fail_reason": "never_lifted",
+   "qualifying_open": null,
+   "M2": {},
+   "furthest": "over_bowl",
+   "stage_controls": {
+    "grasp": 83,
+    "lift": 92,
+    "over_bowl": 103
+   },
+   "attempts": 12,
+   "stages": {
+    "grasp": true,
+    "lift": true,
+    "over_bowl": true,
+    "open": false,
+    "landed": false,
+    "win": false
+   },
+   "review_flags": [
+    "fail, ends on bowl",
+    "fail, upstream predicate true at end"
+   ]
+  },
+  {
+   "case": "step8_A_P0_l4002_s0_v1",
+   "robot": "A",
+   "condition": "P0",
+   "layout": "l4002",
+   "dirs": [
+    "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/RoboLab/output/step8_A_P0_l4002_s0_v1",
+    "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/runs/step8_A_P0_l4002_s0_v1"
+   ],
+   "episodes_tsv": {
+    "tsv": "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/runs/step8_before_v1-supervisor/episodes.tsv",
+    "exit": "0",
+    "failure": "no",
+    "v4": "False"
+   },
+   "scored": true,
+   "complete": true,
+   "trace": "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/RoboLab/output/step8_A_P0_l4002_s0_v1/BananaInBowlUniformInitPose10cmTask/strict-metric.json",
+   "trace_sha256": "24bd575b239e6cbae5f52f0a0fdd4ebb5b96885d5a5f5f28500bc63e45f084ac",
+   "live_v4": {
+    "gate": "command-linked-supported-release-v4, live",
+    "pass": false,
+    "success_s": null,
+    "complete": true
+   },
+   "v5_1_pass": false,
+   "v5_1_pass_at_end": false,
+   "win_control": null,
+   "fail_reason": "lost_contact_before_open",
+   "gate_fail_reason": "lost_contact_before_open",
+   "qualifying_open": null,
+   "M2": {},
+   "furthest": "over_bowl",
+   "stage_controls": {
+    "grasp": 76,
+    "lift": 89,
+    "over_bowl": 96
+   },
+   "attempts": 13,
+   "stages": {
+    "grasp": true,
+    "lift": true,
+    "over_bowl": true,
+    "open": false,
+    "landed": false,
+    "win": false
+   },
+   "review_flags": [
+    "fail, ends on bowl",
+    "fail, upstream predicate true at end"
+   ]
+  },
+  {
+   "case": "step8_A_P0_l4003_s0_v1",
+   "robot": "A",
+   "condition": "P0",
+   "layout": "l4003",
+   "dirs": [
+    "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/RoboLab/output/step8_A_P0_l4003_s0_v1",
+    "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/runs/step8_A_P0_l4003_s0_v1"
+   ],
+   "episodes_tsv": {
+    "tsv": "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/runs/step8_before_v1-supervisor/episodes.tsv",
+    "exit": "0",
+    "failure": "no",
+    "v4": "False"
+   },
+   "scored": true,
+   "complete": true,
+   "trace": "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/RoboLab/output/step8_A_P0_l4003_s0_v1/BananaInBowlUniformInitPose10cmTask/strict-metric.json",
+   "trace_sha256": "6143585781b7115570a8b147b9afc36508be0ad733cd34a78fac5e290c3c8f83",
+   "live_v4": {
+    "gate": "command-linked-supported-release-v4, live",
+    "pass": false,
+    "success_s": null,
+    "complete": true
+   },
+   "v5_1_pass": false,
+   "v5_1_pass_at_end": false,
+   "win_control": null,
+   "fail_reason": "never_lifted",
+   "gate_fail_reason": "never_lifted",
+   "qualifying_open": null,
+   "M2": {},
+   "furthest": "over_bowl",
+   "stage_controls": {
+    "grasp": 83,
+    "lift": 95,
+    "over_bowl": 99
+   },
+   "attempts": 13,
+   "stages": {
+    "grasp": true,
+    "lift": true,
+    "over_bowl": true,
+    "open": false,
+    "landed": false,
+    "win": false
+   },
+   "review_flags": []
+  },
+  {
+   "case": "step8_A_P0_l4004_s0_v1",
+   "robot": "A",
+   "condition": "P0",
+   "layout": "l4004",
+   "dirs": [
+    "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/RoboLab/output/step8_A_P0_l4004_s0_v1",
+    "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/runs/step8_A_P0_l4004_s0_v1"
+   ],
+   "episodes_tsv": {
+    "tsv": "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/runs/step8_before_v1-supervisor/episodes.tsv",
+    "exit": "0",
+    "failure": "no",
+    "v4": "True"
+   },
+   "scored": true,
+   "complete": true,
+   "trace": "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/RoboLab/output/step8_A_P0_l4004_s0_v1/BananaInBowlUniformInitPose10cmTask/strict-metric.json",
+   "trace_sha256": "73f84e611b4aa4bc838de89f3fede74920c40bf337a001932ef15bac857c89fe",
+   "live_v4": {
+    "gate": "command-linked-supported-release-v4, live",
+    "pass": true,
+    "success_s": 9.733333333333333,
+    "complete": true
+   },
+   "v5_1_pass": true,
+   "v5_1_pass_at_end": true,
+   "win_control": 146,
+   "fail_reason": null,
+   "gate_fail_reason": null,
+   "qualifying_open": {
+    "control": 128,
+    "dxy_root_m": 0.0211,
+    "centre_above_bowl_top_m": 0.0365
+   },
+   "M2": {
+    "qualifying_open_control": 128,
+    "time_to_win_P0_s": 8.533,
+    "win_control": 146,
+    "qualifying_open_s": 8.533,
+    "win_s": 9.733
+   },
+   "furthest": "win",
+   "stage_controls": {
+    "grasp": 75,
+    "lift": 83,
+    "over_bowl": 92,
+    "open": 128,
+    "landed": 128,
+    "win": 146
+   },
+   "attempts": 1,
+   "stages": {
+    "grasp": true,
+    "lift": true,
+    "over_bowl": true,
+    "open": true,
+    "landed": true,
+    "win": true
+   },
+   "review_flags": [
+    "v5.1 pass"
+   ]
+  },
+  {
+   "case": "step8_A_P0_l4005_s0_v1",
+   "robot": "A",
+   "condition": "P0",
+   "layout": "l4005",
+   "dirs": [
+    "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/RoboLab/output/step8_A_P0_l4005_s0_v1",
+    "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/runs/step8_A_P0_l4005_s0_v1"
+   ],
+   "episodes_tsv": {
+    "tsv": "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/runs/step8_before_v1-supervisor/episodes.tsv",
+    "exit": "0",
+    "failure": "no",
+    "v4": "False"
+   },
+   "scored": true,
+   "complete": true,
+   "trace": "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/RoboLab/output/step8_A_P0_l4005_s0_v1/BananaInBowlUniformInitPose10cmTask/strict-metric.json",
+   "trace_sha256": "3f631c6b0f672ac4ec6ba2fdaa28659a5ecbcdb91e7f3baff6c33a9cb52370a8",
+   "live_v4": {
+    "gate": "command-linked-supported-release-v4, live",
+    "pass": false,
+    "success_s": null,
+    "complete": true
+   },
+   "v5_1_pass": true,
+   "v5_1_pass_at_end": true,
+   "win_control": 158,
+   "fail_reason": null,
+   "gate_fail_reason": null,
+   "qualifying_open": {
+    "control": 128,
+    "dxy_root_m": 0.0063,
+    "centre_above_bowl_top_m": 0.0601
+   },
+   "M2": {
+    "qualifying_open_control": 128,
+    "time_to_win_P0_s": 8.533,
+    "win_control": 158,
+    "qualifying_open_s": 8.533,
+    "win_s": 10.533
+   },
+   "furthest": "win",
+   "stage_controls": {
+    "grasp": 76,
+    "lift": 82,
+    "over_bowl": 94,
+    "open": 128,
+    "landed": 129,
+    "win": 158
+   },
+   "attempts": 1,
+   "stages": {
+    "grasp": true,
+    "lift": true,
+    "over_bowl": true,
+    "open": true,
+    "landed": true,
+    "win": true
+   },
+   "review_flags": [
+    "v5.1 pass"
+   ]
+  },
+  {
+   "case": "step8_A_P0_l4006_s0_v1",
+   "robot": "A",
+   "condition": "P0",
+   "layout": "l4006",
+   "dirs": [
+    "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/RoboLab/output/step8_A_P0_l4006_s0_v1",
+    "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/runs/step8_A_P0_l4006_s0_v1"
+   ],
+   "episodes_tsv": {
+    "tsv": "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/runs/step8_before_v1-supervisor/episodes.tsv",
+    "exit": "0",
+    "failure": "no",
+    "v4": "True"
+   },
+   "scored": true,
+   "complete": true,
+   "trace": "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/RoboLab/output/step8_A_P0_l4006_s0_v1/BananaInBowlUniformInitPose10cmTask/strict-metric.json",
+   "trace_sha256": "800a60f2f06c840221a02d77677ac9b1a5b039786c9ed80d8f65cdd6a07eaca5",
+   "live_v4": {
+    "gate": "command-linked-supported-release-v4, live",
+    "pass": true,
+    "success_s": 10.666666666666666,
+    "complete": true
+   },
+   "v5_1_pass": true,
+   "v5_1_pass_at_end": true,
+   "win_control": 160,
+   "fail_reason": null,
+   "gate_fail_reason": null,
+   "qualifying_open": {
+    "control": 142,
+    "dxy_root_m": 0.0135,
+    "centre_above_bowl_top_m": 0.0519
+   },
+   "M2": {
+    "qualifying_open_control": 142,
+    "time_to_win_P0_s": 9.467,
+    "win_control": 160,
+    "qualifying_open_s": 9.467,
+    "win_s": 10.667
+   },
+   "furthest": "win",
+   "stage_controls": {
+    "grasp": 84,
+    "lift": 92,
+    "over_bowl": 109,
+    "open": 142,
+    "landed": 142,
+    "win": 160
+   },
+   "attempts": 1,
+   "stages": {
+    "grasp": true,
+    "lift": true,
+    "over_bowl": true,
+    "open": true,
+    "landed": true,
+    "win": true
+   },
+   "review_flags": [
+    "v5.1 pass"
+   ]
+  },
+  {
+   "case": "step8_A_P0_l4007_s0_v1",
+   "robot": "A",
+   "condition": "P0",
+   "layout": "l4007",
+   "dirs": [
+    "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/RoboLab/output/step8_A_P0_l4007_s0_v1",
+    "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/runs/step8_A_P0_l4007_s0_v1"
+   ],
+   "episodes_tsv": {
+    "tsv": "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/runs/step8_before_v1-supervisor/episodes.tsv",
+    "exit": "0",
+    "failure": "no",
+    "v4": "True"
+   },
+   "scored": true,
+   "complete": true,
+   "trace": "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/RoboLab/output/step8_A_P0_l4007_s0_v1/BananaInBowlUniformInitPose10cmTask/strict-metric.json",
+   "trace_sha256": "4eac486a278dca342bf67efd34d3f982fb3c9efe179143e45aa610a5aa43f6ab",
+   "live_v4": {
+    "gate": "command-linked-supported-release-v4, live",
+    "pass": true,
+    "success_s": 9.933333333333334,
+    "complete": true
+   },
+   "v5_1_pass": true,
+   "v5_1_pass_at_end": true,
+   "win_control": 149,
+   "fail_reason": null,
+   "gate_fail_reason": null,
+   "qualifying_open": {
+    "control": 128,
+    "dxy_root_m": 0.017,
+    "centre_above_bowl_top_m": 0.064
+   },
+   "M2": {
+    "qualifying_open_control": 128,
+    "time_to_win_P0_s": 8.533,
+    "win_control": 149,
+    "qualifying_open_s": 8.533,
+    "win_s": 9.933
+   },
+   "furthest": "win",
+   "stage_controls": {
+    "grasp": 66,
+    "lift": 72,
+    "over_bowl": 97,
+    "open": 128,
+    "landed": 129,
+    "win": 149
+   },
+   "attempts": 1,
+   "stages": {
+    "grasp": true,
+    "lift": true,
+    "over_bowl": true,
+    "open": true,
+    "landed": true,
+    "win": true
+   },
+   "review_flags": [
+    "v5.1 pass"
+   ]
+  },
+  {
+   "case": "step8_A_P0_l4008_s0_v1",
+   "robot": "A",
+   "condition": "P0",
+   "layout": "l4008",
+   "dirs": [
+    "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/RoboLab/output/step8_A_P0_l4008_s0_v1",
+    "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/runs/step8_A_P0_l4008_s0_v1"
+   ],
+   "episodes_tsv": {
+    "tsv": "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/runs/step8_before_v1-supervisor/episodes.tsv",
+    "exit": "0",
+    "failure": "no",
+    "v4": "False"
+   },
+   "scored": true,
+   "complete": true,
+   "trace": "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/RoboLab/output/step8_A_P0_l4008_s0_v1/BananaInBowlUniformInitPose10cmTask/strict-metric.json",
+   "trace_sha256": "81f98a7a75704ac4cc202c4f994b4d01eccfca8b02bdc8d471429f5887625f13",
+   "live_v4": {
+    "gate": "command-linked-supported-release-v4, live",
+    "pass": false,
+    "success_s": null,
+    "complete": true
+   },
+   "v5_1_pass": true,
+   "v5_1_pass_at_end": true,
+   "win_control": 159,
+   "fail_reason": null,
+   "gate_fail_reason": null,
+   "qualifying_open": {
+    "control": 128,
+    "dxy_root_m": 0.0119,
+    "centre_above_bowl_top_m": 0.0769
+   },
+   "M2": {
+    "qualifying_open_control": 128,
+    "time_to_win_P0_s": 8.533,
+    "win_control": 159,
+    "qualifying_open_s": 8.533,
+    "win_s": 10.6
+   },
+   "furthest": "win",
+   "stage_controls": {
+    "grasp": 75,
+    "lift": 83,
+    "over_bowl": 99,
+    "open": 128,
+    "landed": 129,
+    "win": 159
+   },
+   "attempts": 8,
+   "stages": {
+    "grasp": true,
+    "lift": true,
+    "over_bowl": true,
+    "open": true,
+    "landed": true,
+    "win": true
+   },
+   "review_flags": [
+    "v5.1 pass"
+   ]
+  },
+  {
+   "case": "step8_A_P0_l4009_s0_v1",
+   "robot": "A",
+   "condition": "P0",
+   "layout": "l4009",
+   "dirs": [
+    "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/RoboLab/output/step8_A_P0_l4009_s0_v1",
+    "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/runs/step8_A_P0_l4009_s0_v1"
+   ],
+   "episodes_tsv": {
+    "tsv": "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/runs/step8_before_v1-supervisor/episodes.tsv",
+    "exit": "0",
+    "failure": "no",
+    "v4": "True"
+   },
+   "scored": true,
+   "complete": true,
+   "trace": "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/RoboLab/output/step8_A_P0_l4009_s0_v1/BananaInBowlUniformInitPose10cmTask/strict-metric.json",
+   "trace_sha256": "ae0e54db1f3e458afb5782d5914f4deaeabe4e3567221e16c616e7efe28dfd3f",
+   "live_v4": {
+    "gate": "command-linked-supported-release-v4, live",
+    "pass": true,
+    "success_s": 10.066666666666666,
+    "complete": true
+   },
+   "v5_1_pass": true,
+   "v5_1_pass_at_end": true,
+   "win_control": 151,
+   "fail_reason": null,
+   "gate_fail_reason": null,
+   "qualifying_open": {
+    "control": 128,
+    "dxy_root_m": 0.012,
+    "centre_above_bowl_top_m": 0.0552
+   },
+   "M2": {
+    "qualifying_open_control": 128,
+    "time_to_win_P0_s": 8.533,
+    "win_control": 151,
+    "qualifying_open_s": 8.533,
+    "win_s": 10.067
+   },
+   "furthest": "win",
+   "stage_controls": {
+    "grasp": 75,
+    "lift": 82,
+    "over_bowl": 89,
+    "open": 128,
+    "landed": 128,
+    "win": 151
+   },
+   "attempts": 1,
+   "stages": {
+    "grasp": true,
+    "lift": true,
+    "over_bowl": true,
+    "open": true,
+    "landed": true,
+    "win": true
+   },
+   "review_flags": [
+    "v5.1 pass"
+   ]
+  },
+  {
+   "case": "step8_A_P0_l4010_s0_v1",
+   "robot": "A",
+   "condition": "P0",
+   "layout": "l4010",
+   "dirs": [
+    "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/RoboLab/output/step8_A_P0_l4010_s0_v1",
+    "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/runs/step8_A_P0_l4010_s0_v1"
+   ],
+   "episodes_tsv": {
+    "tsv": "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/runs/step8_before_v1-supervisor/episodes.tsv",
+    "exit": "0",
+    "failure": "no",
+    "v4": "False"
+   },
+   "scored": true,
+   "complete": true,
+   "trace": "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/RoboLab/output/step8_A_P0_l4010_s0_v1/BananaInBowlUniformInitPose10cmTask/strict-metric.json",
+   "trace_sha256": "7b074ad2cc991c071a861722a310bc97c55d8ec06036df4cb48f806505d5a820",
+   "live_v4": {
+    "gate": "command-linked-supported-release-v4, live",
+    "pass": false,
+    "success_s": null,
+    "complete": true
+   },
+   "v5_1_pass": true,
+   "v5_1_pass_at_end": true,
+   "win_control": 445,
+   "fail_reason": null,
+   "gate_fail_reason": null,
+   "qualifying_open": {
+    "control": 421,
+    "dxy_root_m": 0.0415,
+    "centre_above_bowl_top_m": 0.0496
+   },
+   "M2": {
+    "qualifying_open_control": 421,
+    "time_to_win_P0_s": 28.067,
+    "win_control": 445,
+    "qualifying_open_s": 28.067,
+    "win_s": 29.667
+   },
+   "furthest": "win",
+   "stage_controls": {
+    "grasp": 347,
+    "lift": 352,
+    "over_bowl": 376,
+    "open": 421,
+    "landed": 422,
+    "win": 445
+   },
+   "attempts": 10,
+   "stages": {
+    "grasp": true,
+    "lift": true,
+    "over_bowl": true,
+    "open": true,
+    "landed": true,
+    "win": true
+   },
+   "review_flags": [
+    "v5.1 pass"
+   ]
+  },
+  {
+   "case": "step8_A_P0_l4011_s0_v1",
+   "robot": "A",
+   "condition": "P0",
+   "layout": "l4011",
+   "dirs": [
+    "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/RoboLab/output/step8_A_P0_l4011_s0_v1",
+    "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/runs/step8_A_P0_l4011_s0_v1"
+   ],
+   "episodes_tsv": {
+    "tsv": "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/runs/step8_before_v1-supervisor/episodes.tsv",
+    "exit": "0",
+    "failure": "no",
+    "v4": "False"
+   },
+   "scored": true,
+   "complete": true,
+   "trace": "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/RoboLab/output/step8_A_P0_l4011_s0_v1/BananaInBowlUniformInitPose10cmTask/strict-metric.json",
+   "trace_sha256": "909a189a91113b28617d25ecf324096a3dab2494e00385ce28db668621e9b279",
+   "live_v4": {
+    "gate": "command-linked-supported-release-v4, live",
+    "pass": false,
+    "success_s": null,
+    "complete": true
+   },
+   "v5_1_pass": false,
+   "v5_1_pass_at_end": false,
+   "win_control": null,
+   "fail_reason": "opening_timeout",
+   "gate_fail_reason": "opening_timeout",
+   "qualifying_open": null,
+   "M2": {},
+   "furthest": "open",
+   "stage_controls": {
+    "grasp": 77,
+    "lift": 86,
+    "over_bowl": 111,
+    "open": 175
+   },
+   "attempts": 9,
+   "stages": {
+    "grasp": true,
+    "lift": true,
+    "over_bowl": true,
+    "open": true,
+    "landed": false,
+    "win": false
+   },
+   "review_flags": [
+    "fail, ends on bowl",
+    "fail, had an eligible open",
+    "fail, upstream predicate true at end"
+   ]
+  },
+  {
+   "case": "step8_B_P0_l4000_s0_v1",
+   "robot": "B",
+   "condition": "P0",
+   "layout": "l4000",
+   "dirs": [
+    "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/runs/step8_B_P0_l4000_s0_v1"
+   ],
+   "episodes_tsv": {
+    "tsv": "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/runs/step8_before_v1-supervisor/episodes.tsv",
+    "exit": "0",
+    "failure": "no",
+    "v4": "False"
+   },
+   "scored": true,
+   "complete": true,
+   "trace": "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/runs/step8_B_P0_l4000_s0_v1/gate_trace.jsonl",
+   "trace_sha256": "edcd6190b4db342c771a1a8826705d5a91a7a0a66742c5e822b5b88b52c4fbdb",
+   "live_v4": {
+    "gate": "v4 (B port), live",
+    "pass": false,
+    "success_control": null,
+    "complete": true
+   },
+   "v5_1_pass": true,
+   "v5_1_pass_at_end": true,
+   "win_control": 1278,
+   "fail_reason": null,
+   "gate_fail_reason": null,
+   "qualifying_open": {
+    "control": 1237,
+    "dxy_root_m": 0.0173,
+    "centre_above_bowl_top_m": 0.0847
+   },
+   "M2": {
+    "qualifying_open_control": 1237,
+    "time_to_win_P0_s": 6.872,
+    "win_control": 1278,
+    "qualifying_open_s": 82.467,
+    "win_s": 85.2
+   },
+   "furthest": "win",
+   "stage_controls": {
+    "grasp": 640,
+    "lift": 711,
+    "over_bowl": 903,
+    "open": 1237,
+    "landed": 1238,
+    "win": 1278
+   },
+   "attempts": 19,
+   "stages": {
+    "grasp": true,
+    "lift": true,
+    "over_bowl": true,
+    "open": true,
+    "landed": true,
+    "win": true
+   },
+   "review_flags": [
+    "v5.1 pass"
+   ]
+  },
+  {
+   "case": "step8_B_P0_l4001_s0_v1",
+   "robot": "B",
+   "condition": "P0",
+   "layout": "l4001",
+   "dirs": [
+    "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/runs/step8_B_P0_l4001_s0_v1"
+   ],
+   "episodes_tsv": {
+    "tsv": "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/runs/step8_before_v1-supervisor/episodes.tsv",
+    "exit": "0",
+    "failure": "no",
+    "v4": "False"
+   },
+   "scored": true,
+   "complete": true,
+   "trace": "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/runs/step8_B_P0_l4001_s0_v1/gate_trace.jsonl",
+   "trace_sha256": "8daffd1bd3e8a84a3563d45c41b36ef0ba53b80ae5a226dd165ffb288eb54f87",
+   "live_v4": {
+    "gate": "v4 (B port), live",
+    "pass": false,
+    "success_control": null,
+    "complete": true
+   },
+   "v5_1_pass": false,
+   "v5_1_pass_at_end": false,
+   "win_control": null,
+   "fail_reason": "recontact_before_verified_release",
+   "gate_fail_reason": "recontact_before_verified_release",
+   "qualifying_open": null,
+   "M2": {},
+   "furthest": "landed",
+   "stage_controls": {
+    "grasp": 2668,
+    "lift": 2692,
+    "over_bowl": 2692,
+    "open": 2845,
+    "landed": 2845
+   },
+   "attempts": 19,
+   "stages": {
+    "grasp": true,
+    "lift": true,
+    "over_bowl": true,
+    "open": true,
+    "landed": true,
+    "win": false
+   },
+   "review_flags": [
+    "fail, ends on bowl",
+    "fail, had an eligible open",
+    "fail, upstream predicate true at end"
+   ]
+  },
+  {
+   "case": "step8_B_P0_l4002_s0_v1",
+   "robot": "B",
+   "condition": "P0",
+   "layout": "l4002",
+   "dirs": [
+    "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/runs/step8_B_P0_l4002_s0_v1"
+   ],
+   "episodes_tsv": {
+    "tsv": "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/runs/step8_before_v1-supervisor/episodes.tsv",
+    "exit": "0",
+    "failure": "no",
+    "v4": "False"
+   },
+   "scored": true,
+   "complete": true,
+   "trace": "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/runs/step8_B_P0_l4002_s0_v1/gate_trace.jsonl",
+   "trace_sha256": "39ade65df2184eb365787421d06bbd8ea672191af3bd9820d86b39b28f4808cd",
+   "live_v4": {
+    "gate": "v4 (B port), live",
+    "pass": false,
+    "success_control": null,
+    "complete": true
+   },
+   "v5_1_pass": true,
+   "v5_1_pass_at_end": true,
+   "win_control": 1061,
+   "fail_reason": null,
+   "gate_fail_reason": null,
+   "qualifying_open": {
+    "control": 1033,
+    "dxy_root_m": 0.0094,
+    "centre_above_bowl_top_m": 0.0772
+   },
+   "M2": {
+    "qualifying_open_control": 1033,
+    "time_to_win_P0_s": 5.739,
+    "win_control": 1061,
+    "qualifying_open_s": 68.867,
+    "win_s": 70.733
+   },
+   "furthest": "win",
+   "stage_controls": {
+    "grasp": 637,
+    "lift": 702,
+    "over_bowl": 787,
+    "open": 1033,
+    "landed": 1034,
+    "win": 1061
+   },
+   "attempts": 11,
+   "stages": {
+    "grasp": true,
+    "lift": true,
+    "over_bowl": true,
+    "open": true,
+    "landed": true,
+    "win": true
+   },
+   "review_flags": [
+    "v5.1 pass"
+   ]
+  },
+  {
+   "case": "step8_B_P0_l4003_s0_v1",
+   "robot": "B",
+   "condition": "P0",
+   "layout": "l4003",
+   "dirs": [
+    "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/runs/step8_B_P0_l4003_s0_v1"
+   ],
+   "episodes_tsv": {
+    "tsv": "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/runs/step8_before_v1-supervisor/episodes.tsv",
+    "exit": "0",
+    "failure": "no",
+    "v4": "True"
+   },
+   "scored": true,
+   "complete": true,
+   "trace": "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/runs/step8_B_P0_l4003_s0_v1/gate_trace.jsonl",
+   "trace_sha256": "c8b0842ec977b0e6ff780a6c7278619c6d2ba8edd15bb8e76e72c5ce52a251e8",
+   "live_v4": {
+    "gate": "v4 (B port), live",
+    "pass": true,
+    "success_control": 1172,
+    "complete": true
+   },
+   "v5_1_pass": true,
+   "v5_1_pass_at_end": true,
+   "win_control": 1172,
+   "fail_reason": null,
+   "gate_fail_reason": null,
+   "qualifying_open": {
+    "control": 1141,
+    "dxy_root_m": 0.0169,
+    "centre_above_bowl_top_m": 0.0488
+   },
+   "M2": {
+    "qualifying_open_control": 1141,
+    "time_to_win_P0_s": 6.339,
+    "win_control": 1172,
+    "qualifying_open_s": 76.067,
+    "win_s": 78.133
+   },
+   "furthest": "win",
+   "stage_controls": {
+    "grasp": 663,
+    "lift": 699,
+    "over_bowl": 835,
+    "open": 1141,
+    "landed": 1141,
+    "win": 1172
+   },
+   "attempts": 1,
+   "stages": {
+    "grasp": true,
+    "lift": true,
+    "over_bowl": true,
+    "open": true,
+    "landed": true,
+    "win": true
+   },
+   "review_flags": [
+    "v5.1 pass"
+   ]
+  },
+  {
+   "case": "step8_B_P0_l4004_s0_v1",
+   "robot": "B",
+   "condition": "P0",
+   "layout": "l4004",
+   "dirs": [
+    "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/runs/step8_B_P0_l4004_s0_v1"
+   ],
+   "episodes_tsv": {
+    "tsv": "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/runs/step8_before_v1-supervisor/episodes.tsv",
+    "exit": "0",
+    "failure": "safety_abort",
+    "v4": "none"
+   },
+   "abort_class": "safety_abort",
+   "abort_kind": "ik_action_A_to_B",
+   "abort_classifier": {
+    "class": "safety_abort",
+    "kind": "ik_action_A_to_B",
+    "gate_rows_on_disk": 7488
+   },
+   "safety_abort": {
+    "kind": "ik_action_A_to_B",
+    "exit_status": 0,
+    "exception": "AssertionError",
+    "message": "(7488, 'action_A_to_B', 'local_stagnation')",
+    "gate_trace_rows": 7488,
+    "tracking_rows": 7488,
+    "last_gate_trace_step": 7488,
+    "dropped_gate_rows": 0,
+    "scored_rows": 7488,
+    "marker_partial_trace": {
+     "gate_trace_rows": 7488,
+     "last_gate_trace_step": 7488,
+     "tracking_npz": true,
+     "failed_solve_json": true,
+     "checks_json": false
+    },
+    "empty_trace": false
+   },
+   "scored": true,
+   "complete": false,
+   "trace": "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/runs/step8_B_P0_l4004_s0_v1/gate_trace.jsonl",
+   "trace_sha256": "9b21b8542b2dcdb130b386b3090236af649fec38a4f39aa1ced7d7e8f6d307c9",
+   "live_v4": {
+    "gate": "v4 (B port), live",
+    "pass": null,
+    "reached": false,
+    "note": "not reached: safety abort, no complete checks.json"
+   },
+   "v5_1_pass": false,
+   "v5_1_pass_at_end": false,
+   "win_control": null,
+   "fail_reason": "safety_abort:ik_action_A_to_B",
+   "gate_fail_reason": "lost_contact_before_open",
+   "qualifying_open": null,
+   "M2": {},
+   "furthest": "over_bowl",
+   "stage_controls": {
+    "grasp": 4484,
+    "lift": 4518,
+    "over_bowl": 4803
+   },
+   "attempts": 7,
+   "stages": {
+    "grasp": true,
+    "lift": true,
+    "over_bowl": true,
+    "open": false,
+    "landed": false,
+    "win": false
+   },
+   "review_flags": [
+    "safety_abort"
+   ]
+  },
+  {
+   "case": "step8_B_P0_l4005_s0_v1",
+   "robot": "B",
+   "condition": "P0",
+   "layout": "l4005",
+   "dirs": [
+    "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/runs/step8_B_P0_l4005_s0_v1"
+   ],
+   "episodes_tsv": {
+    "tsv": "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/runs/step8_before_v1-supervisor/episodes.tsv",
+    "exit": "0",
+    "failure": "safety_abort",
+    "v4": "none"
+   },
+   "abort_class": "safety_abort",
+   "abort_kind": "ik_action_A_to_B",
+   "abort_classifier": {
+    "class": "safety_abort",
+    "kind": "ik_action_A_to_B",
+    "gate_rows_on_disk": 4416
+   },
+   "safety_abort": {
+    "kind": "ik_action_A_to_B",
+    "exit_status": 0,
+    "exception": "AssertionError",
+    "message": "(4416, 'action_A_to_B', 'local_stagnation')",
+    "gate_trace_rows": 4416,
+    "tracking_rows": 4416,
+    "last_gate_trace_step": 4416,
+    "dropped_gate_rows": 0,
+    "scored_rows": 4416,
+    "marker_partial_trace": {
+     "gate_trace_rows": 4416,
+     "last_gate_trace_step": 4416,
+     "tracking_npz": true,
+     "failed_solve_json": true,
+     "checks_json": false
+    },
+    "empty_trace": false
+   },
+   "scored": true,
+   "complete": false,
+   "trace": "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/runs/step8_B_P0_l4005_s0_v1/gate_trace.jsonl",
+   "trace_sha256": "014ad825326ef336e061d72c458edf6daf142b1edc2c1c9d8769b6b4ff9d4ecc",
+   "live_v4": {
+    "gate": "v4 (B port), live",
+    "pass": null,
+    "reached": false,
+    "note": "not reached: safety abort, no complete checks.json"
+   },
+   "v5_1_pass": false,
+   "v5_1_pass_at_end": false,
+   "win_control": null,
+   "fail_reason": "safety_abort:ik_action_A_to_B",
+   "gate_fail_reason": "lost_contact_before_open",
+   "qualifying_open": null,
+   "M2": {},
+   "furthest": "over_bowl",
+   "stage_controls": {
+    "grasp": 1876,
+    "lift": 1926,
+    "over_bowl": 2186
+   },
+   "attempts": 3,
+   "stages": {
+    "grasp": true,
+    "lift": true,
+    "over_bowl": true,
+    "open": false,
+    "landed": false,
+    "win": false
+   },
+   "review_flags": [
+    "safety_abort"
+   ]
+  },
+  {
+   "case": "step8_B_P0_l4006_s0_v1",
+   "robot": "B",
+   "condition": "P0",
+   "layout": "l4006",
+   "dirs": [
+    "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/runs/step8_B_P0_l4006_s0_v1"
+   ],
+   "episodes_tsv": {
+    "tsv": "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/runs/step8_before_v1-supervisor/episodes.tsv",
+    "exit": "0",
+    "failure": "safety_abort",
+    "v4": "none"
+   },
+   "abort_class": "safety_abort",
+   "abort_kind": "B_joint_beyond_soft_limit",
+   "abort_classifier": {
+    "class": "safety_abort",
+    "kind": "B_joint_beyond_soft_limit",
+    "gate_rows_on_disk": 5067
+   },
+   "safety_abort": {
+    "kind": "B_joint_beyond_soft_limit",
+    "exit_status": 0,
+    "exception": "AssertionError",
+    "message": "",
+    "gate_trace_rows": 5067,
+    "tracking_rows": 5066,
+    "last_gate_trace_step": 5067,
+    "dropped_gate_rows": 1,
+    "scored_rows": 5066,
+    "marker_partial_trace": {
+     "gate_trace_rows": 5067,
+     "last_gate_trace_step": 5067,
+     "tracking_npz": true,
+     "failed_solve_json": false,
+     "checks_json": false
+    },
+    "empty_trace": false
+   },
+   "scored": true,
+   "complete": false,
+   "trace": "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/runs/step8_B_P0_l4006_s0_v1/gate_trace.jsonl",
+   "trace_sha256": "06149e6815cca85bdf2c4d72512f5601e6d7d3ded17a2d3fbd1693474b89a138",
+   "live_v4": {
+    "gate": "v4 (B port), live",
+    "pass": null,
+    "reached": false,
+    "note": "not reached: safety abort, no complete checks.json"
+   },
+   "v5_1_pass": true,
+   "v5_1_pass_at_end": true,
+   "win_control": 1553,
+   "fail_reason": null,
+   "gate_fail_reason": null,
+   "qualifying_open": {
+    "control": 1525,
+    "dxy_root_m": 0.0172,
+    "centre_above_bowl_top_m": 0.0718
+   },
+   "M2": {
+    "qualifying_open_control": 1525,
+    "time_to_win_P0_s": 8.472,
+    "win_control": 1553,
+    "qualifying_open_s": 101.667,
+    "win_s": 103.533
+   },
+   "furthest": "win",
+   "stage_controls": {
+    "grasp": 754,
+    "lift": 808,
+    "over_bowl": 963,
+    "open": 1525,
+    "landed": 1527,
+    "win": 1553
+   },
+   "attempts": 5,
+   "stages": {
+    "grasp": true,
+    "lift": true,
+    "over_bowl": true,
+    "open": true,
+    "landed": true,
+    "win": true
+   },
+   "review_flags": [
+    "v5.1 pass",
+    "safety_abort"
+   ]
+  },
+  {
+   "case": "step8_B_P0_l4007_s0_v1",
+   "robot": "B",
+   "condition": "P0",
+   "layout": "l4007",
+   "dirs": [
+    "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/runs/step8_B_P0_l4007_s0_v1"
+   ],
+   "episodes_tsv": {
+    "tsv": "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/runs/step8_before_v1-supervisor/episodes.tsv",
+    "exit": "0",
+    "failure": "safety_abort",
+    "v4": "none"
+   },
+   "abort_class": "safety_abort",
+   "abort_kind": "ik_action_A_to_B",
+   "abort_classifier": {
+    "class": "safety_abort",
+    "kind": "ik_action_A_to_B",
+    "gate_rows_on_disk": 2016
+   },
+   "safety_abort": {
+    "kind": "ik_action_A_to_B",
+    "exit_status": 0,
+    "exception": "AssertionError",
+    "message": "(2016, 'action_A_to_B', 'local_stagnation')",
+    "gate_trace_rows": 2016,
+    "tracking_rows": 2016,
+    "last_gate_trace_step": 2016,
+    "dropped_gate_rows": 0,
+    "scored_rows": 2016,
+    "marker_partial_trace": {
+     "gate_trace_rows": 2016,
+     "last_gate_trace_step": 2016,
+     "tracking_npz": true,
+     "failed_solve_json": true,
+     "checks_json": false
+    },
+    "empty_trace": false
+   },
+   "scored": true,
+   "complete": false,
+   "trace": "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/runs/step8_B_P0_l4007_s0_v1/gate_trace.jsonl",
+   "trace_sha256": "5d41c1f3cc34d455e32d51b074915096ecbc7e1baa3cadf4f27afefc65c70ea3",
+   "live_v4": {
+    "gate": "v4 (B port), live",
+    "pass": null,
+    "reached": false,
+    "note": "not reached: safety abort, no complete checks.json"
+   },
+   "v5_1_pass": false,
+   "v5_1_pass_at_end": false,
+   "win_control": null,
+   "fail_reason": "safety_abort:ik_action_A_to_B",
+   "gate_fail_reason": "no_open_while_held",
+   "qualifying_open": null,
+   "M2": {},
+   "furthest": "over_bowl",
+   "stage_controls": {
+    "grasp": 640,
+    "lift": 676,
+    "over_bowl": 964
+   },
+   "attempts": 1,
+   "stages": {
+    "grasp": true,
+    "lift": true,
+    "over_bowl": true,
+    "open": false,
+    "landed": false,
+    "win": false
+   },
+   "review_flags": [
+    "safety_abort"
+   ]
+  },
+  {
+   "case": "step8_B_P0_l4008_s0_v1",
+   "robot": "B",
+   "condition": "P0",
+   "layout": "l4008",
+   "dirs": [
+    "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/runs/step8_B_P0_l4008_s0_v1"
+   ],
+   "episodes_tsv": {
+    "tsv": "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/runs/step8_before_v1-supervisor/episodes.tsv",
+    "exit": "0",
+    "failure": "no",
+    "v4": "False"
+   },
+   "scored": true,
+   "complete": true,
+   "trace": "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/runs/step8_B_P0_l4008_s0_v1/gate_trace.jsonl",
+   "trace_sha256": "3570a3829ed3043f3954a01d7321591ec822c80c3b361de737c7943985b81574",
+   "live_v4": {
+    "gate": "v4 (B port), live",
+    "pass": false,
+    "success_control": null,
+    "complete": true
+   },
+   "v5_1_pass": true,
+   "v5_1_pass_at_end": true,
+   "win_control": 5478,
+   "fail_reason": null,
+   "gate_fail_reason": null,
+   "qualifying_open": {
+    "control": 5449,
+    "dxy_root_m": 0.0139,
+    "centre_above_bowl_top_m": 0.075
+   },
+   "M2": {
+    "qualifying_open_control": 5449,
+    "time_to_win_P0_s": 30.272,
+    "win_control": 5478,
+    "qualifying_open_s": 363.267,
+    "win_s": 365.2
+   },
+   "furthest": "win",
+   "stage_controls": {
+    "grasp": 4140,
+    "lift": 4287,
+    "over_bowl": 4467,
+    "open": 5449,
+    "landed": 5450,
+    "win": 5478
+   },
+   "attempts": 13,
+   "stages": {
+    "grasp": true,
+    "lift": true,
+    "over_bowl": true,
+    "open": true,
+    "landed": true,
+    "win": true
+   },
+   "review_flags": [
+    "v5.1 pass"
+   ]
+  },
+  {
+   "case": "step8_B_P0_l4009_s0_v1",
+   "robot": "B",
+   "condition": "P0",
+   "layout": "l4009",
+   "dirs": [
+    "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/runs/step8_B_P0_l4009_s0_v1"
+   ],
+   "episodes_tsv": {
+    "tsv": "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/runs/step8_before_v1-supervisor/episodes.tsv",
+    "exit": "0",
+    "failure": "no",
+    "v4": "False"
+   },
+   "scored": true,
+   "complete": true,
+   "trace": "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/runs/step8_B_P0_l4009_s0_v1/gate_trace.jsonl",
+   "trace_sha256": "911383081ba70df534f3edfbca7d64335d1891eae1b2a96b31e18c4a199434b4",
+   "live_v4": {
+    "gate": "v4 (B port), live",
+    "pass": false,
+    "success_control": null,
+    "complete": true
+   },
+   "v5_1_pass": false,
+   "v5_1_pass_at_end": false,
+   "win_control": null,
+   "fail_reason": "lost_contact_before_open",
+   "gate_fail_reason": "lost_contact_before_open",
+   "qualifying_open": null,
+   "M2": {},
+   "furthest": "over_bowl",
+   "stage_controls": {
+    "grasp": 637,
+    "lift": 678,
+    "over_bowl": 842
+   },
+   "attempts": 13,
+   "stages": {
+    "grasp": true,
+    "lift": true,
+    "over_bowl": true,
+    "open": false,
+    "landed": false,
+    "win": false
+   },
+   "review_flags": []
+  },
+  {
+   "case": "step8_B_P0_l4010_s0_v1",
+   "robot": "B",
+   "condition": "P0",
+   "layout": "l4010",
+   "dirs": [
+    "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/runs/step8_B_P0_l4010_s0_v1"
+   ],
+   "episodes_tsv": {
+    "tsv": "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/runs/step8_before_v1-supervisor/episodes.tsv",
+    "exit": "0",
+    "failure": "no",
+    "v4": "False"
+   },
+   "scored": true,
+   "complete": true,
+   "trace": "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/runs/step8_B_P0_l4010_s0_v1/gate_trace.jsonl",
+   "trace_sha256": "b3e326eb542114c1990dd34c2261cfacca5947ffd2d5a55f73b0983dbb7bab00",
+   "live_v4": {
+    "gate": "v4 (B port), live",
+    "pass": false,
+    "success_control": null,
+    "complete": true
+   },
+   "v5_1_pass": true,
+   "v5_1_pass_at_end": false,
+   "win_control": 1745,
+   "fail_reason": null,
+   "gate_fail_reason": null,
+   "qualifying_open": {
+    "control": 1717,
+    "dxy_root_m": 0.0115,
+    "centre_above_bowl_top_m": 0.0803
+   },
+   "M2": {
+    "qualifying_open_control": 1717,
+    "time_to_win_P0_s": 9.539,
+    "win_control": 1745,
+    "qualifying_open_s": 114.467,
+    "win_s": 116.333
+   },
+   "furthest": "win",
+   "stage_controls": {
+    "grasp": 695,
+    "lift": 795,
+    "over_bowl": 963,
+    "open": 1717,
+    "landed": 1718,
+    "win": 1745
+   },
+   "attempts": 5,
+   "stages": {
+    "grasp": true,
+    "lift": true,
+    "over_bowl": true,
+    "open": true,
+    "landed": true,
+    "win": true
+   },
+   "review_flags": [
+    "v5.1 pass"
+   ]
+  },
+  {
+   "case": "step8_B_P0_l4011_s0_v1",
+   "robot": "B",
+   "condition": "P0",
+   "layout": "l4011",
+   "dirs": [
+    "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/runs/step8_B_P0_l4011_s0_v1"
+   ],
+   "episodes_tsv": {
+    "tsv": "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/runs/step8_before_v1-supervisor/episodes.tsv",
+    "exit": "0",
+    "failure": "no",
+    "v4": "False"
+   },
+   "scored": true,
+   "complete": true,
+   "trace": "<project-root>/assets/report/evidence/2026-10-24/step8_before_v1/runs/step8_B_P0_l4011_s0_v1/gate_trace.jsonl",
+   "trace_sha256": "18546206e49ede281dbc405ab0646e28fad045a976cfaa61f7426421d9e2a880",
+   "live_v4": {
+    "gate": "v4 (B port), live",
+    "pass": false,
+    "success_control": null,
+    "complete": true
+   },
+   "v5_1_pass": true,
+   "v5_1_pass_at_end": true,
+   "win_control": 1626,
+   "fail_reason": null,
+   "gate_fail_reason": null,
+   "qualifying_open": {
+    "control": 1597,
+    "dxy_root_m": 0.0268,
+    "centre_above_bowl_top_m": 0.0698
+   },
+   "M2": {
+    "qualifying_open_control": 1597,
+    "time_to_win_P0_s": 8.872,
+    "win_control": 1626,
+    "qualifying_open_s": 106.467,
+    "win_s": 108.4
+   },
+   "furthest": "win",
+   "stage_controls": {
+    "grasp": 640,
+    "lift": 677,
+    "over_bowl": 880,
+    "open": 1597,
+    "landed": 1597,
+    "win": 1626
+   },
+   "attempts": 5,
+   "stages": {
+    "grasp": true,
+    "lift": true,
+    "over_bowl": true,
+    "open": true,
+    "landed": true,
+    "win": true
+   },
+   "review_flags": [
+    "v5.1 pass"
+   ]
+  }
+ ],
+ "per_condition": {
+  "A/P0": {
+   "n": 12,
+   "unscored": [],
+   "wins": 7,
+   "wilson95": [
+    0.3195,
+    0.8067
+   ],
+   "wins_at_end": 7,
+   "safety_aborts": {
+    "n": 0,
+    "wins": 0,
+    "by_kind": {},
+    "empty_trace": 0,
+    "aborted_row_dropped": 0
+   },
+   "crashes": 0,
+   "abort_markers_unscored_other": 0,
+   "live_v4_passes": 4,
+   "live_v4_not_reached": 0,
+   "M2_among_winners_descriptive": {
+    "n": 7,
+    "time_to_win_P0_s": [
+     8.533,
+     8.533,
+     8.533,
+     8.533,
+     8.533,
+     9.467,
+     28.067
+    ],
+    "median": 8.533
+   },
+   "furthest": {
+    "null": 0,
+    "grasp": 0,
+    "lift": 0,
+    "over_bowl": 4,
+    "open": 1,
+    "landed": 0,
+    "win": 7
+   },
+   "stage_rates": {
+    "grasp": {
+     "k": 12,
+     "n": 12,
+     "wilson95": [
+      0.7575,
+      1.0
+     ]
+    },
+    "lift": {
+     "k": 12,
+     "n": 12,
+     "wilson95": [
+      0.7575,
+      1.0
+     ]
+    },
+    "over_bowl": {
+     "k": 12,
+     "n": 12,
+     "wilson95": [
+      0.7575,
+      1.0
+     ]
+    },
+    "open": {
+     "k": 8,
+     "n": 12,
+     "wilson95": [
+      0.3906,
+      0.8619
+     ]
+    },
+    "landed": {
+     "k": 7,
+     "n": 12,
+     "wilson95": [
+      0.3195,
+      0.8067
+     ]
+    },
+    "win": {
+     "k": 7,
+     "n": 12,
+     "wilson95": [
+      0.3195,
+      0.8067
+     ]
+    }
+   }
+  },
+  "B/P0": {
+   "n": 12,
+   "unscored": [],
+   "wins": 7,
+   "wilson95": [
+    0.3195,
+    0.8067
+   ],
+   "wins_at_end": 6,
+   "safety_aborts": {
+    "n": 4,
+    "wins": 1,
+    "by_kind": {
+     "B_joint_beyond_soft_limit": 1,
+     "ik_action_A_to_B": 3
+    },
+    "empty_trace": 0,
+    "aborted_row_dropped": 1
+   },
+   "crashes": 0,
+   "abort_markers_unscored_other": 0,
+   "live_v4_passes": 1,
+   "live_v4_not_reached": 4,
+   "M2_among_winners_descriptive": {
+    "n": 7,
+    "time_to_win_P0_s": [
+     5.739,
+     6.339,
+     6.872,
+     8.472,
+     8.872,
+     9.539,
+     30.272
+    ],
+    "median": 8.472
+   },
+   "furthest": {
+    "null": 0,
+    "grasp": 0,
+    "lift": 0,
+    "over_bowl": 4,
+    "open": 0,
+    "landed": 1,
+    "win": 7
+   },
+   "stage_rates": {
+    "grasp": {
+     "k": 12,
+     "n": 12,
+     "wilson95": [
+      0.7575,
+      1.0
+     ]
+    },
+    "lift": {
+     "k": 12,
+     "n": 12,
+     "wilson95": [
+      0.7575,
+      1.0
+     ]
+    },
+    "over_bowl": {
+     "k": 12,
+     "n": 12,
+     "wilson95": [
+      0.7575,
+      1.0
+     ]
+    },
+    "open": {
+     "k": 8,
+     "n": 12,
+     "wilson95": [
+      0.3906,
+      0.8619
+     ]
+    },
+    "landed": {
+     "k": 8,
+     "n": 12,
+     "wilson95": [
+      0.3906,
+      0.8619
+     ]
+    },
+    "win": {
+     "k": 7,
+     "n": 12,
+     "wilson95": [
+      0.3195,
+      0.8067
+     ]
+    }
+   }
+  }
+ },
+ "paired": {}
+}

@@ -1,0 +1,37 @@
+{
+  "complete": true,
+  "valid_for_comparison": true,
+  "smoke_non_scoring": false,
+  "native_termination": null,
+  "arm": "painted",
+  "variant": "lift",
+  "scene": "layout",
+  "policy_seed": 0,
+  "steps": 3600,
+  "requests": 38,
+  "initialization_steps": 1,
+  "automatic_v4B_success": false,
+  "success_step": null,
+  "release_events": [
+    {
+      "time_s": 47.6,
+      "event": "lift_armed"
+    },
+    {
+      "time_s": 67.06666666666666,
+      "event": "invalidated",
+      "reason": "ineligible_open_command"
+    }
+  ],
+  "final_status": {
+    "phase": "idle",
+    "lift_armed": false,
+    "lift_since_s": null,
+    "opening_command_s": null,
+    "detachment_s": null,
+    "stable_since_s": null
+  },
+  "scope": "Automatic B-ported v4 gate only (the online stop rule); v5 and the step 8 measures are computed afterwards from the saved traces.",
+  "policy_label": "P1",
+  "layout_seed_argument": 4003
+}

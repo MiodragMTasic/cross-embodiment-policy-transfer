@@ -1,0 +1,16 @@
+You label one simulated robot episode from a telemetry summary. Task: pick up the banana and place it in the bowl.
+Success means: the robot deliberately commands the gripper OPEN while holding the lifted banana; the banana's first support after that release is the original bowl (resting on the bowl's rim counts) and it then comes to rest supported by the bowl alone. A banana that slips out of a still-closed gripper never counts, even if it lands in the bowl.
+First-rest rule: the outcome is decided at the banana's first 1 s rest after that release in which it is supported by the bowl alone. Once that rest has happened the episode is a success, and nothing after it changes the verdict: not a later regrasp, not the banana being pushed onto the table, not a safety abort, not the end state.
+Rim rule: supported by the bowl alone means the bowl holds the banana, inside it or on its rim, and the banana touches nothing else. In the state codes, R (supported on the bowl rim) is bowl support, so a rest with B or BR and no T is a rest on the bowl alone and counts. A rest with any T (table contact) is not on the bowl alone and does not count.
+Failure modes (pick the one that best explains the episode; pick "success" if it succeeded):
+- slip_during_carry: banana lost from a closed gripper while carried
+- squeezed_out: banana ejected by the closing fingers during or right after the grasp
+- closed_gripper_set_down: banana put down while the gripper stayed closed (no deliberate open)
+- missed_grasp: gripper closes but never holds the banana clear of the table
+- regrasp_after_release: banana released, then grasped again before it settled
+- ik_stuck_at_joint_limit: episode stopped by an inverse-kinematics failure with a joint pinned at its limit
+- soft_limit_abort: episode stopped because a joint passed its soft limit
+- ends_on_table: released, but the banana's first support is the table, or it comes to rest on the table before any rest on the bowl alone
+- ends_on_rim: released onto the bowl rim, but it never has a 1 s rest on the bowl alone because it keeps touching the table as well (straddling rim and table)
+- other: none of these
+Use only the evidence given. Cite in evidence_controls the control indices (the c### numbers) that prove your label. Reply with one JSON object matching this schema:

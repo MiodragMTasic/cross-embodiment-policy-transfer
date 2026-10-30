@@ -1,0 +1,33 @@
+{
+  "files": {
+    "RoboLab/robolab/core/task/predicate_logic.py": "6d2bfed032a7370cf8a284707d4aa0e769300bd9238895442f5e9e0b5dacbbc6",
+    "RoboLab/robolab/core/world/world_state.py": "133a3e6289bb650b7bf9c6164fe19f2ebfe06a0154f6cd6c578c010d931c125a",
+    "RoboLab/robolab/core/task/conditionals.py": "bf4b2461efc70cb2692a1278c9d18475323a1cb9765bb22a720960b557961bf4",
+    "RoboLab/robolab/robots/droid.py": "6afc715c2db55e89e52dc3bb19684dac91877e11042bd9410fce741b4f294c29",
+    "RoboLab/robolab/core/sensors/contact_sensor_utils.py": "f43b92353a7ef4c2f0c303bceb16171780888444151f942e1cf50add209d0ae6",
+    "RoboLab/robolab/core/environments/env.py": "c35a1aced26a30de1fde21f8db28f87910757d090b677172f9915432f3b45f12",
+    "RoboLab/robolab/tasks/randomize_initial_pose/banana_in_bowl_uniform_10cm.py": "bea6d8bfca1e32cd7fc5e05bf8b88af98ca782157bc59eda8462b9af5c6729fd",
+    "experiments/bowl_step5/release_gate.py": "fd98e3e801985d4cf8862a92286473c052034e228f69d4ee0dee40df520494b4",
+    "experiments/bowl_step5/release_gate_v3.py": "8a5be7d433802a9eac89bb0ec5dbe1c1592306191a3140e8f447f6c9bea15b4a",
+    "experiments/bowl_step5/stability.py": "25971d4dec1ae0562c418067aca7e205f0160d115a45d7cc8475a016cce7372f",
+    "experiments/bowl_step5/run_controlled_episode_v3.py": "8a09ed37cc12196af4baa67c0d74cad0d1eaad429e73be50a01e8e322de6690e",
+    "experiments/bowl_step5/run_controlled_case_v3.sh": "432f6c194dbe9074e9eaf1cf611d95f141e5a8bd4d33b41028182d289377ae16",
+    "experiments/bowl_step5/run_policy.py": "8ca4199def7426ddca8546444eb6b14b3dc2ce0fdbaf0ff3b41939f4bf38b63d",
+    "experiments/bowl_step5/PROTOCOL_V3.md": "e9c65f4e17c0bdbe516f06acb85e369726622b6cb8e9b4347f34d7b709a52ced",
+    "experiments/bowl_step5/audit_capture.py": "a98e6a75cac2ce0feb72891e557637cb04af2d95c4392028eff84f96f34a71ac",
+    "experiments/bowl_step5/run_remaining_pilot.py": "42e7640063d818ee0c52f153840131038ac61e2d55379bfc110442c156a4aa50",
+    "experiments/bowl_step5/run_controlled_episode_v3_registered.py": "4268d356d24288ecf1d4213f85abce7c978854fe70e79c2f8c99172e7c9ffc1c",
+    "experiments/bowl_step5/run_controlled_case_v3_registered.sh": "e4815a6db114a297b0047287064c164e74d0b5ac4bd1035e22782332e2157468",
+    "experiments/bowl_step5/run_remaining_pilot_r1.py": "980f31b3e2af729b81176c7359f1cc0d3496b2bff3dc6a1725031fa5b2cfd58c",
+    "experiments/bowl_step5/REGISTRATION_REPAIR.md": "f6eefe1e533f82da2df75426e870a3f25c98e552b0e98d03a79708e9f4906c33",
+    "RoboLab/robolab/core/task/task_utils.py": "5c2294eb4bd900868479fc3d2c7a9dd11365e79a64218160a6dd6a49f1135fa1",
+    "RoboLab/robolab/core/environments/factory.py": "bbbc3347380557d1f3fd735d6fa49a643d3f4c9af94875e9b64ccf64e84c1460",
+    "RoboLab/robolab/core/environments/config.py": "c1075e5f2dce7d70fc9702b7f1cedca8aa05709d62f79f8990a8e2d20babcdea",
+    "RoboLab/robolab/eval/runner.py": "5672369884275788de50b665e337fdc0c7a86612065068a2f2ba0cb97a9bc550",
+    "RoboLab/robolab/constants.py": "becb4ff6b173fc6a85c20e47f3ad9eb87d71b0479f981cfedba1543f6f7804f4"
+  },
+  "commits": {
+    "RoboLab": "b6cfcf6ccd2113c4cd1216d35b33024a7d5691da",
+    "Isaac-GR00T": "dac54b313160c201c450f97df0fd74ebd379c892"
+  }
+}

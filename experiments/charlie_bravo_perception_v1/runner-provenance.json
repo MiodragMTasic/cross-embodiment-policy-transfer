@@ -1,0 +1,6 @@
+{
+  "base": "<project-root>/experiments/charlie_bravo_v1/runner_B.py",
+  "base_sha256": "bd552938a5246648744b3145df96a99249fd31091eb05d167e9e4f3e7ae83f6a",
+  "generated_sha256": "9e24267d7bbe5c992c15293e6b1aa1ec47dd7b91f2c480cd76267ea7415849a7",
+  "live_tested": false
+}

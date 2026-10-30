@@ -1,0 +1,79 @@
+{
+  "schema": "intent-demo-declared-v1",
+  "label": "DEMO. Separate from the step 8 experiment: never scored with it, never pooled with it.",
+  "declared_utc": "2026-10-24T21:59:38Z",
+  "declared_by": "Claude agent (intent-demo prep), before any demo call or episode",
+  "rules": [
+    "Episodes run strictly in this order, one each, all on layout 4004 with P0 and policy seed 0.",
+    "Every episode that starts is shown: a clip, its evidence and its checker output. None is rerun or dropped.",
+    "The launch chooses a stop point (2, 4 or 6). Episodes after it, or after an operator STOP, are listed as not run.",
+    "Each request goes to Nemotron 3 times. The robot gets repeat 1, and only if all 3 are valid and agree."
+  ],
+  "requests": [
+    { "text": "put the fruit away", "robot": "attempted" },
+    {
+      "text": "put the banana beside the bowl, on its left",
+      "robot": "attempted"
+    },
+    {
+      "text": "pick up the bowl and put it on the banana",
+      "robot": "not run unless Nemotron and the local rule both call it attemptable (expected: neither does)"
+    }
+  ],
+  "episodes": [
+    {
+      "order": 1,
+      "tag": "fruitaway1",
+      "layout": 4004,
+      "request": "put the fruit away",
+      "source": "nemotron"
+    },
+    {
+      "order": 2,
+      "tag": "leftbeside1",
+      "layout": 4004,
+      "request": "put the banana beside the bowl, on its left",
+      "source": "nemotron"
+    },
+    {
+      "order": 3,
+      "tag": "fruitaway2",
+      "layout": 4004,
+      "request": "put the fruit away",
+      "source": "nemotron"
+    },
+    {
+      "order": 4,
+      "tag": "leftbeside2",
+      "layout": 4004,
+      "request": "put the banana beside the bowl, on its left",
+      "source": "nemotron"
+    },
+    {
+      "order": 5,
+      "tag": "rawfruit1",
+      "layout": 4004,
+      "request": "put the fruit away",
+      "source": "literal"
+    },
+    {
+      "order": 6,
+      "tag": "rawleft1",
+      "layout": 4004,
+      "request": "put the banana beside the bowl, on its left",
+      "source": "literal"
+    }
+  ],
+  "stop_points": [
+    { "after": 2, "what": "one run per attempted request" },
+    {
+      "after": 4,
+      "what": "two runs per attempted request with Nemotron's sentence"
+    },
+    {
+      "after": 6,
+      "what": "plus one run each with the user's raw words and no Nemotron (ablation)"
+    }
+  ],
+  "why_layout_4004": "P0 won it in the before phase (v5.1 pass, live v4 pass in 59 s). The banana starts on the robot's right, 9.5 cm from the rim, so neither left_of nor beside holds at the start, and there is 0.24 m of table left of the bowl. 4003, the layout suggested in the brief, was a P0 failure (never_lifted)."
+}

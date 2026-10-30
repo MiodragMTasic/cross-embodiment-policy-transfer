@@ -1,0 +1,180 @@
+{
+  "started_utc": "2026-10-21T22:03:41.522625+00:00",
+  "models": [
+    {
+      "repo": "nvidia/GR00T-N1.7-DROID",
+      "revision": "05e7cc97e40dbd33b0890c35cc0214fcb0547ab5",
+      "snapshot": "/home/miodrag/.cache/huggingface/hub/models--nvidia--GR00T-N1.7-DROID/snapshots/05e7cc97e40dbd33b0890c35cc0214fcb0547ab5",
+      "files": [
+        {
+          "path": ".gitattributes",
+          "size": 1578,
+          "sha256": "80129ad513891d7f957f4069c9d847bea487dc90e6e9177b45bd3b62b2098f88"
+        },
+        {
+          "path": "README.md",
+          "size": 9845,
+          "sha256": "33956fc189a30cde8b8abe7a5ca0e5b21e22d2da7882af4840eef20e799b2b2a"
+        },
+        {
+          "path": "SUCCESS",
+          "size": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "config.json",
+          "size": 2102,
+          "sha256": "b20d22636bdaf49436de49c5e7e5fc65203f7a4b88384eef426000100be57d1e"
+        },
+        {
+          "path": "embodiment_id.json",
+          "size": 2217,
+          "sha256": "c81282ca2f434fd6b92e16c7e0ac6ebcb9e9bd63f856deaae93780df6c86e4d7"
+        },
+        {
+          "path": "experiment_cfg/conf.yaml",
+          "size": 8855,
+          "sha256": "c371816eb0d0f55055125a0bf8bec2928b6953fc3869fe82ca31d0952f4265e3"
+        },
+        {
+          "path": "experiment_cfg/config.yaml",
+          "size": 10012,
+          "sha256": "fae5fbb0cf175c9ce49914b3acd2afb6307fdc496ae8195cae1304a78944b9d0"
+        },
+        {
+          "path": "experiment_cfg/dataset_statistics.json",
+          "size": 288228,
+          "sha256": "8cee78ee55e3e53b400c66ff49bcc9cdece23a73fa70bc5c65a6b1d62d82aea4"
+        },
+        {
+          "path": "latest",
+          "size": 17,
+          "sha256": "64226c61662c93332dca36939eb03ae9dd499d727ccdb2a626fb0b941e05466c"
+        },
+        {
+          "path": "model-00001-of-00002.safetensors",
+          "size": 4990519232,
+          "sha256": "68d885c9684bb7d4781389873e4b7d33202b5618e70a83f2e78187a5fb839202"
+        },
+        {
+          "path": "model-00002-of-00002.safetensors",
+          "size": 1919980184,
+          "sha256": "aa4c6e553ea8454500354352368bcbb7e4f0fb32a9816b20d5b25c231f13a8fd"
+        },
+        {
+          "path": "model-architecture.png",
+          "size": 3184280,
+          "sha256": "bbf161c66daac88799b5bc7b5c110429f48d7f96ae315113e2b2e6d1f11c9e54"
+        },
+        {
+          "path": "model.safetensors.index.json",
+          "size": 104985,
+          "sha256": "407804ea5a62f4f8823f48811ae0edbb82fac101e9cf4d7273e6e2f692bb4d59"
+        },
+        {
+          "path": "processor_config.json",
+          "size": 2833,
+          "sha256": "4b5c3bab3f148ff47ba903714c3247403c754f806ff2354a73acdfa2102a66fb"
+        },
+        {
+          "path": "scheduler.pt",
+          "size": 1263,
+          "sha256": "0e68cd5c0983910f321ec0ab989e4ea8c30670cfdbd27cf252aeb2b95587256c"
+        },
+        {
+          "path": "statistics.json",
+          "size": 144097,
+          "sha256": "127832f7df25cda15da4ba6be81737f96b65673d0f892f9fc1bce1bc062fa858"
+        },
+        {
+          "path": "training_args.bin",
+          "size": 8259,
+          "sha256": "8d636db8bb639e87538810ab7d76176a6a334d903728dd0bd0b3d2358f668e1b"
+        }
+      ]
+    },
+    {
+      "repo": "nvidia/Cosmos-Reason2-2B",
+      "revision": "9ce19a195e423419c349abfc86fd07178b230561",
+      "snapshot": "/home/miodrag/.cache/huggingface/hub/models--nvidia--Cosmos-Reason2-2B/snapshots/9ce19a195e423419c349abfc86fd07178b230561",
+      "files": [
+        {
+          "path": ".gitattributes",
+          "size": 1707,
+          "sha256": "001d030f39398808b2301009acae1e35c4b2f5e23319c6dd1fbb9df4a5b3d966"
+        },
+        {
+          "path": "CR2 Performance by Category.png",
+          "size": 37375,
+          "sha256": "be7f48cedb8d1e0c60569b145418b54e6809f5f1c53208256a66a422bd56b815"
+        },
+        {
+          "path": "PAI_Bench_Leaderboard.png",
+          "size": 473585,
+          "sha256": "f9ac0320a57d6ee76a4f582388564dcb379ab170f2d99550e891fcd26a0b31c9"
+        },
+        {
+          "path": "README.md",
+          "size": 35046,
+          "sha256": "1b0428109d3cf7d8d209c7ad3b31afe037689bfd9d25589f0f6335bb56223fab"
+        },
+        {
+          "path": "chat_template.json",
+          "size": 5502,
+          "sha256": "6f8a6a55027e3da5160105556cda5dd69f6423f1c32645f6730d32de7773d0c4"
+        },
+        {
+          "path": "config.json",
+          "size": 1505,
+          "sha256": "bec4b3d446efa05807365c9e1cec03ac590836879d02f3a6da879971154bdd3b"
+        },
+        {
+          "path": "cosmos_cr2_2b_paiBench.png",
+          "size": 138441,
+          "sha256": "4b79d34191efa63420e64f4ded2a113b43cd3a2dadbb65e226e9d99a3442d795"
+        },
+        {
+          "path": "generation_config.json",
+          "size": 269,
+          "sha256": "1e241830b48b397cb0900101421df5450baddc7adf01e5fc86b5615865f3bae4"
+        },
+        {
+          "path": "merges.txt",
+          "size": 1671839,
+          "sha256": "599bab54075088774b1733fde865d5bd747cbcc7a547c5bc12610e874e26f5e3"
+        },
+        {
+          "path": "model.safetensors",
+          "size": 4877470304,
+          "sha256": "fa5a6e6ef4fce40216b185cc48a3b24d31637ac3e2ba69c107ed1f389c1e6ede"
+        },
+        {
+          "path": "preprocessor_config.json",
+          "size": 390,
+          "sha256": "27225450ac9c6529872ee1924fcb0962ff5634834f817040f444118116f4e516"
+        },
+        {
+          "path": "tokenizer.json",
+          "size": 7032403,
+          "sha256": "a5d85b6dcc535e6b93115a9ef287e6132fdbf30270da6218194ba742261173c7"
+        },
+        {
+          "path": "tokenizer_config.json",
+          "size": 10868,
+          "sha256": "c2da771801886ad9ae98181793ffd3dfb7f1af30f6f7c6a4e15d7dbba52e2399"
+        },
+        {
+          "path": "video_preprocessor_config.json",
+          "size": 385,
+          "sha256": "7768af27c1fafa9cc9011c1dc20067e03f8915e03b63504550e11d5066986d13"
+        },
+        {
+          "path": "vocab.json",
+          "size": 2776833,
+          "sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910"
+        }
+      ]
+    }
+  ],
+  "finished_utc": "2026-10-21T22:09:17.783095+00:00"
+}

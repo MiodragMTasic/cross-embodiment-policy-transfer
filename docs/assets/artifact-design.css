@@ -1,0 +1,303 @@
+/* ---------- opening ---------- */
+.lede {
+  font-size: 1.12rem;
+  color: var(--text-body);
+  max-width: 34em;
+  margin: 1rem auto 0;
+  text-wrap: pretty;
+}
+.lede + .lede {
+  margin-top: 0.6rem;
+}
+.path {
+  list-style: none;
+  padding: 0;
+  margin: 1.6rem auto 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.1rem;
+  text-align: left;
+}
+.path li {
+  border-top: 2px solid var(--text);
+  padding-top: 0.6rem;
+  min-width: 0;
+}
+.path b {
+  display: block;
+  font: 600 1.25rem/1.15 var(--font-display);
+  color: var(--text);
+  margin-bottom: 0.35rem;
+}
+.path span {
+  display: block;
+  font: 0.82rem/1.5 var(--font-sans);
+  color: var(--text-body);
+}
+@media (max-width: 760px) {
+  .path {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 420px) {
+  .path {
+    grid-template-columns: 1fr;
+  }
+}
+.table-note.center {
+  text-align: center;
+}
+
+/* ---------- scoreboards ---------- */
+table.scoreboard {
+  width: 100%;
+  max-width: 38rem;
+  margin: 1.75rem auto 0.5rem;
+  border-collapse: collapse;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+table.scoreboard caption {
+  caption-side: bottom;
+  font: 0.8rem/1.5 var(--font-sans);
+  color: var(--text-muted);
+  padding-top: 0.6rem;
+  text-align: left;
+}
+table.scoreboard thead th {
+  font: 600 0.78rem/1.3 var(--font-sans);
+  color: var(--text-muted);
+  text-align: left;
+  padding: 0.45rem 0.75rem;
+  border-bottom: 1px solid var(--border);
+  background: none;
+}
+table.scoreboard tbody th {
+  font: 600 1rem/1.25 var(--font-serif);
+  color: var(--text);
+  text-align: left;
+  padding: 0.7rem 0.75rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+table.scoreboard tbody th small {
+  display: block;
+  font: 0.75rem/1.4 var(--font-sans);
+  color: var(--text-muted);
+  font-weight: 400;
+}
+table.scoreboard td {
+  padding: 0.7rem 0.75rem;
+  border-bottom: 1px solid var(--border-subtle);
+  white-space: nowrap;
+}
+table.scoreboard td b {
+  font: 600 2.3rem/1 var(--font-display);
+  color: var(--text);
+}
+table.scoreboard td small {
+  font: 0.85rem var(--font-sans);
+  color: var(--text-muted);
+  margin-left: 0.1rem;
+}
+table.scoreboard.delta td:last-child b {
+  font-size: 1.6rem;
+}
+
+.numbers.two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: 30rem;
+}
+.numbers.three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+@media (max-width: 760px) {
+  .numbers.three {
+    grid-template-columns: 1fr;
+  }
+  .numbers.two {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ---------- parts and steps ---------- */
+.parts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin: 1.25rem 0 1.75rem;
+  padding: 0;
+  list-style: none;
+}
+.parts.four {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.parts li {
+  border-top: 1px solid var(--border);
+  padding-top: 0.65rem;
+  min-width: 0;
+}
+.parts b {
+  display: block;
+  font: 600 1.15rem/1.2 var(--font-display);
+  color: var(--text);
+  margin-bottom: 0.35rem;
+}
+.parts span {
+  display: block;
+  font: 0.85rem/1.5 var(--font-sans);
+  color: var(--text-body);
+}
+@media (max-width: 860px) {
+  .parts.four {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 760px) {
+  .parts {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 480px) {
+  .parts.four {
+    grid-template-columns: 1fr;
+  }
+}
+
+.steps {
+  list-style: none;
+  padding: 0;
+  margin: 1.25rem 0 1.5rem;
+  display: grid;
+  gap: 0.75rem;
+}
+.steps li {
+  display: grid;
+  grid-template-columns: 9.5rem minmax(0, 1fr);
+  gap: 1rem;
+  align-items: baseline;
+  border-top: 1px solid var(--border);
+  padding-top: 0.65rem;
+}
+.steps b {
+  font: 600 0.82rem/1.4 var(--font-sans);
+  color: var(--text);
+}
+.steps span {
+  color: var(--text-body);
+}
+.steps.ticks b {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 0.78rem;
+}
+.steps li.hit b,
+.steps li.hit span {
+  background: linear-gradient(transparent 58%, var(--marker) 58%);
+  color: var(--text);
+}
+@media (max-width: 560px) {
+  .steps li {
+    grid-template-columns: 1fr;
+    gap: 0.2rem;
+  }
+}
+
+.abba-result {
+  font-size: 1.02rem;
+  border-left: 2px solid var(--text);
+  padding-left: 1rem;
+  color: var(--text-body);
+}
+table.robots td,
+table.robots th {
+  white-space: normal;
+}
+.limits li {
+  margin: 0.6rem 0;
+}
+
+/* ---------- notebook + what I learned ---------- */
+.notes-grid {
+  display: grid;
+  gap: 1.75rem;
+}
+.notes-intro,
+.notes-learned {
+  min-width: 0;
+}
+.notes-book .steno-wrap {
+  padding: 0;
+}
+.learned-title {
+  margin-top: 0;
+}
+[data-sec="notes"][data-pick="A"] .notes-grid {
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  align-items: start;
+  column-gap: 3rem;
+}
+[data-sec="notes"][data-pick="A"] .notes-intro {
+  grid-column: 1 / -1;
+  max-width: calc(var(--col) - 2 * var(--gutter));
+}
+[data-sec="notes"][data-pick="B"] .notes-grid {
+  max-width: calc(var(--col) - 2 * var(--gutter));
+  margin: 0 auto;
+}
+@media (max-width: 1000px) {
+  [data-sec="notes"][data-pick="A"] .notes-grid {
+    grid-template-columns: 1fr;
+    max-width: calc(var(--col) - 2 * var(--gutter));
+    margin: 0 auto;
+  }
+}
+.learned-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem 2rem;
+  margin: 1rem 0 1.5rem;
+}
+.learned-grid h4 {
+  font: 600 1.15rem/1.2 var(--font-display);
+  margin-bottom: 0.3rem;
+}
+.learned-grid p {
+  font-size: 0.95rem;
+}
+@media (max-width: 640px) {
+  .learned-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- fixes and the built-with strip ---------- */
+[hidden] { display: none !important; }
+.col { max-width: calc(var(--col) - 2 * var(--gutter)); margin-inline: auto; }
+.fig { margin-block: 1.5rem; }
+dl.learned + p { margin-top: 1.25rem; }
+.built { list-style: none; padding: 0; margin: 1.25rem auto 0; max-width: 46rem; display: flex; flex-wrap: wrap; justify-content: center; gap: 0.4rem; }
+.built a { display: inline-flex; align-items: baseline; gap: 0.35rem; font: 0.74rem/1.2 var(--font-mono); color: var(--text-body); border: 1px solid var(--border); border-radius: 999px; padding: 0.3rem 0.65rem; background: var(--surface); }
+.built a:hover { border-color: var(--text); color: var(--text); }
+.built i { font-style: normal; font-family: var(--font-sans); font-weight: 600; font-size: 0.7rem; color: var(--text); }
+.built li:nth-child(-n+3) a { border-color: var(--text-subtle); }
+
+
+/* Match the downloaded Claude artifact's document typography and measures. */
+:root { --col:56rem; --wide:72rem; }
+body { font:14px -apple-system,BlinkMacSystemFont,sans-serif; }
+.masthead { padding:3.5rem 0 1.5rem; }
+.masthead h1 { font-size:2.6rem; }
+.r3-bleed { width:100%; max-width:var(--wide); margin-inline:auto; padding-inline:var(--gutter); }
+.r3-paper-summary p,.r3-paper-summary li,.r3-view-guide p {font-size:inherit;line-height:1.65;}
+.intro-comparison { margin:0 auto; }
+.intro-comparison .media {position:relative;}
+.intro-comparison video {display:block;width:100%;height:auto;}
+.intro-labels {display:grid;grid-template-columns:1fr 1fr;background:#202525;color:white;font:600 .76rem/1.4 var(--font-sans);}
+.intro-labels span {padding:.55rem .8rem;}
+.intro-labels span+span {border-left:1px solid #555;}
+.intro-comparison figcaption {max-width:var(--col);margin:.7rem auto 0;font:.8rem/1.5 var(--font-sans);color:var(--text-muted);}
+@media(max-width:640px){.masthead{padding-top:1.75rem;}.masthead h1{font-size:2rem;}.intro-labels{font-size:.65rem;}.intro-labels span{padding:.4rem;}}
+
+/* Methodology heading replaces the full-width opening divider. */
+.masthead .r3-paper-summary { border-bottom: 0; }
+.methodology-heading { text-align: left; font: 600 1.6rem/1.2 var(--font-display); margin: 1.2rem 0 0; }
+.methodology-heading + .path { margin-top: 1rem; }

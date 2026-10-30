@@ -1,0 +1,70 @@
+{
+  "_note": "Hand-written predictions of what Nemotron should return for Miodrag's three demo instructions. NOT model output. Used as test fixtures (mocked responses) and in DEMO_PLAN.md. rim_counts=false for the first is the prediction from the intent-contract run, where a literal 'in the bowl' gave rim_counts=false 18/18; the project rule counts the rim.",
+  "put the fruit away": {
+    "object": "banana",
+    "target": "bowl",
+    "relation": "in",
+    "policy_instruction": "Pick up the banana and place it in the bowl",
+    "feasible_for_this_robot": true,
+    "attempt": "in_distribution",
+    "reason": "The banana is the only fruit and the bowl the only container, so 'away' most plausibly means into the bowl, which is the tested task.",
+    "success_check": {
+      "relation": "in",
+      "object": "banana",
+      "reference": "bowl",
+      "rim_counts": false,
+      "max_gap_m": 0.05,
+      "require_released": true,
+      "require_rest": true,
+      "require_commanded_release": true
+    },
+    "ambiguities": [
+      "'away' does not name a destination; the bowl is assumed because it is the only container"
+    ],
+    "confidence": 0.7
+  },
+  "put the banana beside the bowl, on its left": {
+    "object": "banana",
+    "target": "bowl",
+    "relation": "left_of",
+    "policy_instruction": "Put the banana on the table to the left of the bowl",
+    "feasible_for_this_robot": false,
+    "attempt": "out_of_distribution",
+    "reason": "Placing the banana next to the bowl has never been tried with this policy; it is safe to attempt but likely to fail.",
+    "success_check": {
+      "relation": "left_of",
+      "object": "banana",
+      "reference": "bowl",
+      "rim_counts": false,
+      "max_gap_m": 0.05,
+      "require_released": true,
+      "require_rest": true,
+      "require_commanded_release": true
+    },
+    "ambiguities": [
+      "'its left' needs a viewpoint: the robot's left is assumed"
+    ],
+    "confidence": 0.6
+  },
+  "pick up the bowl and put it on the banana": {
+    "object": "bowl",
+    "target": "banana",
+    "relation": "on",
+    "policy_instruction": "Pick up the bowl and put it on the banana",
+    "feasible_for_this_robot": false,
+    "attempt": "not_attempted",
+    "reason": "The policy has only been tested moving the banana; lifting the bowl onto the banana is untested and could knock objects off the table.",
+    "success_check": {
+      "relation": "on",
+      "object": "bowl",
+      "reference": "banana",
+      "rim_counts": false,
+      "max_gap_m": 0.05,
+      "require_released": true,
+      "require_rest": true,
+      "require_commanded_release": true
+    },
+    "ambiguities": [],
+    "confidence": 0.8
+  }
+}

@@ -1,0 +1,836 @@
+{
+ "classification": "offline development validation on past adjudicated traces; no new trials",
+ "code_sha256": {
+  "release_gate_v5.py": "7bba5a40da44adbbc8ad0b16fb038ab2fd74f65ac73fe5e9c4c0cf6e9335918e",
+  "validate_v5.py": "99ab46c0f670a8633ef5e8551c0c73be5baa42a94778b15e236bcfb65c12ffcf",
+  "release_gate_v3.py": "8a5be7d433802a9eac89bb0ec5dbe1c1592306191a3140e8f447f6c9bea15b4a",
+  "release_gate_v4.py": "1b249ae1ac1913babb7c31325898bf01823409172cb0080ccb59430c218c842c",
+  "rim_support.py": "97d9e833bb24f0b8fd97ae6ef4cf89c5928ed97d1ce387ddfc7efd731d7a2ea9",
+  "stability.py": "25971d4dec1ae0562c418067aca7e205f0160d115a45d7cc8475a016cce7372f"
+ },
+ "cases": [
+  {
+   "case": "A base s0 v3",
+   "human_pass": false,
+   "verdict_source": "BOWL_BASELINE_AND_DATA_RESULT.md: closed-jaw slip",
+   "v4_pass": false,
+   "v5_pass_first_rest": false,
+   "v5_pass_at_end": false,
+   "agree_first_rest": true,
+   "agree_at_end": true,
+   "replay_matches_record": true,
+   "replay_checked_against": "v4 record",
+   "v5_success_control": null,
+   "rows": 750,
+   "qualifying_open": null,
+   "v5_fail_reason": "no_open_while_held",
+   "end_in_or_on_bowl": false,
+   "end_fingertip_contact": true,
+   "v5_events": [
+    {
+     "time_s": 48.8,
+     "event": "lift_armed"
+    }
+   ],
+   "v5_events_after_first_rest": [],
+   "trace": "2026-10-21/bowl-controlled-v3/step5_controlled_base_s0_v3/BananaInBowlTask/strict-metric.json",
+   "trace_sha256": "c80bb397f5a5fb34b1b2a8dc35bc15617c9a125867aff6cbbd8ef80c923e6b7f"
+  },
+  {
+   "case": "A base s1 v3",
+   "human_pass": true,
+   "verdict_source": "BOWL_BASELINE_AND_DATA_RESULT.md + base1-reviewed-manifest.json: supported rim placement",
+   "v4_pass": true,
+   "v5_pass_first_rest": true,
+   "v5_pass_at_end": true,
+   "agree_first_rest": true,
+   "agree_at_end": true,
+   "replay_matches_record": true,
+   "replay_checked_against": "v4 record",
+   "v5_success_control": 169,
+   "rows": 750,
+   "qualifying_open": {
+    "control": 140,
+    "time_s": 9.266666666666666,
+    "dxy_root_m": 0.0083,
+    "centre_above_bowl_top_m": 0.0426,
+    "touching_bowl": false,
+    "touching_table": false
+   },
+   "v5_fail_reason": null,
+   "end_in_or_on_bowl": true,
+   "end_fingertip_contact": false,
+   "v5_events": [
+    {
+     "time_s": 6.533333333333333,
+     "event": "lift_armed"
+    },
+    {
+     "time_s": 9.266666666666666,
+     "event": "eligible_open_command"
+    },
+    {
+     "time_s": 9.333333333333334,
+     "event": "detached_near_bowl"
+    },
+    {
+     "time_s": 9.333333333333334,
+     "event": "measured_open_release"
+    },
+    {
+     "time_s": 9.333333333333334,
+     "event": "landed_on_bowl"
+    }
+   ],
+   "v5_events_after_first_rest": [
+    {
+     "time_s": 15.666666666666666,
+     "event": "invalidated",
+     "reason": "left_bowl"
+    }
+   ],
+   "trace": "2026-10-21/bowl-controlled-v3/step5_controlled_base_s1_v3/BananaInBowlTask/strict-metric.json",
+   "trace_sha256": "165f6372abedecd4e16c3075f5fc3b0bd18b000673ccb47617ca7ae6fc83c24d"
+  },
+  {
+   "case": "A layout 1000 retry1",
+   "human_pass": true,
+   "verdict_source": "pilot-final-adjudication.json",
+   "v4_pass": false,
+   "v5_pass_first_rest": true,
+   "v5_pass_at_end": true,
+   "agree_first_rest": true,
+   "agree_at_end": true,
+   "replay_matches_record": true,
+   "replay_checked_against": "v3 record",
+   "v5_success_control": 152,
+   "rows": 750,
+   "qualifying_open": {
+    "control": 128,
+    "time_s": 8.466666666666667,
+    "dxy_root_m": 0.0095,
+    "centre_above_bowl_top_m": 0.062,
+    "touching_bowl": false,
+    "touching_table": false
+   },
+   "v5_fail_reason": null,
+   "end_in_or_on_bowl": true,
+   "end_fingertip_contact": false,
+   "v5_events": [
+    {
+     "time_s": 5.8,
+     "event": "lift_armed"
+    },
+    {
+     "time_s": 8.466666666666667,
+     "event": "eligible_open_command"
+    },
+    {
+     "time_s": 8.533333333333333,
+     "event": "detached_near_bowl"
+    },
+    {
+     "time_s": 8.533333333333333,
+     "event": "measured_open_release"
+    },
+    {
+     "time_s": 8.6,
+     "event": "landed_on_bowl"
+    }
+   ],
+   "v5_events_after_first_rest": [
+    {
+     "time_s": 22.733333333333334,
+     "event": "invalidated",
+     "reason": "regrasp_after_release"
+    }
+   ],
+   "trace": "2026-10-21/bowl-controlled-v3/step5_controlled_layout1000_v3_retry1/BananaInBowlUniformInitPose10cmTask/strict-metric.json",
+   "trace_sha256": "9b87ee0ec8786a0133b607c78f811704985fe5da1956598609148ec90e1f4268"
+  },
+  {
+   "case": "A layout 1001",
+   "human_pass": false,
+   "verdict_source": "pilot-final-adjudication.json",
+   "v4_pass": false,
+   "v5_pass_first_rest": false,
+   "v5_pass_at_end": false,
+   "agree_first_rest": true,
+   "agree_at_end": true,
+   "replay_matches_record": true,
+   "replay_checked_against": "v3 record",
+   "v5_success_control": null,
+   "rows": 750,
+   "qualifying_open": null,
+   "v5_fail_reason": "never_lifted",
+   "end_in_or_on_bowl": false,
+   "end_fingertip_contact": false,
+   "v5_events": [],
+   "v5_events_after_first_rest": [],
+   "trace": "2026-10-21/bowl-controlled-v3/step5_controlled_layout1001_v3/BananaInBowlUniformInitPose10cmTask/strict-metric.json",
+   "trace_sha256": "66198b691517ddfd79dc73ff128cf5be19ae831de526896e38c9ab88ba782559"
+  },
+  {
+   "case": "A layout 1002",
+   "human_pass": false,
+   "verdict_source": "pilot-final-adjudication.json",
+   "v4_pass": false,
+   "v5_pass_first_rest": false,
+   "v5_pass_at_end": false,
+   "agree_first_rest": true,
+   "agree_at_end": true,
+   "replay_matches_record": true,
+   "replay_checked_against": "v3 record",
+   "v5_success_control": null,
+   "rows": 750,
+   "qualifying_open": null,
+   "v5_fail_reason": "never_lifted",
+   "end_in_or_on_bowl": false,
+   "end_fingertip_contact": false,
+   "v5_events": [],
+   "v5_events_after_first_rest": [],
+   "trace": "2026-10-21/bowl-controlled-v3/step5_controlled_layout1002_v3/BananaInBowlUniformInitPose10cmTask/strict-metric.json",
+   "trace_sha256": "fca4aba071a84970d67e046d808ab7b6ea52483e5c7731f37413492fca16e52f"
+  },
+  {
+   "case": "A layout 1003",
+   "human_pass": false,
+   "verdict_source": "pilot-final-adjudication.json",
+   "v4_pass": false,
+   "v5_pass_first_rest": false,
+   "v5_pass_at_end": false,
+   "agree_first_rest": true,
+   "agree_at_end": true,
+   "replay_matches_record": true,
+   "replay_checked_against": "v3 record",
+   "v5_success_control": null,
+   "rows": 750,
+   "qualifying_open": null,
+   "v5_fail_reason": "regrasp_after_release",
+   "end_in_or_on_bowl": false,
+   "end_fingertip_contact": true,
+   "v5_events": [
+    {
+     "time_s": 6.8,
+     "event": "lift_armed"
+    },
+    {
+     "time_s": 9.533333333333333,
+     "event": "eligible_open_command"
+    },
+    {
+     "time_s": 9.6,
+     "event": "detached_near_bowl"
+    },
+    {
+     "time_s": 9.6,
+     "event": "measured_open_release"
+    },
+    {
+     "time_s": 9.666666666666666,
+     "event": "landed_on_bowl"
+    },
+    {
+     "time_s": 10.533333333333333,
+     "event": "invalidated",
+     "reason": "regrasp_after_release"
+    }
+   ],
+   "v5_events_after_first_rest": [],
+   "trace": "2026-10-21/bowl-controlled-v3/step5_controlled_layout1003_v3/BananaInBowlUniformInitPose10cmTask/strict-metric.json",
+   "trace_sha256": "19b3ad10361c877695bbe25088ae698080841120e80c97ea8c203c9fd54b9c60"
+  },
+  {
+   "case": "A layout 1004",
+   "human_pass": false,
+   "verdict_source": "pilot-final-adjudication.json",
+   "v4_pass": false,
+   "v5_pass_first_rest": false,
+   "v5_pass_at_end": false,
+   "agree_first_rest": true,
+   "agree_at_end": true,
+   "replay_matches_record": true,
+   "replay_checked_against": "v3 record",
+   "v5_success_control": null,
+   "rows": 750,
+   "qualifying_open": null,
+   "v5_fail_reason": "never_lifted",
+   "end_in_or_on_bowl": false,
+   "end_fingertip_contact": false,
+   "v5_events": [],
+   "v5_events_after_first_rest": [],
+   "trace": "2026-10-21/bowl-controlled-v3/step5_controlled_layout1004_v3/BananaInBowlUniformInitPose10cmTask/strict-metric.json",
+   "trace_sha256": "f1e1fcd5d408d2cd65dad885593cdf7b2dcec202ae6d1c2ee32d9581562855af"
+  },
+  {
+   "case": "A layout 1005",
+   "human_pass": true,
+   "verdict_source": "pilot-final-adjudication.json",
+   "v4_pass": false,
+   "v5_pass_first_rest": true,
+   "v5_pass_at_end": true,
+   "agree_first_rest": true,
+   "agree_at_end": true,
+   "replay_matches_record": true,
+   "replay_checked_against": "v3 record",
+   "v5_success_control": 153,
+   "rows": 750,
+   "qualifying_open": {
+    "control": 128,
+    "time_s": 8.466666666666667,
+    "dxy_root_m": 0.0139,
+    "centre_above_bowl_top_m": 0.0751,
+    "touching_bowl": false,
+    "touching_table": false
+   },
+   "v5_fail_reason": null,
+   "end_in_or_on_bowl": true,
+   "end_fingertip_contact": false,
+   "v5_events": [
+    {
+     "time_s": 6.533333333333333,
+     "event": "lift_armed"
+    },
+    {
+     "time_s": 8.466666666666667,
+     "event": "eligible_open_command"
+    },
+    {
+     "time_s": 8.533333333333333,
+     "event": "detached_near_bowl"
+    },
+    {
+     "time_s": 8.533333333333333,
+     "event": "measured_open_release"
+    },
+    {
+     "time_s": 8.6,
+     "event": "landed_on_bowl"
+    }
+   ],
+   "v5_events_after_first_rest": [],
+   "trace": "2026-10-21/bowl-controlled-v3/step5_controlled_layout1005_v3/BananaInBowlUniformInitPose10cmTask/strict-metric.json",
+   "trace_sha256": "c1b1b4db78a10bdedff3e8cdfa1f9babc46a79943e352ae9dd074f70e69c802c"
+  },
+  {
+   "case": "A layout 1006",
+   "human_pass": false,
+   "verdict_source": "pilot-final-adjudication.json",
+   "v4_pass": false,
+   "v5_pass_first_rest": false,
+   "v5_pass_at_end": false,
+   "agree_first_rest": true,
+   "agree_at_end": true,
+   "replay_matches_record": true,
+   "replay_checked_against": "v3 record",
+   "v5_success_control": null,
+   "rows": 750,
+   "qualifying_open": null,
+   "v5_fail_reason": "lost_contact_before_open",
+   "end_in_or_on_bowl": false,
+   "end_fingertip_contact": false,
+   "v5_events": [
+    {
+     "time_s": 6.2,
+     "event": "lift_armed"
+    },
+    {
+     "time_s": 7.0,
+     "event": "invalidated",
+     "reason": "lost_contact_before_open"
+    }
+   ],
+   "v5_events_after_first_rest": [],
+   "trace": "2026-10-21/bowl-controlled-v3/step5_controlled_layout1006_v3/BananaInBowlUniformInitPose10cmTask/strict-metric.json",
+   "trace_sha256": "18709dcf0512665f88a248f4f230784241ca40a7532fb39d923eb4ffa3689b36"
+  },
+  {
+   "case": "A layout 1007",
+   "human_pass": false,
+   "verdict_source": "pilot-final-adjudication.json",
+   "v4_pass": false,
+   "v5_pass_first_rest": false,
+   "v5_pass_at_end": false,
+   "agree_first_rest": true,
+   "agree_at_end": true,
+   "replay_matches_record": true,
+   "replay_checked_against": "v3 record",
+   "v5_success_control": null,
+   "rows": 750,
+   "qualifying_open": null,
+   "v5_fail_reason": "lost_contact_before_open",
+   "end_in_or_on_bowl": true,
+   "end_fingertip_contact": false,
+   "v5_events": [
+    {
+     "time_s": 8.333333333333334,
+     "event": "lift_armed"
+    },
+    {
+     "time_s": 10.8,
+     "event": "invalidated",
+     "reason": "lost_contact_before_open"
+    }
+   ],
+   "v5_events_after_first_rest": [],
+   "trace": "2026-10-21/bowl-controlled-v3/step5_controlled_layout1007_v3/BananaInBowlUniformInitPose10cmTask/strict-metric.json",
+   "trace_sha256": "45fbfe96600fcbda2db583d5af1861af675d501da10068f6d1ab60f426377500"
+  },
+  {
+   "case": "A layout 2000",
+   "human_pass": false,
+   "verdict_source": "BOWL_BASELINE_AND_DATA_RESULT.md, training-feasibility table",
+   "v4_pass": false,
+   "v5_pass_first_rest": false,
+   "v5_pass_at_end": false,
+   "agree_first_rest": true,
+   "agree_at_end": true,
+   "replay_matches_record": true,
+   "replay_checked_against": "v4 record",
+   "v5_success_control": null,
+   "rows": 750,
+   "qualifying_open": null,
+   "v5_fail_reason": "never_lifted",
+   "end_in_or_on_bowl": true,
+   "end_fingertip_contact": false,
+   "v5_events": [],
+   "v5_events_after_first_rest": [],
+   "trace": "2026-10-21/bowl-training-feasibility-v4/step5_training_layout2000_v4/BananaInBowlUniformInitPose10cmTask/strict-metric.json",
+   "trace_sha256": "00b6dd039af175621bee52bdbcba1657267a39506fdfa7a44414b5c40dfa5042"
+  },
+  {
+   "case": "A layout 2001",
+   "human_pass": true,
+   "verdict_source": "BOWL_BASELINE_AND_DATA_RESULT.md, training-feasibility table",
+   "v4_pass": false,
+   "v5_pass_first_rest": true,
+   "v5_pass_at_end": true,
+   "agree_first_rest": true,
+   "agree_at_end": true,
+   "replay_matches_record": true,
+   "replay_checked_against": "v4 record",
+   "v5_success_control": 308,
+   "rows": 750,
+   "qualifying_open": {
+    "control": 285,
+    "time_s": 18.933333333333334,
+    "dxy_root_m": 0.0612,
+    "centre_above_bowl_top_m": 0.0662,
+    "touching_bowl": true,
+    "touching_table": false
+   },
+   "v5_fail_reason": null,
+   "end_in_or_on_bowl": true,
+   "end_fingertip_contact": false,
+   "v5_events": [
+    {
+     "time_s": 5.866666666666666,
+     "event": "lift_armed"
+    },
+    {
+     "time_s": 8.466666666666667,
+     "event": "eligible_open_command"
+    },
+    {
+     "time_s": 8.533333333333333,
+     "event": "detached_near_bowl"
+    },
+    {
+     "time_s": 8.533333333333333,
+     "event": "measured_open_release"
+    },
+    {
+     "time_s": 8.6,
+     "event": "landed_on_bowl"
+    },
+    {
+     "time_s": 8.933333333333334,
+     "event": "invalidated",
+     "reason": "left_bowl"
+    },
+    {
+     "time_s": 15.266666666666666,
+     "event": "lift_armed"
+    },
+    {
+     "time_s": 18.933333333333334,
+     "event": "eligible_open_command"
+    },
+    {
+     "time_s": 19.0,
+     "event": "detached_near_bowl"
+    },
+    {
+     "time_s": 19.0,
+     "event": "measured_open_release"
+    },
+    {
+     "time_s": 19.0,
+     "event": "landed_on_bowl"
+    }
+   ],
+   "v5_events_after_first_rest": [],
+   "trace": "2026-10-21/bowl-training-feasibility-v4/step5_training_layout2001_v4/BananaInBowlUniformInitPose10cmTask/strict-metric.json",
+   "trace_sha256": "2528b586811c91082ed8f031b7e6ff45c6872aad8bb6c8dd15afc77559329a7c"
+  },
+  {
+   "case": "A layout 2002",
+   "human_pass": true,
+   "verdict_source": "BOWL_BASELINE_AND_DATA_RESULT.md, training-feasibility table",
+   "v4_pass": true,
+   "v5_pass_first_rest": true,
+   "v5_pass_at_end": true,
+   "agree_first_rest": true,
+   "agree_at_end": true,
+   "replay_matches_record": true,
+   "replay_checked_against": "v4 record",
+   "v5_success_control": 301,
+   "rows": 301,
+   "qualifying_open": {
+    "control": 280,
+    "time_s": 18.6,
+    "dxy_root_m": 0.0172,
+    "centre_above_bowl_top_m": 0.0443,
+    "touching_bowl": true,
+    "touching_table": false
+   },
+   "v5_fail_reason": null,
+   "end_in_or_on_bowl": true,
+   "end_fingertip_contact": false,
+   "v5_events": [
+    {
+     "time_s": 15.4,
+     "event": "lift_armed"
+    },
+    {
+     "time_s": 18.6,
+     "event": "eligible_open_command"
+    },
+    {
+     "time_s": 18.666666666666668,
+     "event": "detached_near_bowl"
+    },
+    {
+     "time_s": 18.666666666666668,
+     "event": "measured_open_release"
+    },
+    {
+     "time_s": 18.666666666666668,
+     "event": "landed_on_bowl"
+    }
+   ],
+   "v5_events_after_first_rest": [],
+   "trace": "2026-10-21/bowl-training-feasibility-v4/step5_training_layout2002_v4/BananaInBowlUniformInitPose10cmTask/strict-metric.json",
+   "trace_sha256": "76c1196df8640dd4f7649d9a015ea618d11b7997e17d8d6df73840fbef273514"
+  },
+  {
+   "case": "A layout 2003",
+   "human_pass": false,
+   "verdict_source": "BOWL_BASELINE_AND_DATA_RESULT.md, training-feasibility table",
+   "v4_pass": false,
+   "v5_pass_first_rest": false,
+   "v5_pass_at_end": false,
+   "agree_first_rest": true,
+   "agree_at_end": true,
+   "replay_matches_record": true,
+   "replay_checked_against": "v4 record",
+   "v5_success_control": null,
+   "rows": 750,
+   "qualifying_open": null,
+   "v5_fail_reason": "no_open_while_held",
+   "end_in_or_on_bowl": false,
+   "end_fingertip_contact": true,
+   "v5_events": [
+    {
+     "time_s": 47.0,
+     "event": "lift_armed"
+    }
+   ],
+   "v5_events_after_first_rest": [],
+   "trace": "2026-10-21/bowl-training-feasibility-v4/step5_training_layout2003_v4/BananaInBowlUniformInitPose10cmTask/strict-metric.json",
+   "trace_sha256": "07046ea6d764f71445509abf456fbc5c83097727c28cf9baa58f24874562f7cb"
+  },
+  {
+   "case": "B live l2002_s0_painted",
+   "human_pass": false,
+   "verdict_source": "review/step6_live/adjudication/ep1_l2002_s0_painted.md",
+   "v4_pass": false,
+   "v5_pass_first_rest": false,
+   "v5_pass_at_end": false,
+   "agree_first_rest": true,
+   "agree_at_end": true,
+   "replay_matches_record": true,
+   "replay_checked_against": "v4 record",
+   "v5_success_control": null,
+   "rows": 9000,
+   "qualifying_open": null,
+   "v5_fail_reason": "lost_contact_before_open",
+   "end_in_or_on_bowl": true,
+   "end_fingertip_contact": false,
+   "v5_events": [
+    {
+     "time_s": 271.8,
+     "event": "lift_armed"
+    },
+    {
+     "time_s": 294.73333333333335,
+     "event": "invalidated",
+     "reason": "lost_contact_before_open"
+    }
+   ],
+   "v5_events_after_first_rest": [],
+   "trace": "2026-10-23/bowl-step6/paint_live_v1/runs/step6_B_paint_live_l2002_s0_painted_v1/gate_trace.jsonl",
+   "trace_sha256": "fa826dfe908b1eaac7bf27148b3923dca5dfda5c16af9ea55b34f540737776aa"
+  },
+  {
+   "case": "B live l2002_s0_unpainted",
+   "human_pass": false,
+   "verdict_source": "review/step6_live/adjudication/ep2_l2002_s0_unpainted.md",
+   "v4_pass": false,
+   "v5_pass_first_rest": false,
+   "v5_pass_at_end": false,
+   "agree_first_rest": true,
+   "agree_at_end": true,
+   "replay_matches_record": true,
+   "replay_checked_against": "v4 record",
+   "v5_success_control": null,
+   "rows": 9000,
+   "qualifying_open": null,
+   "v5_fail_reason": "never_lifted",
+   "end_in_or_on_bowl": false,
+   "end_fingertip_contact": false,
+   "v5_events": [],
+   "v5_events_after_first_rest": [],
+   "trace": "2026-10-23/bowl-step6/paint_live_v1/runs/step6_B_paint_live_l2002_s0_unpainted_v1/gate_trace.jsonl",
+   "trace_sha256": "171d5eb65e320c0bed5c4545eaf49455534ea38343baf91aecae58d98f35d4cd"
+  },
+  {
+   "case": "B live base_s0_painted",
+   "human_pass": false,
+   "verdict_source": "review/step6_live/adjudication/ep3_base_s0_painted.md",
+   "v4_pass": false,
+   "v5_pass_first_rest": false,
+   "v5_pass_at_end": false,
+   "agree_first_rest": true,
+   "agree_at_end": true,
+   "replay_matches_record": true,
+   "replay_checked_against": "v4 record",
+   "v5_success_control": null,
+   "rows": 9000,
+   "qualifying_open": null,
+   "v5_fail_reason": "lost_contact_before_open",
+   "end_in_or_on_bowl": true,
+   "end_fingertip_contact": true,
+   "v5_events": [
+    {
+     "time_s": 90.13333333333333,
+     "event": "lift_armed"
+    },
+    {
+     "time_s": 107.39999999999999,
+     "event": "invalidated",
+     "reason": "lost_contact_before_open"
+    }
+   ],
+   "v5_events_after_first_rest": [],
+   "trace": "2026-10-23/bowl-step6/paint_live_v1/runs/step6_B_paint_live_base_s0_painted_v1/gate_trace.jsonl",
+   "trace_sha256": "7aff134f9a938763511002978bf144e5534c92be44000f1d081b5856e3faf1a5"
+  },
+  {
+   "case": "B live base_s0_unpainted",
+   "human_pass": false,
+   "verdict_source": "review/step6_live/adjudication/ep4_base_s0_unpainted.md",
+   "v4_pass": false,
+   "v5_pass_first_rest": false,
+   "v5_pass_at_end": false,
+   "agree_first_rest": true,
+   "agree_at_end": true,
+   "replay_matches_record": true,
+   "replay_checked_against": "v4 record",
+   "v5_success_control": null,
+   "rows": 9000,
+   "qualifying_open": null,
+   "v5_fail_reason": "never_lifted",
+   "end_in_or_on_bowl": false,
+   "end_fingertip_contact": false,
+   "v5_events": [],
+   "v5_events_after_first_rest": [],
+   "trace": "2026-10-23/bowl-step6/paint_live_v1/runs/step6_B_paint_live_base_s0_unpainted_v1/gate_trace.jsonl",
+   "trace_sha256": "5b9e797a9b640fe16dadbe488b310785cf42161732027dcc367cf96bc7e30da8"
+  },
+  {
+   "case": "B live base_s1_painted",
+   "human_pass": false,
+   "verdict_source": "review/step6_live/adjudication/ep5_base_s1_painted.md",
+   "v4_pass": false,
+   "v5_pass_first_rest": false,
+   "v5_pass_at_end": false,
+   "agree_first_rest": true,
+   "agree_at_end": true,
+   "replay_matches_record": true,
+   "replay_checked_against": "v4 record",
+   "v5_success_control": null,
+   "rows": 9000,
+   "qualifying_open": null,
+   "v5_fail_reason": "lost_contact_before_open",
+   "end_in_or_on_bowl": true,
+   "end_fingertip_contact": false,
+   "v5_events": [
+    {
+     "time_s": 53.333333333333336,
+     "event": "lift_armed"
+    },
+    {
+     "time_s": 62.0,
+     "event": "invalidated",
+     "reason": "lost_contact_before_open"
+    }
+   ],
+   "v5_events_after_first_rest": [],
+   "trace": "2026-10-23/bowl-step6/paint_live_v1/runs/step6_B_paint_live_base_s1_painted_v1/gate_trace.jsonl",
+   "trace_sha256": "6ae3ae6bec59f157c3b30e99fc92ce6e66e7342769e8a835eebacbb9bdd78db9"
+  },
+  {
+   "case": "B live base_s1_unpainted",
+   "human_pass": false,
+   "verdict_source": "review/step6_live/adjudication/ep6_base_s1_unpainted.md",
+   "v4_pass": false,
+   "v5_pass_first_rest": false,
+   "v5_pass_at_end": false,
+   "agree_first_rest": true,
+   "agree_at_end": true,
+   "replay_matches_record": true,
+   "replay_checked_against": "v4 record",
+   "v5_success_control": null,
+   "rows": 9000,
+   "qualifying_open": null,
+   "v5_fail_reason": "never_lifted",
+   "end_in_or_on_bowl": false,
+   "end_fingertip_contact": false,
+   "v5_events": [],
+   "v5_events_after_first_rest": [],
+   "trace": "2026-10-23/bowl-step6/paint_live_v1/runs/step6_B_paint_live_base_s1_unpainted_v1/gate_trace.jsonl",
+   "trace_sha256": "64894fdeb6b8f777efa66ba9711a76c6b35e61c16ade9bc5edde10095598de22"
+  },
+  {
+   "case": "B dev lift l2002 s0",
+   "human_pass": true,
+   "verdict_source": "review/step6_dev/adjudication/lift_l2002_s0.md",
+   "v4_pass": false,
+   "v5_pass_first_rest": true,
+   "v5_pass_at_end": true,
+   "agree_first_rest": true,
+   "agree_at_end": true,
+   "replay_matches_record": true,
+   "replay_checked_against": "v4 record",
+   "v5_success_control": 1554,
+   "rows": 9000,
+   "qualifying_open": {
+    "control": 1525,
+    "time_s": 101.66666666666667,
+    "dxy_root_m": 0.0126,
+    "centre_above_bowl_top_m": 0.066,
+    "touching_bowl": false,
+    "touching_table": false
+   },
+   "v5_fail_reason": null,
+   "end_in_or_on_bowl": true,
+   "end_fingertip_contact": false,
+   "v5_events": [
+    {
+     "time_s": 56.6,
+     "event": "lift_armed"
+    },
+    {
+     "time_s": 101.66666666666667,
+     "event": "eligible_open_command"
+    },
+    {
+     "time_s": 101.73333333333333,
+     "event": "detached_near_bowl"
+    },
+    {
+     "time_s": 101.8,
+     "event": "landed_on_bowl"
+    },
+    {
+     "time_s": 102.66666666666667,
+     "event": "measured_open_release"
+    }
+   ],
+   "v5_events_after_first_rest": [
+    {
+     "time_s": 412.6666666666667,
+     "event": "invalidated",
+     "reason": "regrasp_after_release"
+    }
+   ],
+   "trace": "2026-10-23/bowl-step6/paint_dev_v1/runs/step6_B_paint_dev_lift_l2002_s0_v1/gate_trace.jsonl",
+   "trace_sha256": "7cde81da549f6edd548887b636de588e119914aede82c0c89d4e1a8adf22a738"
+  },
+  {
+   "case": "A base s0 v2",
+   "human_pass": null,
+   "verdict_source": "none",
+   "v4_pass": true,
+   "v5_pass_first_rest": true,
+   "v5_pass_at_end": true,
+   "agree_first_rest": null,
+   "agree_at_end": null,
+   "replay_matches_record": true,
+   "replay_checked_against": "v4 record",
+   "v5_success_control": 162,
+   "rows": 750,
+   "qualifying_open": {
+    "control": 126,
+    "time_s": 8.333333333333334,
+    "dxy_root_m": 0.0086,
+    "centre_above_bowl_top_m": 0.0484,
+    "touching_bowl": false,
+    "touching_table": false
+   },
+   "v5_fail_reason": null,
+   "end_in_or_on_bowl": true,
+   "end_fingertip_contact": false,
+   "v5_events": [
+    {
+     "time_s": 6.066666666666666,
+     "event": "lift_armed"
+    },
+    {
+     "time_s": 8.333333333333334,
+     "event": "eligible_open_command"
+    },
+    {
+     "time_s": 8.4,
+     "event": "detached_near_bowl"
+    },
+    {
+     "time_s": 8.4,
+     "event": "measured_open_release"
+    },
+    {
+     "time_s": 8.4,
+     "event": "landed_on_bowl"
+    },
+    {
+     "time_s": 8.533333333333333,
+     "event": "open_touch_resets_stability"
+    },
+    {
+     "time_s": 8.533333333333333,
+     "event": "pre_action_open_touch_resets_stability"
+    }
+   ],
+   "v5_events_after_first_rest": [
+    {
+     "time_s": 18.733333333333334,
+     "event": "invalidated",
+     "reason": "regrasp_after_release"
+    }
+   ],
+   "trace": "2026-10-21/bowl-controlled-v2/step5_controlled_base_s0_v2/BananaInBowlTask/strict-metric.json",
+   "trace_sha256": "571b21d44266260f3ec44aa860a6e3294b759c42da9b778f2da9fb8b056ee6d0"
+  }
+ ]
+}

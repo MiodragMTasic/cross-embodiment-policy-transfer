@@ -1,0 +1,17 @@
+{
+  "schema": "intent-demo-literal-control-v1",
+  "input_text": "put the fruit away",
+  "note": "Ablation control, hand-written, no model call: the user's literal words go to the policy without Nemotron. success_check is the predicted Nemotron check for the same request (fixtures/expected_specs.json), with rim_counts=true to match the project rule.",
+  "policy_instruction": "put the fruit away",
+  "decision": { "attempt": true, "category": "literal_control" },
+  "success_check": {
+    "relation": "in",
+    "object": "banana",
+    "reference": "bowl",
+    "rim_counts": true,
+    "max_gap_m": 0.05,
+    "require_released": true,
+    "require_rest": true,
+    "require_commanded_release": true
+  }
+}

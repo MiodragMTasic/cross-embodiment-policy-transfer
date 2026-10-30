@@ -1,0 +1,37 @@
+{
+  "request": {
+    "call": 11,
+    "tick": 792,
+    "phase": "POLICY",
+    "hold_since_tick": null,
+    "deadline_s": 10,
+    "reserved_cost": 0.003
+  },
+  "prompt": "You are a conservative visual release observer for a simulated robot. You receive two or three timestamps, each with an ACTUAL EXTERIOR view followed by a WRIST view. The two cameras have different perspectives. Use only these images; no hidden state is available.\n\nYour task is to identify a banana that is CURRENTLY PINCHED AND SUSPENDED by the gripper over the bowl, BEFORE it is released. A banana already resting in/on the bowl is NEVER READY, even if fingers hover above it or appear near it in the wrist image. The presence of a banana in the bowl is not evidence that the gripper holds it. Specifically inspect whether the gripping finger surfaces visibly pinch opposite sides of the banana, or whether the banana has separated and is supported by the bowl. On uncertainty about contact or support, set held=false and verdict=UNCERTAIN. Do not infer contact from proximity, 2D overlap, closed-looking fingers, or the instruction to place it.\n\nUse the exterior view to judge whether the suspended banana is above the bowl opening with an air gap; use the wrist view as a second perspective for grasp and rim alignment. The wrist view is attached to the arm: a banana can extend down toward the bottom of that image even when it is over the bowl. Do not require the banana to coincide with the image centre. Central means a plausible downward release into the interior rather than an edge or table landing, accounting for both views. If depth or whole-object clearance cannot be resolved, say UNCERTAIN. Do not invent certainty.\n\nFor POLICY phase: READY_TO_RELEASE requires held=true, central=true, clearance=true, views_agree=true. Motion is allowed if already centrally aligned; being near an edge and moving inward is WAIT. For HOLD phase: additionally require motion=still using only the new post-hold images. Judge the latest timestamp, using earlier timestamps only for motion/contact changes.\n\nReturn exactly one JSON object, no prose: verdict (WAIT|READY_TO_RELEASE|UNCERTAIN), held (boolean), central (boolean), clearance (boolean), views_agree (boolean), motion (inward|outward|still|unknown), reason (one sentence, at most 240 characters). In reason describe actual contact/support evidence, not generic requirements. A stationary banana resting on the bowl must have held=false, regardless of how well centred it is.\n",
+  "images": [
+    {
+      "file": "780_exterior.png",
+      "sha256": "8b9c94b9a2f7dee64ad00a7a197e67d65aa53dcf7ca765281ecfd557644781af"
+    },
+    {
+      "file": "780_wrist.png",
+      "sha256": "1451dc4bf1ecd52536cb728afd7b366359a6316515e50077570ccfd51938c7c9"
+    },
+    {
+      "file": "786_exterior.png",
+      "sha256": "05099af09b4d6efd14bae425390a2392de3f49a7a88bc76428f38f362f8a886e"
+    },
+    {
+      "file": "786_wrist.png",
+      "sha256": "5abc837fd25563edc232fd7b72d431cf6c0f2f4a731946c9ddc4e3a1132d7f8c"
+    },
+    {
+      "file": "792_exterior.png",
+      "sha256": "48d7d6cf112902d608b565c5754af72522bf5ddf273e98637810347bc3709e62"
+    },
+    {
+      "file": "792_wrist.png",
+      "sha256": "bf0bd67bd17e75b7bed49665f07ff883f40b895278381f23e7a9abe173bf86d2"
+    }
+  ]
+}

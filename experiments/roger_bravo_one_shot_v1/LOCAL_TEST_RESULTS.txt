@@ -1,0 +1,78 @@
+test_checking_transport_does_not_create_supervisor_directory (test_attempt.AttemptTests.test_checking_transport_does_not_create_supervisor_directory) ... ok
+test_runner_single_case_and_executed_release_marker (test_attempt.AttemptTests.test_runner_single_case_and_executed_release_marker) ... ok
+test_scope_budget_and_lock_guard (test_attempt.AttemptTests.test_scope_budget_and_lock_guard) ... ok
+test_bad_replies_never_open (test_controller.ControllerTests.test_bad_replies_never_open) ... ok
+test_baseline_records_without_override (test_controller.ControllerTests.test_baseline_records_without_override) ... ok
+test_budget_failure_releases_hold_without_forcing_open (test_controller.ControllerTests.test_budget_failure_releases_hold_without_forcing_open) ... ok
+test_dollar_reservation_not_refunded_for_errors (test_controller.ControllerTests.test_dollar_reservation_not_refunded_for_errors) ... ok
+test_duplicate_keys_rejected (test_controller.ControllerTests.test_duplicate_keys_rejected) ... ok
+test_hold_expiry (test_controller.ControllerTests.test_hold_expiry) ... ok
+test_hold_failure_resumes_policy (test_controller.ControllerTests.test_hold_failure_resumes_policy) ... ok
+test_late_or_wrong_tick (test_controller.ControllerTests.test_late_or_wrong_tick) ... ok
+test_no_physics_advance_while_request_pending (test_controller.ControllerTests.test_no_physics_advance_while_request_pending) ... ok
+test_runtime_deadline_includes_model_wait (test_controller.ControllerTests.test_runtime_deadline_includes_model_wait) ... ok
+test_runtime_records_original_and_executed_and_keeps_images (test_controller.ControllerTests.test_runtime_records_original_and_executed_and_keeps_images) ... ok
+test_runtime_transport_failure_and_resume (test_controller.ControllerTests.test_runtime_transport_failure_and_resume) ... ok
+test_stale_painted_or_missing_images_rejected (test_controller.ControllerTests.test_stale_painted_or_missing_images_rejected) ... ok
+test_two_checks_then_latch_and_bounded_stop (test_controller.ControllerTests.test_two_checks_then_latch_and_bounded_stop) ... ok
+test_wall_deadline (test_controller.ControllerTests.test_wall_deadline) ... ok
+test_completed_capture_is_sealed (test_launcher.LauncherTests.test_completed_capture_is_sealed) ... {
+  "launch_ready": true,
+  "blockers": []
+}
+Copy both evidence folders and verify hashes. Console stop deadline still applies; retain disk.
+ok
+test_deadline_uses_billing_start_and_boot_tolerance (test_launcher.LauncherTests.test_deadline_uses_billing_start_and_boot_tolerance) ... ok
+test_layout_pin_rejects_modified_input (test_launcher.LauncherTests.test_layout_pin_rejects_modified_input) ... ok
+test_read_only_checks_do_not_launch (test_launcher.LauncherTests.test_read_only_checks_do_not_launch) ... {
+  "launch_ready": true,
+  "blockers": []
+}
+VM read-only checks passed; no shutdown scheduled and no models started.
+ok
+test_snapshot_failure_blocks_success_readiness (test_launcher.LauncherTests.test_snapshot_failure_blocks_success_readiness) ... {
+  "launch_ready": true,
+  "blockers": []
+}
+Copy both evidence folders and verify hashes. Console stop deadline still applies; retain disk.
+ok
+test_snapshot_failure_preserves_original (test_launcher.LauncherTests.test_snapshot_failure_preserves_original) ... {
+  "launch_ready": true,
+  "blockers": []
+}
+Copy both evidence folders and verify hashes. Console stop deadline still applies; retain disk.
+ok
+test_snapshot_timeout_preserves_original (test_launcher.LauncherTests.test_snapshot_timeout_preserves_original) ... {
+  "launch_ready": true,
+  "blockers": []
+}
+Copy both evidence folders and verify hashes. Console stop deadline still applies; retain disk.
+ok
+test_timeout_is_retained_as_failure (test_launcher.LauncherTests.test_timeout_is_retained_as_failure) ... {
+  "launch_ready": true,
+  "blockers": []
+}
+Copy both evidence folders and verify hashes. Console stop deadline still applies; retain disk.
+ok
+test_baseline_never_calls_judge (test_review_regressions.ReviewRegressions.test_baseline_never_calls_judge) ... ok
+test_hold_uses_command_and_confirmation_images_are_all_new (test_review_regressions.ReviewRegressions.test_hold_uses_command_and_confirmation_images_are_all_new) ... ok
+test_moving_initial_ready_can_hold_but_not_confirm (test_review_regressions.ReviewRegressions.test_moving_initial_ready_can_hold_but_not_confirm) ... ok
+test_old_confirmation_frame_is_rejected (test_review_regressions.ReviewRegressions.test_old_confirmation_frame_is_rejected) ... ok
+test_open_never_recloses_and_arm_resumes_after_settling (test_review_regressions.ReviewRegressions.test_open_never_recloses_and_arm_resumes_after_settling) ... ok
+test_permission_failure_stops_immediately (test_review_regressions.ReviewRegressions.test_permission_failure_stops_immediately) ... ok
+test_three_transport_errors_stop (test_review_regressions.ReviewRegressions.test_three_transport_errors_stop) ... ok
+test_three_failed_confirmations_continue_valid_without_more_calls (test_review_regressions.RoundTwoRegressions.test_three_failed_confirmations_continue_valid_without_more_calls) ... ok
+test_three_malformed_responses_are_infrastructure_failure (test_review_regressions.RoundTwoRegressions.test_three_malformed_responses_are_infrastructure_failure) ... ok
+test_bad_model_or_usage_does_not_refund (test_transport.TransportTests.test_bad_model_or_usage_does_not_refund) ... ok
+test_no_approval_no_request (test_transport.TransportTests.test_no_approval_no_request) ... ok
+test_payload_actual_images_order_and_output_bound (test_transport.TransportTests.test_payload_actual_images_order_and_output_bound) ... ok
+test_timeout_reservation_persists_across_restart (test_transport.TransportTests.test_timeout_reservation_persists_across_restart) ... ok
+test_underestimated_charge_disables_transport (test_transport.TransportTests.test_underestimated_charge_disables_transport) ... ok
+test_usage_settlement (test_transport.TransportTests.test_usage_settlement) ... ok
+test_verified_source_lock (test_transport.TransportTests.test_verified_source_lock) ... ok
+test_worker_timeout_is_bounded (test_transport.TransportTests.test_worker_timeout_is_bounded) ... ok
+
+----------------------------------------------------------------------
+Ran 43 tests in 0.089s
+
+OK

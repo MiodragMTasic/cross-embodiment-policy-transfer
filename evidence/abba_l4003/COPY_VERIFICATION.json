@@ -1,0 +1,6 @@
+{
+  "verified": true,
+  "errors": [],
+  "files": 298,
+  "note": "One-shot verification uses ATTEMPT_COMPLETE and RGB queries; bundled verify_copy CLI incorrectly retained capture-only depth/CAPTURE_COMPLETE checks, so its unchanged hash helpers were used directly."
+}

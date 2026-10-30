@@ -1,0 +1,10 @@
+row | gripper->banana xy now | A/A target->banana xy | B-ext target->banana xy | B/B target->banana xy  (mm, median of 8)
+  8 |      188 |      122 |      176 |      183
+ 16 |      134 |      114 |      224 |      231
+ 24 |      107 |      106 |      196 |      191
+ 32 |      108 |       85 |      143 |      143
+ 40 |       86 |       72 |      118 |      123
+ 48 |       77 |       62 |      103 |      103
+ 56 |       65 |       54 |       80 |       83
+ 64 |       59 |       48 |       70 |       69
+ 72 |       51 |       42 |       54 |       54

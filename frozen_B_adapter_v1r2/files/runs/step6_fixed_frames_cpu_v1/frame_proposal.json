@@ -1,0 +1,216 @@
+{
+  "schema": "step6-fixed-frame-proposal-v1",
+  "canonical_axes": "+X distal approach; +Y toward left finger; +Z right-handed cross product.",
+  "origin": "Open-state mean distal pad plane on mechanical symmetry axis; fixed during closure.",
+  "geometry_scope": "Authored mesh inventory, not cooked collision shape validation.",
+  "matrix_convention": "Column vectors: p_raw = raw_T_canonical @ p_canonical; p_raw = raw_T_camera @ p_camera.",
+  "raw_T_canonical": {
+    "A": [
+      [
+        1.0,
+        0.0,
+        0.0,
+        0.1490999191089744
+      ],
+      [
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "B": [
+      [
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      [
+        1.0,
+        0.0,
+        0.0,
+        0.149345520781136
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ]
+  },
+  "A_raw_T_camera_opengl": [
+    [
+      0.0024486272320410757,
+      0.3129184178953468,
+      -0.9497768516691439,
+      0.010997688234926362
+    ],
+    [
+      0.9998407198918285,
+      0.0160248884336825,
+      0.007857340318342261,
+      -0.03101228919015118
+    ],
+    [
+      0.017678774586173236,
+      -0.9496448108069465,
+      -0.31282933723768636,
+      -0.07399029762518489
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "B_raw_T_camera_opengl": [
+    [
+      0.9998407198918285,
+      0.0160248884336825,
+      0.007857340318342261,
+      -0.03101228919015118
+    ],
+    [
+      0.017678774586173236,
+      -0.9496448108069465,
+      -0.31282933723768636,
+      -0.07399029762518489
+    ],
+    [
+      0.0024486272320410757,
+      0.3129184178953468,
+      -0.9497768516691439,
+      0.01124328990708795
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "B_camera_cfg": {
+    "prim_path": "{ENV_REGEX_NS}/robot/robotiq_85_base_link/wrist_cam",
+    "offset": {
+      "pos": [
+        -0.03101228919015118,
+        -0.07399029762518489,
+        0.01124328990708795
+      ],
+      "rot": [
+        0.1584448306317831,
+        0.9873275016892721,
+        0.008534063662308179,
+        0.002609561551954721
+      ],
+      "convention": "opengl"
+    },
+    "width": 1280,
+    "height": 720,
+    "focal_length": 2.8,
+    "horizontal_aperture": 5.376,
+    "vertical_aperture": 3.024
+  },
+  "expected_camera_K": [
+    [
+      666.6666870117188,
+      0.0,
+      640.0
+    ],
+    [
+      0.0,
+      666.6666870117188,
+      360.0
+    ],
+    [
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "camera_scope": "Explicit simulated remount and intrinsics match, part of fixed interface; no image synthesis.",
+  "root_world": {
+    "A": [
+      [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "B": [
+      [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ]
+  },
+  "input_sha256": {
+    "kinematics_export_v1/joint_graphs.json": "51d10a57316bed35b79792211eea4eeff530b2aec79f9d1af9cf14b94216b66e",
+    "tracking_A_v3/step6_A_tracking_v3/inventory.json": "f26eb999aa5652ee442953bc6dbb84a1f5180ab3ee0d0ceaeab35f1161bfa4c7",
+    "tracking_A_v3/step6_A_tracking_v3/snapshots.json": "7825ddfe8169955da5f6fee1fa29bc91b1edf354419e16d99c6b0b441c896f61",
+    "tracking_A_v3/step6_A_tracking_v3/geometry.json": "3725f406ed36de3b25033f96f370bf10b94495fc03144ca22af29f5148845fb2",
+    "tracking_B_v1/step6_B_tracking_v1/inventory.json": "bdce5474db9b524807c3eb7eb6188df0791469d38708d7b4400e07fa38a24031",
+    "tracking_B_v1/step6_B_tracking_v1/snapshots.json": "8bf581dfeac9d2d6f810b844b338f170bc9977f323486bd6ca9f00f27d14b104",
+    "tracking_B_v1/step6_B_tracking_v1/geometry.json": "a82fc91f6ca539f8ecc4ca66cb965023563248375b9911b6426553df8270c1bf"
+  }
+}

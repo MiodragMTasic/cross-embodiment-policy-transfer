@@ -1,0 +1,11 @@
+.tools-section{max-width:46rem;margin:1.25rem auto 0;min-width:0}
+.tools-heading{text-align:center}
+.tools-heading p{margin:0;font:400 .8rem/1.4 var(--font-sans);color:var(--text-subtle)}
+.tools-section .built{margin-top:.65rem}
+@media(max-width:600px){
+ .tools-section .built{flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;max-width:100%;padding:3px 2px;scroll-snap-type:x proximity;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+ .tools-section .built::-webkit-scrollbar{display:none;width:0;height:0}
+ .tools-section .built li{flex:0 0 auto;scroll-snap-align:start}
+ .tools-section .built a{min-height:40px;box-sizing:border-box;align-items:center;white-space:nowrap}
+ .tools-section :focus-visible{outline:2px solid var(--text);outline-offset:2px}
+}

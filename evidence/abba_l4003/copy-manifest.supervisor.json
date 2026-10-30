@@ -1,0 +1,44 @@
+{
+  "files": [
+    {
+      "path": "ATTEMPT_COMPLETE",
+      "bytes": 77,
+      "sha256": "27744bacc53b008511050d605bf2938c5c5d5e7aeb8386ae7849d047691c79ec"
+    },
+    {
+      "path": "api-ledger.jsonl",
+      "bytes": 8336,
+      "sha256": "d1e5d767466eef7be97688d363e3b1c2bcde5ecfc5f18e0bf2221c78d97ff0d7"
+    },
+    {
+      "path": "exit-code.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "gpu-after.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "model-loading.json",
+      "bytes": 1260,
+      "sha256": "9b273c8d9c890394dc3bc3d5e207544bfb85343f3ecc9c47f935381acf79e686"
+    },
+    {
+      "path": "permit.json",
+      "bytes": 1543,
+      "sha256": "06f42cd4d6b60f0962f903585bfbe59cdf786bb5607860c40a145e6a0ff78e76"
+    },
+    {
+      "path": "policy.log",
+      "bytes": 5097,
+      "sha256": "e35a1d247a9833fa801ff6e24021720d442b40b86dec696840e220f32c30d277"
+    },
+    {
+      "path": "runner.log",
+      "bytes": 24266,
+      "sha256": "583169234ef4a88c929d1a5a27ea7d734353af8f9476bf0910d00daeb384cad3"
+    }
+  ]
+}

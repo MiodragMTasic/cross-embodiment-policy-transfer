@@ -1,0 +1,1205 @@
+<!doctype html>
+<html lang="en" data-shade="soft" data-proof="light" data-bots="badge" data-order="fixed">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cross-Embodiment Policy Transfer</title>
+    <meta
+      name="description"
+      content="A solo learning project in simulation: a Franka-trained GR00T policy drives a Kinova Gen3 through a fixed, rule-based adapter with cross-painting. The before/after experiment, a training-data hypothesis and one Nemotron-assisted release."
+    />
+    <meta
+      property="og:title"
+      content="Cross-Embodiment Policy Transfer: does fine-tuning on one robot carry over to another through a frozen adapter?"
+    />
+    <meta
+      property="og:description"
+      content="A solo simulation project: GR00T N1.7 (DROID) on a Kinova Gen3 through a fixed, rule-based adapter with Mirage-style cross-painting."
+    />
+    <meta property="og:image" content="https://nebius-vercel-preview.vercel.app/assets/media/hero_l4003.jpg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400&family=Source+Sans+3:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/site.css" />
+    <link rel="stylesheet" href="assets/notebook.css" />
+    <link rel="stylesheet" href="assets/terms.css" />
+  <link rel="stylesheet" href="assets/selected-layout.css">
+<link rel="stylesheet" href="assets/artifact-design.css">
+<link rel="stylesheet" href="assets/progression.css">
+<link rel="stylesheet" href="assets/tools-row.css">
+</head>
+  <body>
+    <header class="masthead">
+      <div class="wrap">
+        <h1>Cross-Embodiment Policy Transfer</h1><div class="r3-top"><div class="r3-paper-summary">
+<h2 class="r3-ov-h">Overview</h2>
+<p>A robot can learn a task, but what happens when we want a different robot to do it? I explored that question with two simulated arms: a Franka (Robot A) and a Kinova (Robot B). I wanted to transfer both an existing task and, eventually, improvements learned through further training.</p>
+<h3>The task</h3>
+<p>Pick up a banana and place it on or in a bowl. NVIDIA&rsquo;s GR00T policy&mdash;here, the neural network that turns camera views and robot state into actions&mdash;was trained for the Franka. The challenge was to make it work on the differently shaped Kinova without training it on Kinova recordings.</p>
+<h3>Hypotheses</h3>
+<p>I proposed a <strong>fixed adapter</strong>: rules between the policy and Robot B that translate observations and actions, with nothing in those rules learned.</p>
+<ol><li><strong>Transfer the skill:</strong> can the original Franka policy perform the task on the Kinova through that adapter?</li><li><strong>Transfer an improvement:</strong> if further training improves the policy on the Franka, does the Kinova improve too, without changing the adapter?</li></ol>
+<p>The experiment follows three steps: build an adapter, test the original policy on both arms, then train it further on Robot A and evaluate what changes on both robots.</p>
+</div></div>
+        
+        <h2 class="methodology-heading">The Methodology</h2>
+<ol class="path">
+<li><b>Fixed adapter</b><span>Translates between the policy built for Robot A and the different movements and robot state of Robot B.</span></li>
+<li><b>Cross-painting</b><span>Changes the camera images sent to the policy so it sees the familiar Franka arm in place of the Kinova.</span></li>
+<li><b>P0 &rarr; P1</b><span>P0 is the original policy; P1 is its further-trained version. Does training on Robot A also improve performance on Robot B?</span></li>
+<li><b>ABBA</b><span>I integrated NVIDIA Nemotron 3.5 Super VL as a visual supervisor alongside the policy, supporting the decision of when to release.</span></li>
+</ol><p class="byline">Miodrag Tasic</p>
+        <p class="venue"><a href="https://nebiusglobalaihackathon.devpost.com/">Nebius &times; NVIDIA Global AI Hackathon</a>
+          &middot; Physical AI track &middot; October 2026 &middot; solo learning project &middot; simulation only</p>
+        <nav class="links" aria-label="Project links">
+          <a
+            href="https://github.com/MiodragMTasic/cross-embodiment-policy-transfer"
+          >
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"
+              />
+            </svg>
+            Code
+          </a>
+          <a href="https://github.com/MiodragMTasic/cross-embodiment-policy-transfer/blob/main/REPORT.md">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke-width="1.5"
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"
+              />
+            </svg>
+            Report
+          </a>
+          <!-- TODO: public YouTube video URL -->
+          <a href="#" data-todo="video" aria-disabled="true">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke-width="1.5"
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <rect x="3" y="5.25" width="18" height="13.5" rx="2.25" />
+              <path stroke-linejoin="round" d="M10.25 9.25v5.5l4.5-2.75z" />
+            </svg>
+            Video
+          </a>
+          <a href="https://github.com/MiodragMTasic/cross-embodiment-policy-transfer/releases/tag/evidence-v1">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16v14H4zM3 3h18v4H3zM9 11h6" /></svg>
+            Evidence
+          </a>
+        </nav>
+        <div class="tools-section"><div class="tools-heading"><p id="used-tools-label">Used tools and technologies</p></div><ul class="built" id="used-tools-list" aria-labelledby="used-tools-label"><li><a class="no-underline" href="https://franka.de/"><i>Robot A</i>Franka</a></li><li><a class="no-underline" href="https://www.kinovarobotics.com/"><i>Robot B</i>Kinova Gen3</a></li><li><a class="no-underline" href="https://huggingface.co/nvidia/GR00T-N1.7-DROID"><i>Policy</i>GR00T N1.7 DROID</a></li><li><a class="no-underline" href="https://huggingface.co/nvidia/Cosmos-Reason2-2B"><i>GR00T backbone</i>Cosmos-Reason2-2B</a></li><li><a class="no-underline" href="https://github.com/NVIDIA/Isaac-GR00T">Isaac-GR00T</a></li><li><a class="no-underline" href="https://nebius.com/services/token-factory/nemotron">Nemotron 3.5 Lightning</a></li><li><a class="no-underline" href="https://docs.api.nvidia.com/nim/reference/nvidia-nemotron-3_5-super-vl-120b-a12b">Nemotron 3.5 Super VL</a></li><li><a class="no-underline" href="https://nebius.com/">Nebius AI Cloud</a></li><li><a class="no-underline" href="https://tokenfactory.nebius.com/">Nebius Token Factory</a></li><li><a class="no-underline" href="https://developer.nvidia.com/isaac/sim">Isaac Sim 5.1</a></li><li><a class="no-underline" href="https://github.com/isaac-sim/IsaacLab">Isaac Lab 2.3.2</a></li><li><a class="no-underline" href="https://github.com/NVlabs/RoboLab">RoboLab</a></li><li><a class="no-underline" href="https://github.com/leggedrobotics/rsl_rl">RSL-RL</a></li><li><a class="no-underline" href="https://www.python.org/">Python</a></li><li><a class="no-underline" href="https://pytorch.org/">PyTorch</a></li><li><a class="no-underline" href="https://huggingface.co/">Hugging Face</a></li><li><a class="no-underline" href="https://claude.com/claude-code">Claude Code</a></li><li><a class="no-underline" href="https://openai.com/codex/">Codex</a></li></ul></div>
+      </div>
+    </header><section id="intro-comparison" class="intro-comparison wrap-wide" aria-label="Two robots, the same task">
+<figure><div class="media"><div class="intro-labels"><span>Robot A · Franka · original policy · 1×</span><span>Robot B · Kinova · fixed adapter · 6×</span></div>
+<video src="assets/media/intro_ab_l4010.mp4" poster="assets/media/intro_ab_l4010.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Franka and Kinova completing the banana-and-bowl task on the same test layout"></video></div>
+</figure></section>
+    <main>
+<section id="why-do-this"><div class="wrap-wide"><div class="col"><h2>Why do this?</h2>
+<p>If one trained policy could drive many different arms, the expensive part, the training, would only have to happen
+once. A few things that could lead to:</p>
+<ul class="r3-impact"><li><strong>Cheaper than starting from scratch.</strong> Two ways to get Robot B to Robot A&rsquo;s success rate: an adapter, or training B from scratch. Which costs less, in price and in time? I haven&rsquo;t measured this. It&rsquo;s something to explore next.</li><li><strong>Arms that can go to work.</strong> Robot arms, and machines in general, could be cross-deployed as workers on a policy that already exists, saving the cost of training a network for each one.</li><li><strong>Policies for more people.</strong> Not everyone can train their own policy: it costs thousands of runs. With an adapter for certain tasks, people could reuse an existing policy. A learned adapter is still an idea; mine is fixed, with nothing in it trained.</li></ul></div>
+<div class="col r3-origin-in"><div class="r3-origin"><figure class="r3-origin-photo"><img src="assets/media/why/miodrag-seoul-kickoff.jpg" width="1280" height="853" alt="Miodrag holding a microphone, pitching his robot idea in front of a screen of live English and Korean captions." decoding="async"></figure><div class="r3-origin-text"><h3>Why I tried this</h3><p>At the Seoul kickoff, Dhruv talked about training a policy on one robot. My head went straight to: ok, what if we
+want to use it on another one? That&rsquo;s cross-embodiment policy transfer, and an adapter seemed like the answer.
+When I said that to him, he snapped his fingers and shook my hand. So I knew I was onto something.</p>
+<p>The idea didn&rsquo;t come out of nowhere. Days earlier, a business owner told me about a product that solved the
+problem for one system but needed an adapter for the others. And adapters are how I&rsquo;d been thinking about MCPs and
+deterministic LLM workflows, the way you get reliable outputs. Then here was the same word, used for robots.</p>
+<p>I presented the idea and took Dhruv&rsquo;s questions in front of the whole room (that&rsquo;s the photo). I figured my
+instincts could lead somewhere interesting, or at least to a great learning experience in the time the hackathon
+gave me.</p><p class="r3-origin-credit">Photo: Bloom, from <a href="https://blog.bloomworld.ai/en/physical-ai-is-this-years-christmas-gift-en/" rel="noopener">&ldquo;Physical AI Will Be This Year&rsquo;s Christmas Gift&rdquo;</a></p></div></div></div>
+</div></section>
+<section id="robots"><div class="wrap-wide"><div class="col"><h2>Robot A and Robot B</h2>
+<p><span class="r3-new r3-mk">Both arms have seven joints, but they&rsquo;re shaped differently and move differently. Their grippers behave differently too: in this simulator, B&rsquo;s takes 23 control steps to close, where A&rsquo;s takes 2.</span></p>
+<p><span class="r3-new r3-mk">The policy is NVIDIA&rsquo;s GR00T N1.7, in the version trained on DROID [3], a large set of Franka recordings.</span></p>
+<p><span class="r3-new r3-mk">Everything ran in NVIDIA&rsquo;s Isaac Sim, in RoboLab&rsquo;s banana-and-bowl scene [4, 5].</span></p>
+<div class="r2-cast2 panel">
+  <div class="r2-robots">
+    <figure><img src="assets/media/cast_franka.jpg" width="224" height="224" alt="The Franka arm" loading="lazy" decoding="async"><figcaption><b class="r2-tag">A</b><strong>Franka</strong><span>The arm the policy was trained for.</span></figcaption></figure>
+    <figure><img src="assets/media/cast_kinova.jpg" width="224" height="224" alt="The Kinova Gen3 arm" loading="lazy" decoding="async"><figcaption><b class="r2-tag">B</b><strong>Kinova Gen3</strong><span>Only ever runs through the adapter.</span></figcaption></figure>
+  </div>
+  <div class="r2-policies">
+    <p><b class="r2-tag">P0</b><strong>Original policy</strong><span><span class="r3-new r3-mk">GR00T exactly as NVIDIA released it [2].</span></span></p>
+    <p class="r2-train-arrow">more training on Robot A</p>
+    <p><b class="r2-tag">P1</b><strong>Fine-tuned</strong><span>P0 after that training. Robot B gave it no data.</span></p>
+  </div>
+</div></div></div></section>
+
+<section id="build" class="band"><div class="wrap-wide"><div class="col"><h2>The fixed adapter</h2>
+<p><strong>The adapter translates between the policy and Robot B.</strong> <span class="r3-new r3-mk">It&rsquo;s fixed rules</span> with nothing
+trained, in three parts:</p>
+<ul class="parts">
+  <li data-part="bridge"><b>Kinematic bridge</b><span><span class="r3-new r3-mk">Turns the Kinova&rsquo;s joint angles into the ones a Franka in the same pose would have, and the policy&rsquo;s Franka moves into the same hand moves on the Kinova. Each move is held for 12 control steps so B&rsquo;s slower gripper can finish closing.</span></span></li>
+  <li data-part="paint"><b>Cross-painting</b><span><span class="r3-new r3-mk">Every time the policy looks, the outside camera image shows it a Franka where the Kinova is. The idea comes from a paper called Mirage [1]. Finding cross-painting was super fun and interesting.</span></span></li>
+  <li data-part="lift"><b>15&nbsp;mm lift</b><span><span class="r3-new r3-mk">This one was my idea. Watching the early painted runs, I instantly noticed the banana hitting the edge of the bowl, so I proposed lifting the arm. Now, while B carries the banana, its hand rises 15&nbsp;mm so the banana clears the rim.</span></span></li>
+</ul>
+</div><div class="fig r2-diagram"><div class="r2-pics panel">
+  <figure><img src="assets/media/adapter_sees_kinova.jpg" width="440" height="328" alt="The simulator camera: Robot B, a Kinova, holding the banana" loading="lazy" decoding="async"><figcaption><b>The camera sees a Kinova</b></figcaption></figure>
+  <span class="r2-step" data-part="paint">painting<svg viewBox="0 0 44 12" aria-hidden="true"><path d="M1 6h40M35 1.5l6 4.5-6 4.5"/></svg></span>
+  <figure><img src="assets/media/adapter_sees_franka.jpg" width="440" height="328" alt="The same moment as the policy sees it: a Franka in the Kinova's place" loading="lazy" decoding="async"><figcaption><b>The policy sees a Franka</b>in the same pose, <span class="r3-new r3-mk">painted in every time it looks</span></figcaption></figure>
+  <span class="r2-step">to GR00T<svg viewBox="0 0 44 12" aria-hidden="true"><path d="M1 6h40M35 1.5l6 4.5-6 4.5"/></svg></span>
+  <div class="r2-brain"><b>GR00T N1.7 plans 40 Franka moves</b><span>and sends the first 8</span></div>
+  <span class="r2-step" data-part="bridge">bridge + lift<svg viewBox="0 0 44 12" aria-hidden="true"><path d="M1 6h40M35 1.5l6 4.5-6 4.5"/></svg></span>
+  <figure><img src="assets/media/adapter_kinova_moves.jpg" width="440" height="328" alt="Robot B a few seconds later, carrying the banana over the bowl" loading="lazy" decoding="async"><figcaption><b>Robot B makes the same hand moves</b>each held 12 steps, 15&nbsp;mm higher while carrying</figcaption></figure>
+</div>
+<p class="r2-pics-note"><span class="r3-new r3-mk">The policy also reads the arm&rsquo;s joint angles, and the bridge hands it the Franka version of those too, so the numbers match the picture.</span> Every 8 moves, the loop runs again.<span class="r3-lite"></span></p>
+<div class="col"><details class="technical"><summary>The exact rules</summary><div
+            class="diagram"
+            role="group"
+            aria-label="Diagram: the policy exchanges observations and actions with the Kinova through the two halves of the adapter."
+          >
+            <div class="node endpoint policy">
+              <h4>Policy</h4>
+              <p>
+                GR00T N1.7, DROID checkpoint. P0 as released; P1 fine-tuned on
+                Franka wins.
+              </p>
+              <p style="margin-top: 0.45rem">
+                Takes an exterior image, a wrist image, Franka joint and gripper
+                state and the instruction; returns Franka joint targets and a
+                gripper command, replanning every 8 actions.
+              </p>
+            </div>
+            <div class="node adapter obs">
+              <span class="dir"
+                ><span class="arrow-h">&larr;</span
+                ><span class="arrow-v">&uarr;</span> to the policy</span
+              >
+              <ul>
+                <li>
+                  Kinova joints &rarr; gripping-frame pose &rarr;
+                  <abbr
+                    title="Inverse kinematics: working out the joint angles that put the hand where you want it."
+                    >IK</abbr
+                  >
+                  on a virtual Franka &rarr; Franka joint state
+                </li>
+                <li>
+                  Exterior camera: Kinova hidden, Franka rendered at those
+                  joints
+                </li>
+                <li>
+                  Wrist camera remounted to the Franka&rsquo;s pose, not painted
+                </li>
+              </ul>
+            </div>
+            <div class="node adapter act">
+              <span class="dir"
+                >to the Kinova <span class="arrow-h">&rarr;</span
+                ><span class="arrow-v">&darr;</span></span
+              >
+              <ul>
+                <li>
+                  Franka joint targets &rarr; Franka FK &rarr; gripping-frame
+                  pose &rarr; Kinova IK &rarr; 7 joint targets
+                </li>
+                <li>
+                  Each action held for 12 control steps at 15&nbsp;Hz, at most
+                  0.04&nbsp;rad per step
+                </li>
+                <li>
+                  Hand raised 15&nbsp;mm once a close is held past 24 control
+                  steps, unless it began on or in the bowl (a simulator check)
+                </li>
+                <li>
+                  Abort if an IK solve fails or a joint leaves its soft limits
+                </li>
+              </ul>
+            </div>
+            <div class="node endpoint robot">
+              <h4>Kinova Gen3</h4>
+              <p>
+                7 joints, Robotiq 2F-85 gripper, in Isaac Sim 5.1 and Isaac Lab
+                2.3.2 on RoboLab&rsquo;s banana-in-bowl task.
+              </p>
+              <p style="margin-top: 0.45rem">
+                RoboLab&rsquo;s functional model of the arm, not a calibrated
+                twin of a physical one.
+              </p>
+            </div>
+            <p class="adapter-note">
+              Fixed, rule-based adapter &middot; frozen before testing &middot; no trained weights
+            </p>
+          </div></details></div></div><div class="col">
+<h3>How it got there</h3>
+<ol class="r2-stack panel">
+  <li><span class="r2-chips"><i data-part="bridge">Bridge</i><i class="off">Painting</i><i class="off">Lift</i></span><span class="r2-out is-no"><b>Steered B away from the banana</b>even with clean joint readings</span></li>
+  <li><span class="r2-chips"><i data-part="bridge">Bridge</i><i data-part="paint">Painting</i><i class="off">Lift</i></span><span class="r2-out is-half"><b>Carried it to the bowl, 3 of 3</b>but the banana kept slipping out on the rim</span></li>
+  <li><span class="r2-chips"><i data-part="bridge">Bridge</i><i data-part="paint">Painting</i><i data-part="lift">Lift</i></span><span class="r2-out is-yes"><b>Opened over the bowl, banana stayed in!</b>one run, so it can&rsquo;t prove the lift did it</span></li>
+  <li class="is-freeze"><span class="r2-chips"><i class="lock">Frozen 23 Oct</i></span><span class="r2-out"><span class="r3-lite"><b>No more changes</b></span><span class="r3-new r3-mk">before any test run</span></span></li>
+</ol><div id="adapter-progression" class="adapter-progression"><h4 class="progress-heading">Watch the progression</h4><p class="progress-intro">Development recordings, before the frozen test. Choose a scene to compare the first two stages; the lift was tried once. These clips show the progression, not a controlled proof of each change.</p><article class="progress-row"><div class="progress-copy"><h4>Bridge only</h4><p>Without painting, these three runs never completed a grasp and placement.</p><label>Recording <select aria-label="Bridge only recording"><option value="assets/media/progress_unpainted_l2002_s0.mp4">Layout 2002 · seed 0</option><option value="assets/media/progress_unpainted_base_s0.mp4">Base scene · seed 0</option><option value="assets/media/progress_unpainted_base_s1.mp4">Base scene · seed 1</option></select></label><button type="button" class="progress-play" aria-label="Play Bridge only">Play</button><small>Robot B · actual exterior view · 12×</small></div><video src="assets/media/progress_unpainted_l2002_s0.mp4" poster="assets/media/progress_unpainted_l2002_s0.jpg" muted playsinline preload="none" aria-label="Bridge only development footage"></video></article><article class="progress-row"><div class="progress-copy"><h4>Bridge + cross-painting</h4><p>All three reached the bowl, but lost the banana before the open command.</p><label>Recording <select aria-label="Bridge + cross-painting recording"><option value="assets/media/progress_painted_l2002_s0.mp4">Layout 2002 · seed 0</option><option value="assets/media/progress_painted_base_s0.mp4">Base scene · seed 0</option><option value="assets/media/progress_painted_base_s1.mp4">Base scene · seed 1</option></select></label><button type="button" class="progress-play" aria-label="Play Bridge + cross-painting">Play</button><small>Robot B · actual exterior view · 12×</small></div><video src="assets/media/progress_painted_l2002_s0.mp4" poster="assets/media/progress_painted_l2002_s0.jpg" muted playsinline preload="none" aria-label="Bridge + cross-painting development footage"></video></article><article class="progress-row"><div class="progress-copy"><h4>Bridge + cross-painting + 15 mm lift</h4><p>One development run: the gripper opens while holding the banana, which settles in the bowl.</p><span class="progress-single">Layout 2002 · seed 0 · only recorded lift trial</span><button type="button" class="progress-play" aria-label="Play Bridge + cross-painting + 15 mm lift">Play</button><small>Robot B · actual exterior view · 6×</small></div><video src="assets/media/progress_lift_l2002_s0.mp4" poster="assets/media/progress_lift_l2002_s0.jpg" muted playsinline preload="none" aria-label="Bridge + cross-painting + 15 mm lift development footage"></video></article></div>
+</div><div class="fig"><figure>
+            <div class="media"><span class="r3-chip" aria-hidden="true"><b>B</b><i>Robot B &middot; </i>Kinova Gen3</span>
+              <video
+                class="v-wide"
+                src="assets/media/pair3_painted_unpainted.mp4"
+                poster="assets/media/pair3_painted_unpainted.jpg"
+                data-loop
+                muted
+                loop
+                playsinline
+                preload="none"
+                width="1280"
+                height="328"
+                aria-label="Two Kinova runs side by side from the same start: the painted run lifts the banana and carries it to the bowl; the unpainted run never lifts it."
+              ></video>
+              <video
+                class="v-stack"
+                src="assets/media/pair3_painted_unpainted_stack.mp4"
+                poster="assets/media/pair3_painted_unpainted_stack.jpg"
+                data-loop
+                muted
+                loop
+                playsinline
+                preload="none"
+                width="640"
+                height="656"
+                aria-label="Two Kinova runs from the same start, painted above and unpainted below: the painted run lifts the banana and carries it to the bowl; the unpainted run never lifts it."
+              ></video>
+              <div class="pane-labels" aria-hidden="true">
+                <span>Painted: the policy sees a Franka</span
+                ><span>Unpainted: the policy sees the Kinova</span>
+              </div>
+            </div>
+            <figcaption><strong>Same practice scene, same moments.</strong> Both panes show the simulator camera; only the image sent to the policy differs. Painted, the banana is grasped, lifted and carried, then slips onto the bowl from the closed gripper. Unpainted, it never leaves the table. 3&times; speed.</figcaption>
+          </figure></div><div class="col">
+<details class="technical">
+            <summary>Implementation details: rendering, timing and the lift</summary>
+          <h3>Cross-painting</h3>
+          <p>
+            A rendering copy of the Franka keeps its colliders, so it stays
+            parked 20&nbsp;m above the cell whenever physics advances. Before
+            each policy request it is moved to the Franka&rsquo;s base position
+            and posed at the virtual joints. The Kinova&rsquo;s visuals are
+            hidden, the exterior camera renders, and the scene is restored.
+            <strong
+              >This is ground-truth-assisted simulator rendering, not
+              <dfn
+                title="Filling in a hidden part of a photo with a plausible guess made by an image model."
+                >image inpainting</dfn
+              >, so the policy also sees whatever the Kinova would hide.</strong
+            >
+            A real robot would need Mirage&rsquo;s mask-and-inpaint step
+            <a href="#ref-mirage">[1]</a>, which this project does not test.
+          </p>
+
+          <h3>Timing</h3>
+          <p>
+            In these simulator assets, the Franka&rsquo;s gripper reaches 95%
+            closure in 2 control steps and the Kinova&rsquo;s in 23.
+            <strong
+              >Holding each policy action for 12 steps gives the slower gripper
+              time to close.</strong
+            >
+            The cost is pace: a Kinova episode may run 600&nbsp;s of simulation
+            where the Franka gets 50&nbsp;s for the same 750 policy actions.
+          </p>
+
+          <h3>Lift</h3>
+          <p>
+            Once the policy has held a close command for more than 24 control
+            steps, on a grasp that began with the banana touching neither the
+            bowl nor inside it, the adapter raises the commanded hand 15&nbsp;mm
+            over 24 steps and lowers it again when the policy opens.
+            <strong
+              >That eligibility check uses privileged simulator
+              information</strong
+            >: banana&ndash;bowl contact and the simulator&rsquo;s geometric
+            in-bowl test, both from the previous control step. A real Kinova
+            would need its own sensing for both. The lift is a fixed rule, not
+            learned; it was tuned on one development scene and tested once
+            before the freeze.
+          </p>
+          </details><details class="technical">
+            <summary>What the camera-swap checks showed</summary>
+            <p>A matched check held robot state fixed and swapped one input at a time.
+            Its predeclared tilt measure was negative. An exploratory analysis
+            instead found that changing the exterior image moved the 8-step
+            target by 19&ndash;116&nbsp;mm, compared with 4&ndash;12&nbsp;mm
+            repeat noise; changing the wrist image or mapped state stayed within
+            that range. With painting, the target discrepancy was 7.11&nbsp;mm,
+            against 6.38&nbsp;mm repeat noise and 74.38&nbsp;mm unpainted.
+            These checks motivated the intervention; they do not establish that
+            appearance explains every failure.</p>
+          </details></div></div></section>
+<section class="r3-view-guide"><div class="wrap-wide"><div class="col"><h2>Watch the adapter at work</h2><p>With the bridge, cross-painting and lift now in place, this is Robot B carrying out the task. The two views below show the same simulated Kinova run: the outside camera and the image supplied to the policy. The latter replaces the Kinova with a Franka; it does not change the physical robot.</p><p>This is the original policy, P0, on test layout 4003. Next, I compare all twelve test layouts on both arms.</p></div></div></section><section class="hero r3-hero-big" aria-label="Teaser video"><div class="r3-bleed"><figure>
+  <div class="media"><video
+                class="v-wide"
+                src="assets/media/hero_l4003.mp4"
+                poster="assets/media/hero_l4003.jpg"
+                data-loop
+                muted
+                loop
+                playsinline
+                preload="none"
+                width="1280"
+                height="328"
+                aria-label="Kinova arm picking up a banana and dropping it into a bowl, shown twice: the simulator camera, and the image the policy receives with a Franka painted in place of the Kinova."
+              ></video><video
+                class="v-stack"
+                src="assets/media/hero_l4003_stack.mp4"
+                poster="assets/media/hero_l4003_stack.jpg"
+                data-loop
+                muted
+                loop
+                playsinline
+                preload="none"
+                width="640"
+                height="656"
+                aria-label="Kinova arm picking up a banana and dropping it into a bowl, shown twice: the simulator camera above, and below the image the policy receives with a Franka painted in place of the Kinova."
+              ></video>
+    <div class="r3-panes" aria-hidden="true"><span class="r3-chip r3-real"><b>B</b><i>Robot B &middot; </i>The real robot: Kinova Gen3</span><span class="r3-chip r3-paint">What the policy sees: a painted Franka</span></div>
+  </div>
+  <figcaption>Left (top on a phone): simulator camera. Right (bottom): cross-painted policy input. P0 on Robot B, layout 4003, at 3&times; speed. The policy view refreshes when new actions are requested.</figcaption>
+</figure></div></section><div class="wrap-wide"><div class="col r3-pick-under"></div></div><section id="test"><div class="wrap-wide"><div class="col"><h2>The test: P0 on both robots</h2>
+<p>With the adapter frozen, I ran the original policy, P0, on 12 layouts it had never seen. A layout is one starting
+arrangement of the banana and bowl. The same 12 on Robot A and Robot B<span class="r3-lite">.</span></p>
+<div class="r3-lite"><p><strong>A win means a real release:</strong> the robot lets go on purpose, and the banana comes to rest in the bowl.<span class="r3-new r3-mk"> A scoring script, the scorer, judges every run by that rule.</span></p></div>
+<div class="numbers two"><div><b>7/12</b><span>Robot A, Franka</span></div><div><b>7/12</b><span>Robot B, Kinova via the adapter</span></div></div>
+<p class="r3-confirm"><span class="r3-tick" aria-hidden="true"></span><span>This confirms the first part of my hypothesis: through the fixed adapter, the Franka policy works on the Kinova.</span></p><div class="r3-lite"><p><strong>B matched A: 7 wins each!</strong> <span class="r3-new r3-mk">The adapter working was a great moment of relief. They didn&rsquo;t win on the same layouts, though: only three were wins for both.</span></p></div>
+<h3>Robot A&rsquo;s seven wins</h3>
+</div><div class="fig"><div class="gallery"><figure><div class="media"><span class="r3-chip" aria-hidden="true"><b>A</b><i>Robot A &middot; </i>Franka</span><video src="assets/media/a_win_l4004.mp4" poster="assets/media/a_win_l4004.jpg" data-loop muted loop playsinline preload="none" aria-label="Franka win on layout 4004"></video></div><figcaption><b>4004</b> &middot; win at 9.7&nbsp;s</figcaption></figure><figure><div class="media"><span class="r3-chip" aria-hidden="true"><b>A</b><i>Robot A &middot; </i>Franka</span><video src="assets/media/a_win_l4005.mp4" poster="assets/media/a_win_l4005.jpg" data-loop muted loop playsinline preload="none" aria-label="Franka win on layout 4005"></video></div><figcaption><b>4005</b> &middot; win at 10.5&nbsp;s</figcaption></figure><figure><div class="media"><span class="r3-chip" aria-hidden="true"><b>A</b><i>Robot A &middot; </i>Franka</span><video src="assets/media/a_win_l4006.mp4" poster="assets/media/a_win_l4006.jpg" data-loop muted loop playsinline preload="none" aria-label="Franka win on layout 4006"></video></div><figcaption><b>4006</b> &middot; win at 10.7&nbsp;s</figcaption></figure><figure><div class="media"><span class="r3-chip" aria-hidden="true"><b>A</b><i>Robot A &middot; </i>Franka</span><video src="assets/media/a_win_l4007.mp4" poster="assets/media/a_win_l4007.jpg" data-loop muted loop playsinline preload="none" aria-label="Franka win on layout 4007"></video></div><figcaption><b>4007</b> &middot; win at 9.9&nbsp;s</figcaption></figure><figure><div class="media"><span class="r3-chip" aria-hidden="true"><b>A</b><i>Robot A &middot; </i>Franka</span><video src="assets/media/a_win_l4008.mp4" poster="assets/media/a_win_l4008.jpg" data-loop muted loop playsinline preload="none" aria-label="Franka win on layout 4008"></video></div><figcaption><b>4008</b> &middot; win at 10.6&nbsp;s</figcaption></figure><figure><div class="media"><span class="r3-chip" aria-hidden="true"><b>A</b><i>Robot A &middot; </i>Franka</span><video src="assets/media/a_win_l4009.mp4" poster="assets/media/a_win_l4009.jpg" data-loop muted loop playsinline preload="none" aria-label="Franka win on layout 4009"></video></div><figcaption><b>4009</b> &middot; win at 10.1&nbsp;s</figcaption></figure><figure><div class="media"><span class="r3-chip" aria-hidden="true"><b>A</b><i>Robot A &middot; </i>Franka</span><video src="assets/media/a_win_l4010.mp4" poster="assets/media/a_win_l4010.jpg" data-loop muted loop playsinline preload="none" aria-label="Franka win on layout 4010"></video></div><figcaption><b>4010</b> &middot; win at 29.7&nbsp;s</figcaption></figure><p class="gallery-caption table-note">Robot A, the Franka the policy was trained for, from grasp to win in real time. It sees itself, so nothing is painted.</p></div></div><div class="col">
+<h3>Robot B&rsquo;s seven wins</h3>
+</div><div class="fig"><div class="gallery">
+            <figure>
+              <div class="media"><span class="r3-chip" aria-hidden="true"><b>B</b><i>Robot B &middot; </i>Kinova Gen3</span>
+                <video
+                  src="assets/media/b_win_l4000.mp4"
+                  poster="assets/media/b_win_l4000.jpg"
+                  data-loop
+                  muted
+                  loop
+                  playsinline
+                  preload="none"
+                  aria-label="Kinova win on layout 4000"
+                ></video>
+              </div>
+              <figcaption><b>4000</b> &middot; win at 85.2&nbsp;s</figcaption>
+            </figure>
+            <figure>
+              <div class="media"><span class="r3-chip" aria-hidden="true"><b>B</b><i>Robot B &middot; </i>Kinova Gen3</span>
+                <video
+                  src="assets/media/b_win_l4002.mp4"
+                  poster="assets/media/b_win_l4002.jpg"
+                  data-loop
+                  muted
+                  loop
+                  playsinline
+                  preload="none"
+                  aria-label="Kinova win on layout 4002"
+                ></video>
+              </div>
+              <figcaption><b>4002</b> &middot; win at 70.7&nbsp;s</figcaption>
+            </figure>
+            <figure>
+              <div class="media"><span class="r3-chip" aria-hidden="true"><b>B</b><i>Robot B &middot; </i>Kinova Gen3</span>
+                <video
+                  src="assets/media/b_win_l4003.mp4"
+                  poster="assets/media/b_win_l4003.jpg"
+                  data-loop
+                  muted
+                  loop
+                  playsinline
+                  preload="none"
+                  aria-label="Kinova win on layout 4003"
+                ></video>
+              </div>
+              <figcaption>
+                <b>4003</b> &middot; win at 78.1&nbsp;s<span class="r3-lite"></span>
+              </figcaption>
+            </figure>
+            <figure>
+              <div class="media"><span class="r3-chip" aria-hidden="true"><b>B</b><i>Robot B &middot; </i>Kinova Gen3</span>
+                <video
+                  src="assets/media/b_win_l4006.mp4"
+                  poster="assets/media/b_win_l4006.jpg"
+                  data-loop
+                  muted
+                  loop
+                  playsinline
+                  preload="none"
+                  aria-label="Kinova win on layout 4006"
+                ></video>
+              </div>
+              <figcaption>
+                <b>4006</b> &middot; win at 103.5&nbsp;s<span class="r3-lite"></span>
+              </figcaption>
+            </figure>
+            <figure>
+              <div class="media"><span class="r3-chip" aria-hidden="true"><b>B</b><i>Robot B &middot; </i>Kinova Gen3</span>
+                <video
+                  src="assets/media/b_win_l4008.mp4"
+                  poster="assets/media/b_win_l4008.jpg"
+                  data-loop
+                  muted
+                  loop
+                  playsinline
+                  preload="none"
+                  aria-label="Kinova win on layout 4008"
+                ></video>
+              </div>
+              <figcaption><b>4008</b> &middot; win at 365.2&nbsp;s</figcaption>
+            </figure>
+            <figure>
+              <div class="media"><span class="r3-chip" aria-hidden="true"><b>B</b><i>Robot B &middot; </i>Kinova Gen3</span>
+                <video
+                  src="assets/media/b_win_l4010.mp4"
+                  poster="assets/media/b_win_l4010.jpg"
+                  data-loop
+                  muted
+                  loop
+                  playsinline
+                  preload="none"
+                  aria-label="Kinova win on layout 4010"
+                ></video>
+              </div>
+              <figcaption><b>4010</b> &middot; win at 116.3&nbsp;s</figcaption>
+            </figure>
+            <figure>
+              <div class="media"><span class="r3-chip" aria-hidden="true"><b>B</b><i>Robot B &middot; </i>Kinova Gen3</span>
+                <video
+                  src="assets/media/b_win_l4011.mp4"
+                  poster="assets/media/b_win_l4011.jpg"
+                  data-loop
+                  muted
+                  loop
+                  playsinline
+                  preload="none"
+                  aria-label="Kinova win on layout 4011"
+                ></video>
+              </div>
+              <figcaption><b>4011</b> &middot; win at 108.4&nbsp;s</figcaption>
+            </figure>
+            <p class="gallery-caption table-note">Robot B through the adapter, from grasp to win at 6&times; speed: holding each action for 12 steps makes B much slower. The policy saw the painted image. <span class="r3-new r3-mk">In five of them it later picked the banana back up; the win counts the first time it came to rest.</span></p>
+          </div></div><div class="col">
+<div class="r3-new r3-mkb"><details class="technical"><summary>Scorer history and independent AI review</summary>
+          <p>
+            The rule was written after earlier traces had been seen. Its parent
+            rule, v5, agrees with all 21 earlier reviewed verdicts, against 17
+            of 21 for the older v4 gate;
+            <strong>that is consistency, not held-out accuracy</strong>. The
+            live v4 gate, which also ends each episode on success, is reported
+            beside it. v4 credits an open only when the banana is already inside
+            the bowl&rsquo;s volume, so it rejects drops from a few centimetres
+            above the rim.
+          </p>
+          <p>
+            Before fine-tuning and in checkpoint selection, every v5.1 pass and
+            every flagged fail went to an independent AI reviewer, a Claude
+            agent working from videos, frames and traces under declared rules.
+            It knew whether each episode was a scorer pass or a flagged fail.
+            After fine-tuning, Codex reviewers judged all 24 P1 runs from
+            sampled video frames and event traces, not blinded and not from
+            continuous playback.
+            <strong
+              >Their counts are reported next to the locked headline, never
+              pooled with it.</strong
+            >
+          </p>
+          </details><details class="technical"><summary>All the numbers: both result tables</summary>
+<h3>Before training (P0)</h3><div class="table-scroll">
+            <table class="results">
+              <thead>
+                <tr>
+                  <th scope="col">Robot, policy</th>
+                  <th scope="col">
+                    Locked headline<small>v5.1 first rest, Wilson 95%</small>
+                  </th>
+                  <th scope="col">AI reviewer</th>
+                  <th scope="col">Live v4 gate</th>
+                  <th scope="col">Safety aborts</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Franka, P0</th>
+                  <td class="num"><b>7/12</b><small>0.32&ndash;0.81</small></td>
+                  <td class="num">8/12</td>
+                  <td class="num">4/12</td>
+                  <td>&mdash;<small>no limit check</small></td>
+                </tr>
+                <tr>
+                  <th scope="row">Kinova via adapter, P0</th>
+                  <td class="num"><b>7/12</b><small>0.32&ndash;0.81</small></td>
+                  <td class="num">7/12</td>
+                  <td class="num">1/12</td>
+                  <td class="num">4</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+<h3>After training (P1)</h3><div class="table-scroll">
+            <table class="results">
+              <thead>
+                <tr>
+                  <th scope="col">Robot, policy</th>
+                  <th scope="col">
+                    Locked headline<small>v5.1 first rest, Wilson 95%</small>
+                  </th>
+                  <th scope="col">AI reviewer</th>
+                  <th scope="col">Live v4 gate</th>
+                  <th scope="col">Safety aborts</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Franka, P1</th>
+                  <td class="num">
+                    <b><span class="slot">2/12</span></b
+                    ><small><span class="slot">0.05–0.45</span></small>
+                  </td>
+                  <td class="num">
+                    <span class="slot">3/12</span>
+                  </td>
+                  <td class="num">
+                    <span class="slot">1/12</span>
+                  </td>
+                  <td>&mdash;<small>no limit check</small></td>
+                </tr>
+                <tr>
+                  <th scope="row">Kinova via adapter, P1</th>
+                  <td class="num">
+                    <b><span class="slot">0/12</span></b
+                    ><small><span class="slot">0.00–0.24</span></small>
+                  </td>
+                  <td class="num">
+                    <span class="slot">1/12</span>
+                  </td>
+                  <td class="num">
+                    <span class="slot">0/12</span>
+                  </td>
+                  <td><span class="slot">3</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+</details><details class="technical"><summary>Before-test scoring notes</summary>
+          <ul class="table-note notes">
+            <li>
+              <strong
+                >Equal counts on 12 layouts mean matched, not proven
+                equal.</strong
+              >
+              Read at the end of the episode instead of at the first rest, the
+              counts are 7/12 and 6/12: on Kinova layout 4010 the banana later
+              left the bowl.
+            </li>
+            <li>
+              The reviewer confirmed all 14 scorer wins and found one the scorer
+              missed: on Franka layout 4000 the banana&rsquo;s lower end kept
+              brushing the rim, so v5.1 never armed.
+            </li>
+            <li>
+              Live v4 is low on both robots for one reason: it rejects an open
+              made more than a short distance above the rim. Five of the six
+              Kinova wins without an abort released 2.4&ndash;4.0&nbsp;cm above
+              the rim; the same rule cost the Franka three wins.
+            </li>
+            <li>
+              The grasp sensors differ, one finger on the Franka and either of
+              two pads on the Kinova. Cross-robot stage rates lean toward the
+              Kinova. Within each robot, P0 and P1 go through the same
+              measurement pipeline; if P1 behaves differently, the
+              scorer&rsquo;s known blind spots could still bias the measured
+              change.
+            </li>
+            <li>
+              Median time to the opening command among winners, on the
+              policy&rsquo;s own clock: 8.53&nbsp;s on the Franka, 8.47&nbsp;s
+              on the Kinova (descriptive only).
+            </li>
+          </ul>
+          </details><details class="technical"><summary>Safety aborts and how they were counted</summary>
+          <h3>Safety aborts</h3>
+          <p>
+            Four of the Kinova&rsquo;s twelve episodes ended on a safety abort.
+            Three (4004, 4005, 4007) were failed IK solves in the
+            adapter&rsquo;s action map, all with one mechanism: joint 6, a wrist
+            joint, pinned at its lower bound of &minus;2.09&nbsp;rad with small
+            residuals. That is the solver stuck at a joint limit, not an
+            unreachable target. The fourth, 4006, left a soft joint limit after
+            it had already won.
+            <strong
+              >Aborts are task outcomes, scored on the saved partial trace and
+              kept in &Delta;B</strong
+            >, so 4006 counts as a win and the other three as fails. The Franka
+            has no target-limit check, so a target that ends a Kinova episode
+            would not end a Franka one. The completed P1 half had three IK
+            aborts (4000, 4010 and 4011), all retained as failures; the
+            consecutive-abort stop rule did not halt the batch.
+          </p>
+          </details></div></div></div></section>
+<section id="train" class="band"><div class="wrap-wide"><div class="col"><h2>Training P0 into P1</h2>
+<h3>Does fine-tuning on one robot carry over to another through a frozen adapter?</h3>
+<p><span class="r3-new r3-mk">Now the second part of my hypothesis.</span> If the policy learns more on Robot A, does Robot B get better too? B gave no training data,
+and the adapter stayed frozen.</p>
+<div class="r3-lite"><p>I ran P0 on 32 practice layouts, <span class="r3-new r3-mk">kept its 27 wins as training demos and fine-tuned it on them once, about 23 minutes of GPU time. Training saved four snapshots of the policy along the way, and the first warning came early: on 8 separate practice layouts, none of them beat P0. The best one became P1 anyway.</span> Then the same 12 test layouts.</p></div>
+<div class="r2-dots panel" role="img" aria-label="Wins on the 12 test layouts. Robot A: 7 before training, 2 after (4004 and 4008). Robot B: 7 before, none after.">
+  <p class="r2-dots-lead"><b>A kept 2 of its 7 wins. B kept none.</b></p>
+  <div class="r2-dots-group"><p class="r2-dots-robot"><b>Robot A</b> Franka</p><div class="r2-dotrow"><span class="r2-when">Before<small>P0</small></span><span class="r2-d"><i class="" title="4000"></i><i class="" title="4001"></i><i class="" title="4002"></i><i class="" title="4003"></i><i class="w" title="4004"></i><i class="w" title="4005"></i><i class="w" title="4006"></i><i class="w" title="4007"></i><i class="w" title="4008"></i><i class="w" title="4009"></i><i class="w" title="4010"></i><i class="" title="4011"></i></span><b>7</b></div><div class="r2-dotrow"><span class="r2-when">After<small>P1</small></span><span class="r2-d"><i class="" title="4000"></i><i class="" title="4001"></i><i class="" title="4002"></i><i class="" title="4003"></i><i class="w" title="4004"></i><i class="lost" title="4005"></i><i class="lost" title="4006"></i><i class="lost" title="4007"></i><i class="w" title="4008"></i><i class="lost" title="4009"></i><i class="lost" title="4010"></i><i class="" title="4011"></i></span><b class="is-loss">2</b></div></div>
+  <div class="r2-dots-group"><p class="r2-dots-robot"><b>Robot B</b> Kinova, via the adapter</p><div class="r2-dotrow"><span class="r2-when">Before<small>P0</small></span><span class="r2-d"><i class="w" title="4000"></i><i class="" title="4001"></i><i class="w" title="4002"></i><i class="w" title="4003"></i><i class="" title="4004"></i><i class="" title="4005"></i><i class="w" title="4006"></i><i class="" title="4007"></i><i class="w" title="4008"></i><i class="" title="4009"></i><i class="w" title="4010"></i><i class="w" title="4011"></i></span><b>7</b></div><div class="r2-dotrow"><span class="r2-when">After<small>P1</small></span><span class="r2-d"><i class="lost" title="4000"></i><i class="" title="4001"></i><i class="lost" title="4002"></i><i class="lost" title="4003"></i><i class="" title="4004"></i><i class="" title="4005"></i><i class="lost" title="4006"></i><i class="" title="4007"></i><i class="lost" title="4008"></i><i class="" title="4009"></i><i class="lost" title="4010"></i><i class="lost" title="4011"></i></span><b class="is-loss">0</b></div></div>
+  <p class="r2-key"><span><i class="w"></i>win</span><span><i class="lost"></i>a win lost after training</span><span><i></i>no win</span></p>
+</div>
+<div class="r3-lite"><p class="table-note">Each dot is one test layout, 4000 to 4011, in the same order on every row.</p></div>
+<div class="r3-lite"><p>So did B get better? <strong>No. P1 got worse on both robots,</strong> so there was no improvement on A to carry over to B.</p></div>
+<details class="technical">
+            <summary>Training settings and checkpoint selection</summary>
+          <p>
+            P1 is P0 fine-tuned on 27 Franka wins approved by the reviewer (it
+            kept 5 other scorer wins out of training), 6,367 frames from 32
+            practice layouts over two policy seeds. A layout won under both
+            seeds appears twice, and a winning episode keeps its failed
+            sub-attempts. Fine-tuning ran 2,000 steps at batch 32 and learning
+            rate 1e-4 on the projector and diffusion head. The locked selection
+            rule ran P0 and the checkpoints saved at 500, 1,000, 1,500 and 2,000
+            steps on 8 validation layouts (3000&ndash;3007). After the
+            reviewer&rsquo;s adjudication they won 6, 0, 1, 3 and 3 of 8.
+            <strong>No fine-tuned checkpoint beat P0.</strong> The rule takes
+            the most wins, ties to the earlier checkpoint, so P1 is checkpoint
+            1,500, labelled &ldquo;P1, no A-validation improvement&rdquo;: the
+            selected fine-tuned checkpoint, not an improved policy. Its 3 of 8
+            is
+            <dfn
+              title="These eight layouts helped choose P1 from four checkpoints. Its score on them is therefore not an independent test of performance on new layouts."
+              >selection-biased</dfn
+            >. The after test completed; all 24 P1 episodes and two P0 canaries
+            were copied and verified locally.
+          </p>
+          </details><details class="technical"><summary>Paired statistics, repeat checks and scorer replay</summary>
+          <div class="table-scroll">
+            <table class="compare">
+              <thead>
+                <tr>
+                  <th scope="col">Pre-registered comparison</th>
+                  <th scope="col">
+                    &Delta;, layouts<small>P1 &minus; P0</small>
+                  </th>
+                  <th scope="col">
+                    Discordant<small>P1 only / P0 only</small>
+                  </th>
+                  <th scope="col">Exact McNemar p</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">&Delta;A, Franka</th>
+                  <td class="num">
+                    <b><span class="slot">−5</span></b>
+                  </td>
+                  <td class="num">
+                    <span class="slot">0</span> /
+                    <span class="slot">5</span>
+                  </td>
+                  <td class="num"><span class="slot">0.0625</span></td>
+                </tr>
+                <tr>
+                  <th scope="row">&Delta;B, Kinova</th>
+                  <td class="num">
+                    <b><span class="slot">−7</span></b>
+                  </td>
+                  <td class="num">
+                    <span class="slot">0</span> /
+                    <span class="slot">7</span>
+                  </td>
+                  <td class="num"><span class="slot">0.01562</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="table-note">
+            Two-sided exact McNemar over the paired layouts. P0 won 7 of 12 on
+            each robot, so P1 can gain at most 5 layouts; 5 to 0 gives
+            p&nbsp;=&nbsp;0.0625, and only a decline can reach
+            p&nbsp;&lt;&nbsp;0.05. The after test ran in a separate session from
+            the before test; checks included full pins and a rerun of Franka P0
+            on layouts 4000&ndash;4001, which gave
+            <span class="slot"
+              >0/2 v5.1 wins, matching the before half layout by layout</span
+            >. All 12 pairs per robot were scored. The canary trajectories
+            differed, so matching failure outcomes do not rule out drift. A
+            later CPU replay of the locked scorer over all 48 saved before and
+            after episodes reproduced every verdict, with matching scorer and
+            trace hashes, so the automated grading was the same before and
+            after.
+          </p>
+          </details></div></div></section>
+<section id="worse"><div class="wrap-wide"><div class="col"><h2>Why it got worse</h2>
+<p><strong>P1 still got the banana to the bowl. What it lost was letting go on purpose.</strong></p>
+<div class="r2-q panel">
+  <div><h4>Did P1 still get the banana to the bowl?</h4><p class="r2-who">Robot B, runs out of 12</p>
+    <p class="r2-qn"><span>8<small>P0</small></span><i aria-hidden="true">&rarr;</i><span>8<small>P1</small></span></p>
+    <p><b>Yes, just as often.</b> Resting on the bowl for 1&nbsp;s or more, rim included, released or not.</p></div>
+  <div><h4>Did it drop the banana mid-carry?</h4><p class="r2-who">Robot A, runs out of 12</p>
+    <p class="r2-qn"><span>3<small>P0</small></span><i aria-hidden="true">&rarr;</i><span class="is-loss">6<small>P1</small></span></p>
+    <p><b>Twice as often.</b> A lifted banana slipped out of the closed gripper.</p></div>
+  <div><h4>Did training practise letting go?</h4><p class="r2-who">The 27 training demos</p>
+    <p class="r2-qn"><span class="is-loss">2<small>of 27</small></span></p>
+    <p><b>Barely.</b> In only 2 of the 27 demos did the gripper opening ever land in the 8 actions the robot actually runs.</p></div>
+</div>
+<h3>Why would training break letting go?</h3>
+<div class="r2-window" role="img" aria-label="One training sample: 40 planned actions. The robot runs only the first 8, then plans again."><div class="r2-cells"><i class=run></i><i class=run></i><i class=run></i><i class=run></i><i class=run></i><i class=run></i><i class=run></i><i class=run></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><p class="r2-window-key"><span class="run">the 8 the robot runs</span><span>the other 32: only the plan</span></p></div>
+<p>The policy plans 40 actions ahead, but the robot only runs the first 8, then asks again. So those first 8 are what
+training most needs to get right. <span class="r3-new r3-mk">Training learns from 40-action slices of each recording, and my data loader only cut complete slices. So no slice could start in the last 39 actions of a recording, which is right where the release happens. In 25 of the 27 demos, the gripper opening never landed in the first 8 actions of any slice.</span></p>
+<p><strong>My hypothesis: the sampling gap may have contributed to P1&rsquo;s release failures.</strong> A candidate sampling change brings
+that coverage to 27 of 27 demos, but I ran out of time and credit before I could retrain with it. The cause is not
+established, and this is not a proven repair.</p></div></div></section>
+<section id="abba" class="band"><div class="wrap-wide"><div class="col"></div><div class="col"><div class="r2-abba-head"><h2 class="r2-abba-title">ABBA <span class="r2-emoji" role="img" aria-label="banana">&#127820;</span> Alpha Bravo, Bananas Away</h2></div></div><div class="col"></div><div class="col">
+<p>By this point I was down to about $2 of GPU credit, with the deadline close. I topped up $3: enough for one more Kinova
+run, not another training round.</p>
+<p><strong>Then I noticed something.</strong> Rewatching the last P1 clips, I saw Robot B carry the banana over the bowl
+on layout 4003 and just hover there, ready to let go, for almost a minute. It never let go. I checked more footage myself
+to be sure.</p>
+</div><div class="fig"><figure class="r2-hover">
+  <div class="r2-hover-pair"><span class="r3-chip" aria-hidden="true"><b>B</b><i>Robot B &middot; </i>Kinova Gen3</span><img src="assets/media/p1_hover_ext_l4003.jpg" width="480" height="320" alt="P1 on Robot B before ABBA, layout 4003: the banana held over the bowl" loading="lazy" decoding="async"><img src="assets/media/p1_hover_wrist_l4003.jpg" width="640" height="336" alt="The same moment from the wrist camera: the banana right above the bowl" loading="lazy" decoding="async"></div>
+  <figcaption class="table-note"><span class="r3-new r3-mk">P1 on Robot B, layout 4003, on its own.</span> The banana sat right over the bowl for about
+  53&nbsp;seconds. In the end it slipped; it was never let go on purpose.</figcaption>
+</figure></div><div class="col">
+<p>So carrying wasn&rsquo;t the problem. Letting go was. What if Nemotron got the right camera views, at the right moment,
+and the power to make that one call instead of the policy?</p>
+<p>That&rsquo;s ABBA. Nemotron 3.5 Super VL, running on Nebius Token Factory, watched Robot B&rsquo;s outside and wrist
+cameras while the gripper was closed. It said WAIT 27 times. Then it said READY, and the arm held still. It looked again
+at fresh views, confirmed, and the gripper opened.</p>
+<p class="callout"><strong>Nemotron never drives the robot. P1 does all the moving, the whole run. Nemotron overrides it at one moment only, the release:</strong> when it says READY the controller freezes the arm, and when it confirms, the controller opens the gripper and keeps it open, whatever P1 wants to do.</p>
+</div><div class="fig"><figure>
+            <div class="media"><span class="r3-chip" aria-hidden="true"><b>B</b><i>Robot B &middot; </i>Kinova Gen3</span>
+              <video
+                class="v-wide"
+                src="assets/media/abba_l4003_release.mp4"
+                poster="assets/media/abba_l4003_release.jpg"
+                data-loop
+                muted
+                loop
+                playsinline
+                preload="none"
+                width="1280"
+                height="220"
+                aria-label="One assisted Kinova run, three views side by side: the simulator's exterior camera, the painted image the policy receives, and the wrist camera. The policy carries the banana over the bowl, the arm holds still while Nemotron checks again, then the gripper opens and the banana drops into the bowl."
+              ></video>
+              <video
+                class="v-stack"
+                src="assets/media/abba_l4003_release_stack.mp4"
+                poster="assets/media/abba_l4003_release_stack.jpg"
+                data-loop
+                muted
+                loop
+                playsinline
+                preload="none"
+                width="640"
+                height="990"
+                aria-label="One assisted Kinova run, three views stacked: the simulator's exterior camera at the top, the painted image the policy receives in the middle, and the wrist camera at the bottom. The policy carries the banana over the bowl, the arm holds still while Nemotron checks again, then the gripper opens and the banana drops into the bowl."
+              ></video>
+            </div>
+            <figcaption><strong>ABBA on layout 4003, one assisted run.</strong> P1 drives Robot B through the frozen adapter. <span class="v-wide-text">Left to right</span><span class="v-stack-text">Top to bottom</span>: the simulator camera, the painted image P1 gets, and the wrist camera. Nemotron saw the first and the last. Pick-up 4&times;, checks 3&times;, the hold slowed &times;10, the release at 1&times;. <span class="r3-new r3-mk">The labels burned into the footage are the run&rsquo;s own: the painted pane always says &ldquo;P0&rdquo;, but the policy here was P1.</span></figcaption>
+          </figure></div><div class="col">
+<div class="r2-calls panel" role="img" aria-label="The 29 Nemotron calls: 27 WAIT, then READY twice, then the release"><div class="r2-calls-row"><i class="wait"></i><i class="wait"></i><i class="wait"></i><i class="wait"></i><i class="wait"></i><i class="wait"></i><i class="wait"></i><i class="wait"></i><i class="wait"></i><i class="wait"></i><i class="wait"></i><i class="wait"></i><i class="wait"></i><i class="wait"></i><i class="wait"></i><i class="wait"></i><i class="wait"></i><i class="wait"></i><i class="wait"></i><i class="wait"></i><i class="wait"></i><i class="wait"></i><i class="wait"></i><i class="wait"></i><i class="wait"></i><i class="wait"></i><i class="wait"></i><i class="ready"></i><i class="ready"></i><b class="open">Release</b></div><ul class="r2-calls-key"><li><i class="wait"></i><span><b>WAIT &times; 27</b> <span class="r3-new r3-mk">one look every 12 control steps.</span> P1 keeps carrying.</span></li><li><i class="ready"></i><span><b>READY</b> <span class="r3-new r3-mk">The controller holds the arm still.</span></span></li><li><i class="ready"></i><span><b>READY again</b> <span class="r3-new r3-mk">from fresh camera views.</span></span></li><li><i class="open"></i><span><b>Release</b> <span class="r3-new r3-mk">The gripper opens and stays open. A few seconds later the banana is at rest on the bowl, and the same scorer as before records a pass.</span></span></li></ul></div>
+<p class="abba-result">The earlier unassisted B/P1 run on layout 4003 reached bowl support through a slip and failed the controlled-release criterion. In the separate ABBA run, Nemotron triggered a commanded release that passed the unchanged scorer. This demonstrates the assisted-release mechanism once; it does not establish a repeatable improvement or isolate Nemotron&rsquo;s contribution from the controller&rsquo;s hold and latched-open behavior.</p>
+<p><span class="r3-new r3-mk"><strong>When I saw the footage that it worked, I was super stoked.</strong></span> 29 Nemotron calls, $0.0223 in total.</p>
+<p><span class="r3-new r3-mk">I wish I&rsquo;d had time for a sturdier way to tell when the banana is over the bowl, like a QR code on the bowl, or depth sensing.</span> I&rsquo;d brought that up with Dhruv during my Seoul presentation, and a depth version was built and tested locally, but there was no credit left to run it, and truly no time to get it to a level I&rsquo;d be happy with.</p>
+<p class="table-note">Layout 4003 was picked, not drawn: it was the only P1 Kinova run with a long, centred carry over the bowl.</p>
+<details class="technical">
+            <summary>Run timing, vision checks, evidence and limitations</summary>
+          <p>
+            <strong>How it ran.</strong> The Kinova ran
+            P1 through the unchanged painted adapter on layout 4003, policy seed
+            0, for 3,600 controls (240 simulated seconds). While the gripper was
+            closed, Nemotron looked at the Kinova&rsquo;s real exterior camera
+            and its wrist camera; the simulation paused for each call, and P1
+            kept acting between checks. Counting the runner&rsquo;s ticks from
+            0, it said WAIT 27 times, every 12 ticks from the first gripper
+            close at tick 672 to tick 984. At tick 996 it said READY and the
+            controller held the arm. At tick 1005 it confirmed READY from fresh
+            views, and the open command executed at control 1006; the controller
+            kept the gripper open from then on. The 29 calls cost $0.0223 from
+            returned token counts, with 56.5&nbsp;s of model wait.
+          </p>
+          <p>
+            The unchanged v5.1 scorer, the rule behind every result above,
+            scores a PASS at control 1071, with the banana still on the bowl at
+            the end. At the open, the banana&rsquo;s root was 4.98&nbsp;cm from
+            the bowl centre, measured horizontally, and its centre 10.5&nbsp;cm
+            above the bowl top; Nemotron never saw these evaluation-only
+            numbers. The runner&rsquo;s older live v4 checker reported no
+            success: it ruled the open ineligible. v5.1 stays the primary rule
+            because the before and after results were scored with it.
+          </p>
+          <p>
+            <strong>Why a vision check first.</strong> Instead of the intent demo&rsquo;s robot run <span class="r3-new r3-mk">(see &ldquo;Before ABBA&rdquo;, below)</span>, I proposed DROP: a
+            Nemotron vision model watching P1 carry the banana on the Kinova and
+            deciding when to let go. The vision model, Nemotron 3.5 Super VL,
+            had named the banana and the bowl in 12 of 12 start frames, an easy
+            test with only two objects on the table. On saved frames from the P1
+            Kinova runs, it passed a small screen of held, approaching and
+            already-resting cases after two failed prompt rounds, but near the
+            rim it still said &ldquo;ready to release&rdquo; in 4 of 4 cases
+            with the banana 5&ndash;8&nbsp;cm off the bowl&rsquo;s centre and 2
+            of 4 at 8&ndash;12&nbsp;cm (69 calls, $0.0522). That was not
+            selective enough to trust with the gripper on its own.
+          </p>
+          <ul class="plain">
+            <li>
+              <strong>One assisted run on one selected layout.</strong> It is
+              not a success rate, not a controlled or paired comparison, and not
+              a repair of training; the results above stand.
+            </li>
+            <li>
+              <strong>Picked, not drawn.</strong> 4003 was the only P1 Kinova
+              layout with a long, centred carry over the bowl in the after test.
+              That earlier run is not a matched pair: the intervention changes
+              everything after the hold.
+            </li>
+            <li>
+              <strong>&ldquo;Central&rdquo; is not a measurement.</strong>
+              Nemotron called the banana central; it was about 5&nbsp;cm off.
+            </li>
+            <li>
+              <strong>The controller did part of the work.</strong> The hold and
+              the latched open are controller behaviour around the model&rsquo;s
+              decisions.
+            </li>
+            <li>
+              <strong>What P1 alone would have done is unknown.</strong> After
+              the forced open, P1&rsquo;s own gripper command also turned to open from control 1096, after 90 controls of the latched open; why it switched isn&rsquo;t known.
+            </li>
+          </ul>
+          <p>
+            Before launch, the package had 43 CPU tests and an implementer review,
+            but no independent review of the final runner. Afterward, an independent
+            AI review re-hashed all 298 copied evidence files, reproduced the frozen
+            score and checked the cost ledger. The RGB-D capture and intent-control
+            robot experiments never ran. Across all Nemotron experiments, 439 calls
+            totalled $0.1441 at prices applied to returned token counts; this is not
+            a provider billing receipt.
+          </p>
+          </details><details class="technical"><summary>Before ABBA: what else I tried with Nemotron</summary>
+          <p>
+            Nemotron&rsquo;s job here is to turn a plain request into a
+            structured task spec a program can check. NVIDIA Nemotron 3.5
+            Lightning (<code>nvidia/Nemotron-3_5-Lightning</code>) on Nebius
+            Token Factory takes a request such as &ldquo;put the fruit
+            away&rdquo; and returns the object and the target, named from the
+            scene&rsquo;s own objects, where the object should end up, and the
+            conditions a success has to meet, such as whether the gripper must
+            be opened on purpose and whether the bowl&rsquo;s rim counts.
+          </p>
+          <p>
+            <strong>The parsing ran; the robot run did not.</strong> The spec
+            also carries the one sentence the robot&rsquo;s policy should get
+            and whether this robot should try at all, and a fixed local rule has
+            to agree before anything moves. Each request was asked three times,
+            and the robot would only get an answer given every time. With my
+            first prompt, Nemotron declined &ldquo;put the fruit away&rdquo; as
+            naming an object not in the scene, refused to move the bowl as
+            expected, and its three repeats split on &ldquo;put the banana
+            beside the bowl, on its left&rdquo;. A second prompt, written after
+            seeing those answers and disclosed as such, gave the same answer on
+            all three repeats of all three requests. The planned run of the
+            unchanged policy (P0) on the Franka with those specs was never
+            performed; 87 offline tests are all the checking it got.
+          </p>
+          <p>
+            An earlier version of the compile step, the intent contract, was
+            tested on its own: 11 instructions, three runs each, from
+            RoboLab&rsquo;s own wording and paraphrases to <span class="r3-new r3-mk">five adversarial ones</span>. On the adversarial five, all 42 field checks
+            matched a faithful reading: &ldquo;the apple&rdquo; came back as not
+            in the scene, &ldquo;don&rsquo;t let go of it&rdquo; turned off the
+            release requirement, and &ldquo;the edge of the bowl&rdquo; became
+            the rim.
+            <strong
+              >It also exposed a real gap: it read &ldquo;in the bowl&rdquo;
+              literally, so the rim didn&rsquo;t count in any of the 18 runs on
+              the six ordinary instructions,</strong
+            >
+            while the project&rsquo;s win rule counts it.
+          </p>
+          <p>
+            <strong>Is a bigger model better here? Not on this test.</strong> I sent the same 11 instructions, five of them traps
+            like &ldquo;put the banana in the bowl but don&rsquo;t let go of
+            it&rdquo;, three times each to four Nemotron models on Token
+            Factory, with the rule for picking a winner written down before the
+            first call. Lightning, Super (120B) and Ultra (550B) got every trap
+            right and gave the same answer on every repeat; Nano ignored
+            &ldquo;don&rsquo;t let go&rdquo; all three times. On a tie the
+            cheapest wins, so Lightning stays: 33 calls for a fifth of a cent.
+            Five traps can&rsquo;t tell the top three apart, so this
+            doesn&rsquo;t show the bigger models are no better on harder
+            requests.
+          </p>
+          <p>
+            I also tried using Nemotron to grade runs from their text logs; on
+            24 runs it did no better than always guessing &ldquo;success&rdquo;,
+            so the locked scorer and an independent reviewer do the grading. The
+            178 Nemotron calls before the comparison cost $0.02, per the Token
+            Factory usage page.
+          </p>
+
+          <p>
+            Nemotron&rsquo;s second job, deciding when the Kinova lets go, did
+            <span class="r3-new r3-mk">reach the robot: that&rsquo;s ABBA, above.</span>
+          </p>
+          </details>
+</div></div></section>
+<section id="process"><div class="wrap-wide"><div class="col"><h2>The experiment at a glance</h2></div><ol class="r2-film r3-steps" aria-label="What happened, in order"><li><figure><span class="r3-chip r3-paint" aria-hidden="true">What the policy sees</span><img src="assets/media/adapter_sees_franka.jpg" width="440" height="328" alt="What the policy sees: a Franka painted where the Kinova is" loading="lazy" decoding="async"></figure><b>Build the adapter</b><span>Rules that translate between the policy and Robot B, <span class="r3-new r3-mk">plus the painted Franka from the video.</span></span></li><li><figure><span class="r3-chip" aria-hidden="true"><b>B</b><i>Robot B &middot; </i>Kinova Gen3</span><img src="assets/media/b_win_l4003.jpg" width="400" height="224" alt="Robot B, the Kinova, winning on one of the twelve" loading="lazy" decoding="async"></figure><b>Test it on both arms</b><span>Twelve setups the policy had never seen, the same on both arms. It wins <b>7 of 12</b> on each.</span><em class="r3-out r3-yes">First part: confirmed</em></li><li><figure><span class="r3-chip" aria-hidden="true"><b>B</b><i>Robot B &middot; </i>Kinova Gen3</span><img src="assets/media/p1_hover_wrist_l4003.jpg" width="640" height="336" alt="Robot B's wrist camera after the extra training: the banana held over the bowl, never let go" loading="lazy" decoding="async"></figure><b>Train it more on Robot A</b><span>I trained the policy on 27 of its own wins on Robot A. Both arms got worse: A won <b>2 of 12</b>, B <b>none</b>. B often still carried the banana to the bowl, but none of its twelve runs passed the locked controlled-release score.</span><em class="r3-out r3-no">Second part: not confirmed</em></li><li><figure><span class="r3-chip" aria-hidden="true"><b>B</b><i>Robot B &middot; </i>Kinova Gen3</span><img src="assets/media/abba_wrist_open_l4003.jpg" width="380" height="194" alt="Robot B's wrist camera: gripper open, banana in the bowl" loading="lazy" decoding="async"></figure><b>Alpha Bravo, Bananas Away</b><span>Out of credits and time, I let a language model, Nemotron, make one decision: when to let go. <b>It worked, once!</b></span></li></ol></div></section><section id="limits"><div class="wrap-wide"><div class="col"><h2>Limits</h2>
+<div class="r3-lite"><p><strong>This is one small experiment.</strong> Everything ran in simulation: 12 test layouts per robot, one training run, one ABBA run. Painting and the lift use simulator information a real robot wouldn&rsquo;t have. So it doesn&rsquo;t show the adapter working on a real robot, that fine-tuning can&rsquo;t help, or that ABBA works every time.</p></div>
+<p>With more time, or more Nebius credits, I&rsquo;d have loved to explore this further and come back with results you
+can actually rely on.</p>
+<details class="technical"><summary>Full limitations and measurement caveats</summary>
+          <ul class="plain">
+            <li>
+              <strong>Simulation only.</strong> I didn&rsquo;t have access to a
+              physical robot arm <span class="r3-new r3-mk">(see <a href="#next">What I&rsquo;d do next</a>)</span>, so
+              everything here runs in simulation. The Kinova
+              is a separately simulated 7-joint arm with its own kinematics and
+              gripper drive, not a re-skinned Franka, but RoboLab&rsquo;s model
+              is functional rather than a calibrated twin.
+            </li>
+            <li>
+              <strong
+                >The adapter is fixed and frozen; nothing in it is
+                learned.</strong
+              >
+              Its three parts are a kinematic bridge, exterior cross-painting
+              and a 15&nbsp;mm lift. Two of them use privileged simulator
+              information: painting renders from simulator state, including what
+              the Kinova occludes, and the lift&rsquo;s eligibility check reads
+              banana&ndash;bowl contact and the simulator&rsquo;s geometric
+              in-bowl test. The live v4 gate that ends episodes on both robots
+              also reads simulator object and contact state; it stops episodes
+              but does not steer them. The wrist camera was remounted to match
+              the Franka&rsquo;s.
+            </li>
+            <li>
+              <strong>Twelve layouts give wide intervals,</strong>
+              0.32&ndash;0.81 for 7/12. Equal counts are a match, not proof of
+              equality.
+            </li>
+            <li>
+              <strong>The grasp sensors differ</strong> between the robots,
+              which biases cross-robot stage rates toward the Kinova. Within
+              each robot, P0 and P1 use the same measurement pipeline, but if P1
+              behaves differently, the scorer&rsquo;s known blind spots could
+              still bias the measured change. One example: the Kinova&rsquo;s
+              two pads stay in contact through a set-down, so a set-down can
+              reach a scorable open. None of the seven Kinova P0 wins was a
+              set-down; if P1 sets down more often, &Delta;B could count wins
+              the Franka&rsquo;s sensor would not.
+            </li>
+            <li>
+              <strong>AI review is supplementary, not human adjudication.</strong>
+              Reviewers were not blinded. Before-test review covered scorer passes
+              and flagged failures; after-test review covered all 24 P1 runs using
+              sampled frames and event traces. Disagreements are reported separately.
+            </li>
+            <li>
+              <strong>One training run and one policy seed per test layout.</strong>
+              These results describe this experiment, not fine-tuning in general.
+              The <a href="#worse">sampling issue</a> is an untested explanation,
+              and repeated trajectories differed even when outcomes matched.
+            </li>
+            <li>
+              <strong>Rules shaped by earlier data.</strong> The win rule was
+              written after earlier traces had been seen; the 15&nbsp;mm lift
+              was tuned on one scene; the rule that a drop counts was formalised
+              after the one lift run had been seen. A second practice pass at
+              policy seed 1 was made unconditional after the first pass&rsquo;s
+              win count was known, and is logged as a deviation. The test
+              layouts were untouched by all of it.
+            </li>
+            <li>
+              <strong>Scorer noise.</strong> On the Franka, the banana&rsquo;s
+              reported angular speed at rest sits near the scorer&rsquo;s
+              0.3&nbsp;rad/s stillness limit, which can delay or block a win;
+              the Kinova&rsquo;s floor has not been measured. P0 and P1 on one
+              robot go through the same check, but if P1&rsquo;s rests differ,
+              the noise could still shift &Delta;, and absolute win rates may be
+              undercounted. An exploratory pose-based variant, declared 12
+              minutes after the before half started and before any outcome was
+              inspected, matched the headline on it.
+            </li>
+          </ul>
+          </details></div></div></section>
+<section id="next"><div class="wrap-wide"><div class="col"><h2>What I&rsquo;d do next</h2>
+<p><strong>Honestly? Start again from scratch, with everything I learned.</strong> I figured this out as I went, and that
+wasn&rsquo;t efficient or accurate.</p>
+<p>Two things pushed it that way. <strong>Time and money:</strong> with the deadline close and the credits running out,
+there was never room to stop and redo things properly. <strong>My agents:</strong> <span class="r3-new r3-mk">Claude and Codex, the AI coding tools I worked with. To make the deadline, they did most of</span>
+the hands-on work in the second half, and while I directed them at every step, I don&rsquo;t know the ins and outs the
+way I&rsquo;d like to.</p>
+<p>For real research I&rsquo;d do much more of it myself: dig into the adapter and other adapter methods, understand every
+piece, and solve the problem the way I think it should be solved. The open threads from this round come with me:
+<span class="r3-new r3-mk">test the proposed training-data sampling repair</span>, and repeat ABBA across many layouts.</p><p class="r3-new"><span class="r3-mk">There was a bigger plan too, and it never got started. We ran out of resources and time. The idea was to keep P1 fixed and train one shared adapter, a learned one this time, on Robot B and three more arms, C, D and E, then test it on three arms it never practised on, F, G and H. Does an adapter learn something that carries over to robots it has never seen?</span></p>
+<p>It stays in simulation for now. I asked about my university&rsquo;s Kinova arms, the exact model I&rsquo;d need, but
+they&rsquo;re booked for coursework while the course runs.</p></div></div></section><div class="wrap-wide r3-pickband"><div class="col"></div></div><section id="notes" class="band notes-side">
+  <div class="wrap-wide"><div class="notes-grid">
+    <div class="notes-intro"><h2 class="r3-notes-h">What I learned</h2>
+<p>This was my first hands-on project in machine learning and robotics. I started on 4 October with this notebook, and
+page one was a list of &ldquo;What is&hellip;?&rdquo; questions. I did the setup myself, step by step, until the
+commands and ideas made sense.</p></div>
+    <div class="notes-book">
+        <div class="steno-wrap">
+          <div class="steno" hidden>
+            <div
+              class="steno-book"
+              tabindex="0"
+              role="region"
+              aria-roledescription="notebook"
+              aria-label="My study notebook"
+              aria-describedby="steno-help"
+            >
+              <div class="steno-pad"></div>
+            </div>
+            <p id="steno-help" hidden>Arrow keys turn the pages.</p>
+            <div class="steno-controls">
+              <button
+                type="button"
+                class="steno-prev"
+                aria-label="Previous page"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M15 5l-7 7 7 7" />
+                </svg>
+              </button>
+              <span class="steno-count" aria-hidden="true"></span>
+              <button type="button" class="steno-next" aria-label="Next page">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
+            <button
+              type="button"
+              class="steno-read"
+              aria-expanded="false"
+              aria-controls="steno-text"
+            >
+              Read this page
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </button>
+            <div class="steno-text" id="steno-text" hidden>
+              <p class="steno-text-note">
+                Transcribed by Claude from my handwriting; may contain errors.
+              </p>
+              <div class="steno-text-body"></div>
+            </div>
+            <p class="steno-status" aria-live="polite"></p>
+          </div>
+        </div>
+    </div>
+    <div class="notes-learned"><h3 class="learned-title">What I learned</h3>
+<p>My biggest lesson was how much research and planning goes into robot learning before training even starts. This project made me want to pursue a career in robotics and machine learning. I&rsquo;d love the opportunity to keep working on this problem.</p>
+<p>The &ldquo;What is&hellip;?&rdquo; questions on page one, I understand better now. But I didn&rsquo;t know yet what
+there <em>was</em> to learn. Roughly, it turned out to be this:</p>
+<dl class="learned"><dt>Cloud and infrastructure</dt><dd>Setting up a VM and GPU storage on Nebius, security groups, SSH and what&rsquo;s under it (ed25519 keys, sha256 fingerprints, TOFU), CIDR, tenants and projects, and a lot more computing and networking in general.</dd><dt>How robots learn</dt><dd>What a neural network is and how it works. A policy vs a neural network vs an actor. Five kinds of policy, a neural network being one of them. PPO, the actor and critic, and the environment actually pulling it off. Training vs play, observation groups and corruption, rsl-rl.</dd><dt>Simulation</dt><dd>Linux commands, Isaac Sim and Isaac Lab, joint stiffness, damping, velocity and effort limits, and how my whole project fits together: the Python environment, the Isaac Lab source and my own files.</dd><dt>The one this project is about</dt><dd>A fixed adapter vs a learned one.</dd></dl>
+<p>The first policy I trained was far too simple: move the hand to a target, no banana, no grasp. It proved the setup worked. On 21 October I switched to the banana-and-bowl task and GR00T N1.7.</p>
+<p class="notes-end"><strong>My notes stop around 21 October.</strong> As the deadline got closer, I moved from doing every setup step myself to directing Claude and Codex, watching the results and deciding what to try next.</p></div>
+  </div></div>
+</section><section id="remember"><div class="wrap-wide"><div class="col"><h2>What to remember</h2><ul class="r3-remember panel">
+  <li><strong>A fixed adapter was enough to start.</strong> <span class="r3-new r3-mk">Rules and a painted-in Franka</span> let a Franka
+    policy drive a Kinova: 7 of 12 on both arms, with no Kinova training.</li>
+  <li><strong>The painting mattered.</strong> With the bridge alone, the policy steered the Kinova away from the banana.
+    Once it saw a Franka, it carried the banana to the bowl, 3 of 3 in practice.</li>
+  <li><strong>More training made it worse.</strong> <span class="r3-new r3-mk">Fine-tuning on 27 Franka wins took Robot A</span> from 7 to 2 and Robot B from 7 to 0.
+    The audit found a possible sampling gap around letting go; it has not been proven to explain the decline.</li>
+  <li><strong>A language model can patch one decision.</strong> Nemotron timed the release once, for $0.0223.</li>
+</ul></div></div></section>
+<section id="credits"><div class="wrap"><h2>References and credits</h2>
+<ol class="refs">
+            <li id="ref-mirage">
+              <span class="tag">[1]</span>L. Y. Chen, K. Hari, K. Dharmarajan,
+              C. Xu, Q. Vuong, K. Goldberg.
+              <a href="https://arxiv.org/abs/2402.19249"
+                >Mirage: Cross-Embodiment Zero-Shot Policy Transfer with
+                Cross-Painting</a
+              >. Robotics: Science and Systems (RSS), 2024. arXiv:2402.19249.
+              <a href="https://robot-mirage.github.io/">Project page</a>.
+            </li>
+            <li id="ref-groot">
+              <span class="tag">[2]</span>NVIDIA. GR00T N1.7,
+              <a href="https://huggingface.co/nvidia/GR00T-N1.7-DROID"
+                >DROID checkpoint</a
+              >, served and fine-tuned with
+              <a href="https://github.com/NVIDIA/Isaac-GR00T">Isaac-GR00T</a>.
+            </li>
+            <li id="ref-droid">
+              <span class="tag">[3]</span>A. Khazatsky et al.
+              <a href="https://arxiv.org/abs/2403.12945"
+                >DROID: A Large-Scale In-The-Wild Robot Manipulation Dataset</a
+              >. arXiv:2403.12945, 2024.
+            </li>
+            <li id="ref-robolab">
+              <span class="tag">[4]</span>NVIDIA.
+              <a href="https://github.com/NVlabs/RoboLab">RoboLab</a>: the
+              banana-in-bowl task, the DROID Franka and Kinova Gen3
+              configurations, and the GR00T client.
+            </li>
+            <li id="ref-isaac">
+              <span class="tag">[5]</span>NVIDIA. Isaac Sim 5.1 and
+              <a href="https://github.com/isaac-sim/IsaacLab">Isaac Lab</a>
+              2.3.2.
+            </li>
+          </ol>
+<p class="credits" style="margin-top: 1.5rem">Compute: GR00T N1.7 and Isaac Sim ran on a Nebius AI Cloud VM with one
+NVIDIA RTX PRO 6000 Blackwell. NVIDIA Nemotron 3.5 Lightning handled task specifications; Nemotron 3.5 Super VL handled
+saved-frame vision checks and ABBA, both through Nebius Token Factory. Simulation footage is from this project&rsquo;s
+own runs.</p>
+<h3 id="assistance" class="spaced-heading">Tools and assistance</h3>
+<p class="credits">This is my solo project. I chose the direction, watched the footage, shaped the experiments and made
+the scope and budget decisions. I used Claude and Codex for research assistance, implementation, experiment operation,
+analysis, drafting and review. From around 21 October they did much of the implementation under my direction.
+Reviewers named in the results are separate AI agents, not human experts; their findings and the locked scores remain
+distinct. The technical report records the detailed provenance. No institutional affiliation or sponsorship is
+claimed.</p>
+<p class="credits">Thank you to NVIDIA, Nebius, Tavily, and <a href="https://blog.bloomworld.ai/en/physical-ai-is-this-years-christmas-gift-en/">Bloom Korea</a> for the opportunity to participate. Dhruv Diddi&rsquo;s Seoul kickoff presentation introduced the robot-transfer problem that inspired this project.</p></div></section>
+    </main>
+    <footer>
+      <div class="wrap">
+        <p>
+          Website template adapted from
+          <a href="https://github.com/keunhong/keunhong.github.io"
+            >keunhong.github.io</a
+          >
+          by Keunhong Park, licensed
+          <a
+            href="https://creativecommons.org/licenses/by-sa/4.0/"
+            rel="license"
+            >CC BY-SA 4.0</a
+          >; changes were made.
+        </p>
+        <p>
+          This page&rsquo;s layout and styles are shared under the same license.
+          The simulation clips show NVIDIA RoboLab&rsquo;s banana-bowl scene
+          (<a
+            href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+            rel="license"
+            >CC BY-NC-SA 4.0</a
+          >) and are shared under that license; notebook photos &copy; Miodrag
+          Tasic. Details:
+          <a
+            href="https://github.com/MiodragMTasic/cross-embodiment-policy-transfer/blob/main/docs/LICENSE.md"
+            >licence notes</a
+          >.
+        </p>
+      </div>
+    </footer>
+    <script src="assets/site.js"></script>
+    <script src="assets/notes/notes.js" defer></script>
+    <script src="assets/notebook.js" defer></script>
+  <script src="assets/progression.js"></script>
+</body>
+</html>

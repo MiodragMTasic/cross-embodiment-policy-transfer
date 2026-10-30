@@ -1,0 +1,1072 @@
+{
+ "classification": "offline development validation; no new trials",
+ "code_sha256": {
+  "release_gate_v5_1.py": "5e900d6e6f48a7aa1fed17cdaa253f86451e13dedd8e0e4059553c6d09692876",
+  "stages.py": "f8c835b33240d1218df35e020d9840ec94fdb1edaef23c918061cb3e97ebd7a6",
+  "stages_r2.py": "4c08f687449e60ec5c3315247e69df349f93cce8ce1db6ef8d68221aadc46e56",
+  "validate_stages_r2.py": "868a32fc9dfc74baadb7de596403d865851385c5a2c053f9c08adbf35b417389"
+ },
+ "cases": [
+  {
+   "case": "A base s0 v3",
+   "human_pass": false,
+   "v5_1_pass": false,
+   "v5_1_verdict_unchanged": true,
+   "furthest_r1": "over_bowl",
+   "furthest_r2": "over_bowl",
+   "controls_r1": [
+    187,
+    187,
+    187
+   ],
+   "controls_r2": [
+    720,
+    731,
+    731
+   ],
+   "changed": true,
+   "stages_r2": {
+    "robot": "A",
+    "rows": 750,
+    "attempts": 21,
+    "furthest": "over_bowl",
+    "grasp": true,
+    "lift": true,
+    "over_bowl": true,
+    "open": false,
+    "landed": false,
+    "win": false,
+    "best_attempt": {
+     "closed_from": 718,
+     "edge": null,
+     "depth": 3,
+     "grasp": 720,
+     "lift": 731,
+     "over_bowl": 731
+    }
+   }
+  },
+  {
+   "case": "A base s1 v3",
+   "human_pass": true,
+   "v5_1_pass": true,
+   "v5_1_verdict_unchanged": true,
+   "furthest_r1": "win",
+   "furthest_r2": "win",
+   "controls_r1": [
+    83,
+    84,
+    106,
+    140,
+    140,
+    169
+   ],
+   "controls_r2": [
+    83,
+    88,
+    106,
+    140,
+    140,
+    169
+   ],
+   "changed": true,
+   "stages_r2": {
+    "robot": "A",
+    "rows": 750,
+    "attempts": 11,
+    "furthest": "win",
+    "grasp": true,
+    "lift": true,
+    "over_bowl": true,
+    "open": true,
+    "landed": true,
+    "win": true,
+    "best_attempt": {
+     "closed_from": 77,
+     "edge": 140,
+     "depth": 6,
+     "grasp": 83,
+     "lift": 88,
+     "over_bowl": 106,
+     "open": 140,
+     "landed": 140,
+     "win": 169
+    },
+    "qualifying_open_control": 140,
+    "time_to_win_P0_s": 9.333,
+    "win_control": 169,
+    "win_simulation_s": 11.267
+   }
+  },
+  {
+   "case": "A layout 1000 retry1",
+   "human_pass": true,
+   "v5_1_pass": true,
+   "v5_1_verdict_unchanged": true,
+   "furthest_r1": "win",
+   "furthest_r2": "win",
+   "controls_r1": [
+    69,
+    73,
+    91,
+    128,
+    129,
+    152
+   ],
+   "controls_r2": [
+    69,
+    78,
+    91,
+    128,
+    129,
+    152
+   ],
+   "changed": true,
+   "stages_r2": {
+    "robot": "A",
+    "rows": 750,
+    "attempts": 6,
+    "furthest": "win",
+    "grasp": true,
+    "lift": true,
+    "over_bowl": true,
+    "open": true,
+    "landed": true,
+    "win": true,
+    "best_attempt": {
+     "closed_from": 62,
+     "edge": 128,
+     "depth": 6,
+     "grasp": 69,
+     "lift": 78,
+     "over_bowl": 91,
+     "open": 128,
+     "landed": 129,
+     "win": 152
+    },
+    "qualifying_open_control": 128,
+    "time_to_win_P0_s": 8.533,
+    "win_control": 152,
+    "win_simulation_s": 10.133
+   }
+  },
+  {
+   "case": "A layout 1001",
+   "human_pass": false,
+   "v5_1_pass": false,
+   "v5_1_verdict_unchanged": true,
+   "furthest_r1": "lift",
+   "furthest_r2": "lift",
+   "controls_r1": [
+    130,
+    132
+   ],
+   "controls_r2": [
+    329,
+    335
+   ],
+   "changed": true,
+   "stages_r2": {
+    "robot": "A",
+    "rows": 750,
+    "attempts": 14,
+    "furthest": "lift",
+    "grasp": true,
+    "lift": true,
+    "over_bowl": false,
+    "open": false,
+    "landed": false,
+    "win": false,
+    "best_attempt": {
+     "closed_from": 326,
+     "edge": 370,
+     "depth": 2,
+     "grasp": 329,
+     "lift": 335
+    }
+   }
+  },
+  {
+   "case": "A layout 1002",
+   "human_pass": false,
+   "v5_1_pass": false,
+   "v5_1_verdict_unchanged": true,
+   "furthest_r1": "lift",
+   "furthest_r2": "lift",
+   "controls_r1": [
+    68,
+    69
+   ],
+   "controls_r2": [
+    68,
+    78
+   ],
+   "changed": true,
+   "stages_r2": {
+    "robot": "A",
+    "rows": 750,
+    "attempts": 3,
+    "furthest": "lift",
+    "grasp": true,
+    "lift": true,
+    "over_bowl": false,
+    "open": false,
+    "landed": false,
+    "win": false,
+    "best_attempt": {
+     "closed_from": 64,
+     "edge": 99,
+     "depth": 2,
+     "grasp": 68,
+     "lift": 78
+    }
+   }
+  },
+  {
+   "case": "A layout 1003",
+   "human_pass": false,
+   "v5_1_pass": false,
+   "v5_1_verdict_unchanged": true,
+   "furthest_r1": "landed",
+   "furthest_r2": "landed",
+   "controls_r1": [
+    88,
+    90,
+    118,
+    144,
+    145
+   ],
+   "controls_r2": [
+    88,
+    94,
+    118,
+    144,
+    145
+   ],
+   "changed": true,
+   "stages_r2": {
+    "robot": "A",
+    "rows": 750,
+    "attempts": 22,
+    "furthest": "landed",
+    "grasp": true,
+    "lift": true,
+    "over_bowl": true,
+    "open": true,
+    "landed": true,
+    "win": false,
+    "best_attempt": {
+     "closed_from": 79,
+     "edge": 144,
+     "depth": 5,
+     "grasp": 88,
+     "lift": 94,
+     "over_bowl": 118,
+     "open": 144,
+     "landed": 145
+    }
+   }
+  },
+  {
+   "case": "A layout 1004",
+   "human_pass": false,
+   "v5_1_pass": false,
+   "v5_1_verdict_unchanged": true,
+   "furthest_r1": null,
+   "furthest_r2": null,
+   "controls_r1": [],
+   "controls_r2": [],
+   "changed": false,
+   "stages_r2": {
+    "robot": "A",
+    "rows": 750,
+    "attempts": 0,
+    "furthest": null,
+    "grasp": false,
+    "lift": false,
+    "over_bowl": false,
+    "open": false,
+    "landed": false,
+    "win": false,
+    "best_attempt": {
+     "depth": 0
+    }
+   }
+  },
+  {
+   "case": "A layout 1005",
+   "human_pass": true,
+   "v5_1_pass": true,
+   "v5_1_verdict_unchanged": true,
+   "furthest_r1": "win",
+   "furthest_r2": "win",
+   "controls_r1": [
+    83,
+    84,
+    104,
+    128,
+    129,
+    153
+   ],
+   "controls_r2": [
+    83,
+    91,
+    104,
+    128,
+    129,
+    153
+   ],
+   "changed": true,
+   "stages_r2": {
+    "robot": "A",
+    "rows": 750,
+    "attempts": 2,
+    "furthest": "win",
+    "grasp": true,
+    "lift": true,
+    "over_bowl": true,
+    "open": true,
+    "landed": true,
+    "win": true,
+    "best_attempt": {
+     "closed_from": 77,
+     "edge": 128,
+     "depth": 6,
+     "grasp": 83,
+     "lift": 91,
+     "over_bowl": 104,
+     "open": 128,
+     "landed": 129,
+     "win": 153
+    },
+    "qualifying_open_control": 128,
+    "time_to_win_P0_s": 8.533,
+    "win_control": 153,
+    "win_simulation_s": 10.2
+   }
+  },
+  {
+   "case": "A layout 1006",
+   "human_pass": false,
+   "v5_1_pass": false,
+   "v5_1_verdict_unchanged": true,
+   "furthest_r1": "over_bowl",
+   "furthest_r2": "over_bowl",
+   "controls_r1": [
+    67,
+    68,
+    82
+   ],
+   "controls_r2": [
+    67,
+    73,
+    82
+   ],
+   "changed": true,
+   "stages_r2": {
+    "robot": "A",
+    "rows": 750,
+    "attempts": 9,
+    "furthest": "over_bowl",
+    "grasp": true,
+    "lift": true,
+    "over_bowl": true,
+    "open": false,
+    "landed": false,
+    "win": false,
+    "best_attempt": {
+     "closed_from": 59,
+     "edge": 115,
+     "depth": 3,
+     "grasp": 67,
+     "lift": 73,
+     "over_bowl": 82
+    }
+   }
+  },
+  {
+   "case": "A layout 1007",
+   "human_pass": false,
+   "v5_1_pass": false,
+   "v5_1_verdict_unchanged": true,
+   "furthest_r1": "over_bowl",
+   "furthest_r2": "over_bowl",
+   "controls_r1": [
+    106,
+    106,
+    139
+   ],
+   "controls_r2": [
+    106,
+    114,
+    139
+   ],
+   "changed": true,
+   "stages_r2": {
+    "robot": "A",
+    "rows": 750,
+    "attempts": 11,
+    "furthest": "over_bowl",
+    "grasp": true,
+    "lift": true,
+    "over_bowl": true,
+    "open": false,
+    "landed": false,
+    "win": false,
+    "best_attempt": {
+     "closed_from": 91,
+     "edge": 175,
+     "depth": 3,
+     "grasp": 106,
+     "lift": 114,
+     "over_bowl": 139
+    }
+   }
+  },
+  {
+   "case": "A layout 2000",
+   "human_pass": false,
+   "v5_1_pass": false,
+   "v5_1_verdict_unchanged": true,
+   "furthest_r1": "over_bowl",
+   "furthest_r2": "over_bowl",
+   "controls_r1": [
+    428,
+    433,
+    461
+   ],
+   "controls_r2": [
+    428,
+    435,
+    461
+   ],
+   "changed": true,
+   "stages_r2": {
+    "robot": "A",
+    "rows": 750,
+    "attempts": 15,
+    "furthest": "over_bowl",
+    "grasp": true,
+    "lift": true,
+    "over_bowl": true,
+    "open": false,
+    "landed": false,
+    "win": false,
+    "best_attempt": {
+     "closed_from": 422,
+     "edge": 473,
+     "depth": 3,
+     "grasp": 428,
+     "lift": 435,
+     "over_bowl": 461
+    }
+   }
+  },
+  {
+   "case": "A layout 2001",
+   "human_pass": true,
+   "v5_1_pass": true,
+   "v5_1_verdict_unchanged": true,
+   "furthest_r1": "win",
+   "furthest_r2": "win",
+   "controls_r1": [
+    208,
+    212,
+    264,
+    285,
+    285,
+    308
+   ],
+   "controls_r2": [
+    208,
+    214,
+    264,
+    285,
+    285,
+    308
+   ],
+   "changed": true,
+   "stages_r2": {
+    "robot": "A",
+    "rows": 750,
+    "attempts": 7,
+    "furthest": "win",
+    "grasp": true,
+    "lift": true,
+    "over_bowl": true,
+    "open": true,
+    "landed": true,
+    "win": true,
+    "best_attempt": {
+     "closed_from": 197,
+     "edge": 285,
+     "depth": 6,
+     "grasp": 208,
+     "lift": 214,
+     "over_bowl": 264,
+     "open": 285,
+     "landed": 285,
+     "win": 308
+    },
+    "qualifying_open_control": 285,
+    "time_to_win_P0_s": 19.0,
+    "win_control": 308,
+    "win_simulation_s": 20.533
+   }
+  },
+  {
+   "case": "A layout 2002",
+   "human_pass": true,
+   "v5_1_pass": true,
+   "v5_1_verdict_unchanged": true,
+   "furthest_r1": "win",
+   "furthest_r2": "win",
+   "controls_r1": [
+    217,
+    220,
+    235,
+    280,
+    280,
+    301
+   ],
+   "controls_r2": [
+    217,
+    225,
+    235,
+    280,
+    280,
+    301
+   ],
+   "changed": true,
+   "stages_r2": {
+    "robot": "A",
+    "rows": 301,
+    "attempts": 2,
+    "furthest": "win",
+    "grasp": true,
+    "lift": true,
+    "over_bowl": true,
+    "open": true,
+    "landed": true,
+    "win": true,
+    "best_attempt": {
+     "closed_from": 215,
+     "edge": 280,
+     "depth": 6,
+     "grasp": 217,
+     "lift": 225,
+     "over_bowl": 235,
+     "open": 280,
+     "landed": 280,
+     "win": 301
+    },
+    "qualifying_open_control": 280,
+    "time_to_win_P0_s": 18.667,
+    "win_control": 301,
+    "win_simulation_s": 20.067
+   }
+  },
+  {
+   "case": "A layout 2003",
+   "human_pass": false,
+   "v5_1_pass": false,
+   "v5_1_verdict_unchanged": true,
+   "furthest_r1": "over_bowl",
+   "furthest_r2": "over_bowl",
+   "controls_r1": [
+    684,
+    691,
+    715
+   ],
+   "controls_r2": [
+    684,
+    695,
+    715
+   ],
+   "changed": true,
+   "stages_r2": {
+    "robot": "A",
+    "rows": 750,
+    "attempts": 13,
+    "furthest": "over_bowl",
+    "grasp": true,
+    "lift": true,
+    "over_bowl": true,
+    "open": false,
+    "landed": false,
+    "win": false,
+    "best_attempt": {
+     "closed_from": 635,
+     "edge": null,
+     "depth": 3,
+     "grasp": 684,
+     "lift": 695,
+     "over_bowl": 715
+    }
+   }
+  },
+  {
+   "case": "B live l2002_s0_painted",
+   "human_pass": false,
+   "v5_1_pass": false,
+   "v5_1_verdict_unchanged": true,
+   "furthest_r1": "over_bowl",
+   "furthest_r2": "over_bowl",
+   "controls_r1": [
+    1572,
+    1684,
+    1828
+   ],
+   "controls_r2": [
+    3879,
+    3987,
+    4227
+   ],
+   "changed": true,
+   "stages_r2": {
+    "robot": "B",
+    "rows": 9000,
+    "attempts": 14,
+    "furthest": "over_bowl",
+    "grasp": true,
+    "lift": true,
+    "over_bowl": true,
+    "open": false,
+    "landed": false,
+    "win": false,
+    "best_attempt": {
+     "closed_from": 3877,
+     "edge": 4573,
+     "depth": 3,
+     "grasp": 3879,
+     "lift": 3987,
+     "over_bowl": 4227
+    }
+   }
+  },
+  {
+   "case": "B live l2002_s0_unpainted",
+   "human_pass": false,
+   "v5_1_pass": false,
+   "v5_1_verdict_unchanged": true,
+   "furthest_r1": null,
+   "furthest_r2": null,
+   "controls_r1": [],
+   "controls_r2": [],
+   "changed": false,
+   "stages_r2": {
+    "robot": "B",
+    "rows": 9000,
+    "attempts": 1,
+    "furthest": null,
+    "grasp": false,
+    "lift": false,
+    "over_bowl": false,
+    "open": false,
+    "landed": false,
+    "win": false,
+    "best_attempt": {
+     "closed_from": 7201,
+     "edge": 7273,
+     "depth": 0
+    }
+   }
+  },
+  {
+   "case": "B live base_s0_painted",
+   "human_pass": false,
+   "v5_1_pass": false,
+   "v5_1_verdict_unchanged": true,
+   "furthest_r1": "over_bowl",
+   "furthest_r2": "over_bowl",
+   "controls_r1": [
+    1248,
+    1252,
+    1444
+   ],
+   "controls_r2": [
+    1248,
+    1313,
+    1444
+   ],
+   "changed": true,
+   "stages_r2": {
+    "robot": "B",
+    "rows": 9000,
+    "attempts": 16,
+    "furthest": "over_bowl",
+    "grasp": true,
+    "lift": true,
+    "over_bowl": true,
+    "open": false,
+    "landed": false,
+    "win": false,
+    "best_attempt": {
+     "closed_from": 1237,
+     "edge": 1909,
+     "depth": 3,
+     "grasp": 1248,
+     "lift": 1313,
+     "over_bowl": 1444
+    }
+   }
+  },
+  {
+   "case": "B live base_s0_unpainted",
+   "human_pass": false,
+   "v5_1_pass": false,
+   "v5_1_verdict_unchanged": true,
+   "furthest_r1": "grasp",
+   "furthest_r2": "grasp",
+   "controls_r1": [
+    2007
+   ],
+   "controls_r2": [
+    2007
+   ],
+   "changed": false,
+   "stages_r2": {
+    "robot": "B",
+    "rows": 9000,
+    "attempts": 1,
+    "furthest": "grasp",
+    "grasp": true,
+    "lift": false,
+    "over_bowl": false,
+    "open": false,
+    "landed": false,
+    "win": false,
+    "best_attempt": {
+     "closed_from": 1993,
+     "edge": 2245,
+     "depth": 1,
+     "grasp": 2007
+    }
+   }
+  },
+  {
+   "case": "B live base_s1_painted",
+   "human_pass": false,
+   "v5_1_pass": false,
+   "v5_1_verdict_unchanged": true,
+   "furthest_r1": "over_bowl",
+   "furthest_r2": "over_bowl",
+   "controls_r1": [
+    652,
+    677,
+    868
+   ],
+   "controls_r2": [
+    652,
+    679,
+    868
+   ],
+   "changed": true,
+   "stages_r2": {
+    "robot": "B",
+    "rows": 9000,
+    "attempts": 13,
+    "furthest": "over_bowl",
+    "grasp": true,
+    "lift": true,
+    "over_bowl": true,
+    "open": false,
+    "landed": false,
+    "win": false,
+    "best_attempt": {
+     "closed_from": 637,
+     "edge": 1321,
+     "depth": 3,
+     "grasp": 652,
+     "lift": 679,
+     "over_bowl": 868
+    }
+   }
+  },
+  {
+   "case": "B live base_s1_unpainted",
+   "human_pass": false,
+   "v5_1_pass": false,
+   "v5_1_verdict_unchanged": true,
+   "furthest_r1": null,
+   "furthest_r2": null,
+   "controls_r1": [],
+   "controls_r2": [],
+   "changed": false,
+   "stages_r2": {
+    "robot": "B",
+    "rows": 9000,
+    "attempts": 1,
+    "furthest": null,
+    "grasp": false,
+    "lift": false,
+    "over_bowl": false,
+    "open": false,
+    "landed": false,
+    "win": false,
+    "best_attempt": {
+     "closed_from": 8905,
+     "edge": 8917,
+     "depth": 0
+    }
+   }
+  },
+  {
+   "case": "B dev lift l2002 s0",
+   "human_pass": true,
+   "v5_1_pass": true,
+   "v5_1_verdict_unchanged": true,
+   "furthest_r1": "win",
+   "furthest_r2": "win",
+   "controls_r1": [
+    720,
+    772,
+    963,
+    1525,
+    1526,
+    1554
+   ],
+   "controls_r2": [
+    720,
+    775,
+    963,
+    1525,
+    1526,
+    1554
+   ],
+   "changed": true,
+   "stages_r2": {
+    "robot": "B",
+    "rows": 9000,
+    "attempts": 4,
+    "furthest": "win",
+    "grasp": true,
+    "lift": true,
+    "over_bowl": true,
+    "open": true,
+    "landed": true,
+    "win": true,
+    "best_attempt": {
+     "closed_from": 709,
+     "edge": 1525,
+     "depth": 6,
+     "grasp": 720,
+     "lift": 775,
+     "over_bowl": 963,
+     "open": 1525,
+     "landed": 1526,
+     "win": 1554
+    },
+    "qualifying_open_control": 1525,
+    "time_to_win_P0_s": 8.472,
+    "win_control": 1554,
+    "win_simulation_s": 103.667
+   }
+  },
+  {
+   "case": "A base s0 v2",
+   "human_pass": null,
+   "v5_1_pass": true,
+   "v5_1_verdict_unchanged": true,
+   "furthest_r1": "win",
+   "furthest_r2": "win",
+   "controls_r1": [
+    76,
+    76,
+    95,
+    126,
+    126,
+    162
+   ],
+   "controls_r2": [
+    76,
+    84,
+    95,
+    126,
+    126,
+    162
+   ],
+   "changed": true,
+   "stages_r2": {
+    "robot": "A",
+    "rows": 750,
+    "attempts": 13,
+    "furthest": "win",
+    "grasp": true,
+    "lift": true,
+    "over_bowl": true,
+    "open": true,
+    "landed": true,
+    "win": true,
+    "best_attempt": {
+     "closed_from": 72,
+     "edge": 126,
+     "depth": 6,
+     "grasp": 76,
+     "lift": 84,
+     "over_bowl": 95,
+     "open": 126,
+     "landed": 126,
+     "win": 162
+    },
+    "qualifying_open_control": 126,
+    "time_to_win_P0_s": 8.4,
+    "win_control": 162,
+    "win_simulation_s": 10.8
+   }
+  }
+ ],
+ "m5_demo": {
+  "note": "illustration of M5 only: 3 B live layouts, painted vs unpainted",
+  "rates_painted": {
+   "grasp": {
+    "k": 3,
+    "n": 3,
+    "wilson95": [
+     0.4385,
+     1.0
+    ]
+   },
+   "lift": {
+    "k": 3,
+    "n": 3,
+    "wilson95": [
+     0.4385,
+     1.0
+    ]
+   },
+   "over_bowl": {
+    "k": 3,
+    "n": 3,
+    "wilson95": [
+     0.4385,
+     1.0
+    ]
+   },
+   "open": {
+    "k": 0,
+    "n": 3,
+    "wilson95": [
+     0.0,
+     0.5615
+    ]
+   },
+   "landed": {
+    "k": 0,
+    "n": 3,
+    "wilson95": [
+     0.0,
+     0.5615
+    ]
+   },
+   "win": {
+    "k": 0,
+    "n": 3,
+    "wilson95": [
+     0.0,
+     0.5615
+    ]
+   }
+  },
+  "rates_unpainted": {
+   "grasp": {
+    "k": 1,
+    "n": 3,
+    "wilson95": [
+     0.0615,
+     0.7923
+    ]
+   },
+   "lift": {
+    "k": 0,
+    "n": 3,
+    "wilson95": [
+     0.0,
+     0.5615
+    ]
+   },
+   "over_bowl": {
+    "k": 0,
+    "n": 3,
+    "wilson95": [
+     0.0,
+     0.5615
+    ]
+   },
+   "open": {
+    "k": 0,
+    "n": 3,
+    "wilson95": [
+     0.0,
+     0.5615
+    ]
+   },
+   "landed": {
+    "k": 0,
+    "n": 3,
+    "wilson95": [
+     0.0,
+     0.5615
+    ]
+   },
+   "win": {
+    "k": 0,
+    "n": 3,
+    "wilson95": [
+     0.0,
+     0.5615
+    ]
+   }
+  },
+  "paired_painted_vs_unpainted": [
+   {
+    "stage": "grasp",
+    "layouts": 3,
+    "delta": 0.6666666666666666,
+    "only_first": 2,
+    "only_second": 0,
+    "p_exact_mcnemar": 0.5
+   },
+   {
+    "stage": "lift",
+    "layouts": 3,
+    "delta": 1.0,
+    "only_first": 3,
+    "only_second": 0,
+    "p_exact_mcnemar": 0.25
+   },
+   {
+    "stage": "over_bowl",
+    "layouts": 3,
+    "delta": 1.0,
+    "only_first": 3,
+    "only_second": 0,
+    "p_exact_mcnemar": 0.25
+   },
+   {
+    "stage": "open",
+    "layouts": 3,
+    "delta": 0.0,
+    "only_first": 0,
+    "only_second": 0,
+    "p_exact_mcnemar": 1.0
+   },
+   {
+    "stage": "landed",
+    "layouts": 3,
+    "delta": 0.0,
+    "only_first": 0,
+    "only_second": 0,
+    "p_exact_mcnemar": 1.0
+   },
+   {
+    "stage": "win",
+    "layouts": 3,
+    "delta": 0.0,
+    "only_first": 0,
+    "only_second": 0,
+    "p_exact_mcnemar": 1.0
+   }
+  ]
+ }
+}

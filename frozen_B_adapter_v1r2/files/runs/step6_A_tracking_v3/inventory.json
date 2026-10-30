@@ -1,0 +1,241 @@
+{
+  "robot": "A",
+  "environment": "BananaInBowlTask",
+  "seed": 0,
+  "phases": [
+    [
+      "settle",
+      45
+    ],
+    [
+      "x",
+      30
+    ],
+    [
+      "y",
+      30
+    ],
+    [
+      "z",
+      30
+    ],
+    [
+      "rotate",
+      30
+    ],
+    [
+      "return",
+      45
+    ],
+    [
+      "close",
+      45
+    ],
+    [
+      "reopen",
+      45
+    ]
+  ],
+  "steps": 300,
+  "raw_tool_body": "/panda/Gripper/Robotiq_2F_85/base_link",
+  "body_names": [
+    "panda_link0",
+    "panda_link1",
+    "panda_link2",
+    "panda_link3",
+    "panda_link4",
+    "panda_link5",
+    "panda_link6",
+    "panda_link7",
+    "panda_link8",
+    "base_link",
+    "left_outer_knuckle",
+    "right_outer_knuckle",
+    "left_outer_finger",
+    "right_outer_finger",
+    "left_inner_finger",
+    "right_inner_finger",
+    "left_inner_knuckle",
+    "right_inner_knuckle"
+  ],
+  "joint_names": [
+    "panda_joint1",
+    "panda_joint2",
+    "panda_joint3",
+    "panda_joint4",
+    "panda_joint5",
+    "panda_joint6",
+    "panda_joint7",
+    "finger_joint",
+    "right_outer_knuckle_joint",
+    "left_inner_finger_joint",
+    "right_inner_finger_joint",
+    "left_inner_finger_knuckle_joint",
+    "right_inner_finger_knuckle_joint"
+  ],
+  "arm_indices": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "default_arm": [
+    0.0,
+    -0.6283185482025146,
+    0.0,
+    -2.5132741928100586,
+    0.0,
+    1.884955644607544,
+    0.0
+  ],
+  "root_initial": [
+    [
+      1.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      1.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      1.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "source_sha256": {
+    "check_pose_tracking.py": "ee86335eb3350c23b66c9386e6f3b4fbc0ad6ce15d4a115cc7bf884b88e36bb6",
+    "local_ik.py": "f9ecb77905358509aa546cddc2ff8b7ac7919ff70758d3f66fedfd60e3cdca38",
+    "rigid_chain.py": "1e93234227214f5a63f1469008cdef0c4e8d94e42d2ce184ed2755719cc3a50d"
+  },
+  "graph_sha256": "51d10a57316bed35b79792211eea4eeff530b2aec79f9d1af9cf14b94216b66e",
+  "camera_cfg": {
+    "wrist_cam": {
+      "class_type": "isaaclab.sensors.camera.tiled_camera:TiledCamera",
+      "prim_path": "/World/envs/env_.*/robot/Gripper/Robotiq_2F_85/base_link/wrist_cam",
+      "update_period": 0.0,
+      "history_length": 0,
+      "debug_vis": false,
+      "offset": {
+        "pos": [
+          0.011,
+          -0.031,
+          -0.074
+        ],
+        "rot": [
+          -0.42,
+          0.57,
+          0.576,
+          -0.409
+        ],
+        "convention": "opengl"
+      },
+      "spawn": {
+        "func": "isaaclab.sim.spawners.sensors.sensors:spawn_camera",
+        "visible": true,
+        "semantic_tags": null,
+        "copy_from_source": true,
+        "projection_type": "pinhole",
+        "clipping_range": [
+          0.01,
+          1000000.0
+        ],
+        "focal_length": 2.8,
+        "focus_distance": 28.0,
+        "f_stop": 0.0,
+        "horizontal_aperture": 5.376,
+        "vertical_aperture": 3.024,
+        "horizontal_aperture_offset": 0.0,
+        "vertical_aperture_offset": 0.0,
+        "lock_camera": true
+      },
+      "depth_clipping_behavior": "none",
+      "data_types": [
+        "rgb"
+      ],
+      "width": 1280,
+      "height": 720,
+      "update_latest_camera_pose": true,
+      "semantic_filter": "*:*",
+      "colorize_semantic_segmentation": true,
+      "colorize_instance_id_segmentation": true,
+      "colorize_instance_segmentation": true,
+      "semantic_segmentation_mapping": {}
+    },
+    "over_shoulder_left_camera": {
+      "class_type": "isaaclab.sensors.camera.tiled_camera:TiledCamera",
+      "prim_path": "/World/envs/env_.*/over_shoulder_left_camera",
+      "update_period": 0.0,
+      "history_length": 0,
+      "debug_vis": false,
+      "offset": {
+        "pos": [
+          0.05,
+          0.57,
+          0.66
+        ],
+        "rot": [
+          -0.393,
+          -0.195,
+          0.399,
+          0.805
+        ],
+        "convention": "opengl"
+      },
+      "spawn": {
+        "func": "isaaclab.sim.spawners.sensors.sensors:spawn_camera",
+        "visible": true,
+        "semantic_tags": null,
+        "copy_from_source": true,
+        "projection_type": "pinhole",
+        "clipping_range": [
+          0.01,
+          1000000.0
+        ],
+        "focal_length": 2.1,
+        "focus_distance": 28.0,
+        "f_stop": 0.0,
+        "horizontal_aperture": 5.376,
+        "vertical_aperture": 3.024,
+        "horizontal_aperture_offset": 0.0,
+        "vertical_aperture_offset": 0.0,
+        "lock_camera": true
+      },
+      "depth_clipping_behavior": "none",
+      "data_types": [
+        "rgb"
+      ],
+      "width": 1280,
+      "height": 720,
+      "update_latest_camera_pose": true,
+      "semantic_filter": "*:*",
+      "colorize_semantic_segmentation": true,
+      "colorize_instance_id_segmentation": true,
+      "colorize_instance_segmentation": true,
+      "semantic_segmentation_mapping": {}
+    }
+  },
+  "thresholds": {
+    "endpoint_position_m": 0.002,
+    "endpoint_rotation_rad": 0.01,
+    "endpoint_joint_rad": 0.01,
+    "gripper_endpoint_rad": 0.01,
+    "command_max_increment_rad": 0.04,
+    "measured_joint_margin_rad": 0.03
+  },
+  "scope": "Raw-tool tracking and native geometry/camera inventory only; no collision-free path, task, canonical-frame or policy claim."
+}

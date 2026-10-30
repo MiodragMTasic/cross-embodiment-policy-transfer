@@ -1,0 +1,3 @@
+# DROP controller and vision transport
+
+**Prepared, never run.** Code-only snapshot, 25 October 2026; this package never ran in the simulator. ABBA (`../roger_bravo_one_shot_v1/`), which ran once on 26 October, reuses this package's `controller.py`, `runtime.py` and `vision_images.py` byte for byte, with its own transport, prompt, runner and launcher; see "ABBA" in `../../README.md`. The original frozen P0/P1 experiment scores are unchanged. See `../../CHARLIE_EXPORT_PLAN.md`, `../../EXPORT_PROVENANCE.json` and `../../OFFLINE_EXPORT_CHECKS.md` for omissions, adaptations and tested scope. Launch scripts require external evidence, upstream software and explicit run configuration; offline tests are not launch approval.

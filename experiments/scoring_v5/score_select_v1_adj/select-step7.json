@@ -1,0 +1,347 @@
+{
+ "schema": "step7-select-v1",
+ "stamp_utc": "Sat 24 Oct 2026 20:48:43 UTC",
+ "complete_8_of_8_each": true,
+ "problems": [],
+ "unscored": {
+  "P0": [],
+  "c500": [],
+  "c1000": [],
+  "c1500": [],
+  "c2000": []
+ },
+ "raw_v5_1_wins": {
+  "P0": 4,
+  "c500": 0,
+  "c1000": 1,
+  "c1500": 3,
+  "c2000": 3
+ },
+ "raw_choice_provisional": {
+  "P1": "c1500",
+  "wins": 3,
+  "P0_wins": 4,
+  "improves_on_P0": false,
+  "label": "P1, no A-validation improvement",
+  "final": false
+ },
+ "review_set": [
+  {
+   "case": "step7_select_A_P0_l3000_s0_v1",
+   "condition": "P0",
+   "layout": "l3000",
+   "v5_1_pass": true,
+   "win_control": 153,
+   "review_flags": [
+    "v5.1 pass"
+   ],
+   "live_v4_pass": true
+  },
+  {
+   "case": "step7_select_A_P0_l3001_s0_v1",
+   "condition": "P0",
+   "layout": "l3001",
+   "v5_1_pass": false,
+   "win_control": null,
+   "review_flags": [
+    "fail, ends on bowl",
+    "fail, had an eligible open",
+    "fail, upstream predicate true at end"
+   ],
+   "live_v4_pass": false
+  },
+  {
+   "case": "step7_select_A_P0_l3002_s0_v1",
+   "condition": "P0",
+   "layout": "l3002",
+   "v5_1_pass": false,
+   "win_control": null,
+   "review_flags": [
+    "fail, ends on bowl",
+    "fail, had an eligible open",
+    "fail, upstream predicate true at end"
+   ],
+   "live_v4_pass": false
+  },
+  {
+   "case": "step7_select_A_P0_l3003_s0_v1",
+   "condition": "P0",
+   "layout": "l3003",
+   "v5_1_pass": true,
+   "win_control": 154,
+   "review_flags": [
+    "v5.1 pass"
+   ],
+   "live_v4_pass": true
+  },
+  {
+   "case": "step7_select_A_P0_l3004_s0_v1",
+   "condition": "P0",
+   "layout": "l3004",
+   "v5_1_pass": false,
+   "win_control": null,
+   "review_flags": [
+    "fail, ends on bowl",
+    "fail, upstream predicate true at end"
+   ],
+   "live_v4_pass": false
+  },
+  {
+   "case": "step7_select_A_P0_l3005_s0_v1",
+   "condition": "P0",
+   "layout": "l3005",
+   "v5_1_pass": true,
+   "win_control": 182,
+   "review_flags": [
+    "v5.1 pass"
+   ],
+   "live_v4_pass": false
+  },
+  {
+   "case": "step7_select_A_P0_l3006_s0_v1",
+   "condition": "P0",
+   "layout": "l3006",
+   "v5_1_pass": false,
+   "win_control": null,
+   "review_flags": [
+    "fail, ends on bowl",
+    "fail, had an eligible open",
+    "fail, upstream predicate true at end"
+   ],
+   "live_v4_pass": false
+  },
+  {
+   "case": "step7_select_A_P0_l3007_s0_v1",
+   "condition": "P0",
+   "layout": "l3007",
+   "v5_1_pass": true,
+   "win_control": 148,
+   "review_flags": [
+    "v5.1 pass"
+   ],
+   "live_v4_pass": true
+  },
+  {
+   "case": "step7_select_A_c1000_l3001_s0_v1",
+   "condition": "c1000",
+   "layout": "l3001",
+   "v5_1_pass": false,
+   "win_control": null,
+   "review_flags": [
+    "fail, ends on bowl",
+    "fail, upstream predicate true at end"
+   ],
+   "live_v4_pass": false
+  },
+  {
+   "case": "step7_select_A_c1000_l3003_s0_v1",
+   "condition": "c1000",
+   "layout": "l3003",
+   "v5_1_pass": true,
+   "win_control": 485,
+   "review_flags": [
+    "v5.1 pass"
+   ],
+   "live_v4_pass": true
+  },
+  {
+   "case": "step7_select_A_c1000_l3004_s0_v1",
+   "condition": "c1000",
+   "layout": "l3004",
+   "v5_1_pass": false,
+   "win_control": null,
+   "review_flags": [
+    "fail, ends on bowl",
+    "fail, upstream predicate true at end"
+   ],
+   "live_v4_pass": false
+  },
+  {
+   "case": "step7_select_A_c1000_l3005_s0_v1",
+   "condition": "c1000",
+   "layout": "l3005",
+   "v5_1_pass": false,
+   "win_control": null,
+   "review_flags": [
+    "fail, ends on bowl",
+    "fail, upstream predicate true at end"
+   ],
+   "live_v4_pass": false
+  },
+  {
+   "case": "step7_select_A_c1000_l3006_s0_v1",
+   "condition": "c1000",
+   "layout": "l3006",
+   "v5_1_pass": false,
+   "win_control": null,
+   "review_flags": [
+    "fail, ends on bowl"
+   ],
+   "live_v4_pass": false
+  },
+  {
+   "case": "step7_select_A_c1000_l3007_s0_v1",
+   "condition": "c1000",
+   "layout": "l3007",
+   "v5_1_pass": false,
+   "win_control": null,
+   "review_flags": [
+    "fail, ends on bowl",
+    "fail, upstream predicate true at end"
+   ],
+   "live_v4_pass": false
+  },
+  {
+   "case": "step7_select_A_c1500_l3003_s0_v1",
+   "condition": "c1500",
+   "layout": "l3003",
+   "v5_1_pass": true,
+   "win_control": 165,
+   "review_flags": [
+    "v5.1 pass"
+   ],
+   "live_v4_pass": false
+  },
+  {
+   "case": "step7_select_A_c1500_l3004_s0_v1",
+   "condition": "c1500",
+   "layout": "l3004",
+   "v5_1_pass": false,
+   "win_control": null,
+   "review_flags": [
+    "fail, ends on bowl"
+   ],
+   "live_v4_pass": false
+  },
+  {
+   "case": "step7_select_A_c1500_l3006_s0_v1",
+   "condition": "c1500",
+   "layout": "l3006",
+   "v5_1_pass": true,
+   "win_control": 158,
+   "review_flags": [
+    "v5.1 pass"
+   ],
+   "live_v4_pass": true
+  },
+  {
+   "case": "step7_select_A_c1500_l3007_s0_v1",
+   "condition": "c1500",
+   "layout": "l3007",
+   "v5_1_pass": true,
+   "win_control": 424,
+   "review_flags": [
+    "v5.1 pass"
+   ],
+   "live_v4_pass": true
+  },
+  {
+   "case": "step7_select_A_c2000_l3000_s0_v1",
+   "condition": "c2000",
+   "layout": "l3000",
+   "v5_1_pass": true,
+   "win_control": 156,
+   "review_flags": [
+    "v5.1 pass"
+   ],
+   "live_v4_pass": true
+  },
+  {
+   "case": "step7_select_A_c2000_l3001_s0_v1",
+   "condition": "c2000",
+   "layout": "l3001",
+   "v5_1_pass": true,
+   "win_control": 167,
+   "review_flags": [
+    "v5.1 pass"
+   ],
+   "live_v4_pass": true
+  },
+  {
+   "case": "step7_select_A_c2000_l3002_s0_v1",
+   "condition": "c2000",
+   "layout": "l3002",
+   "v5_1_pass": false,
+   "win_control": null,
+   "review_flags": [
+    "fail, ends on bowl",
+    "fail, upstream predicate true at end"
+   ],
+   "live_v4_pass": false
+  },
+  {
+   "case": "step7_select_A_c2000_l3003_s0_v1",
+   "condition": "c2000",
+   "layout": "l3003",
+   "v5_1_pass": false,
+   "win_control": null,
+   "review_flags": [
+    "fail, ends on bowl",
+    "fail, upstream predicate true at end"
+   ],
+   "live_v4_pass": false
+  },
+  {
+   "case": "step7_select_A_c2000_l3005_s0_v1",
+   "condition": "c2000",
+   "layout": "l3005",
+   "v5_1_pass": false,
+   "win_control": null,
+   "review_flags": [
+    "fail, ends on bowl"
+   ],
+   "live_v4_pass": false
+  },
+  {
+   "case": "step7_select_A_c2000_l3006_s0_v1",
+   "condition": "c2000",
+   "layout": "l3006",
+   "v5_1_pass": false,
+   "win_control": null,
+   "review_flags": [
+    "fail, ends on bowl",
+    "fail, upstream predicate true at end"
+   ],
+   "live_v4_pass": false
+  },
+  {
+   "case": "step7_select_A_c2000_l3007_s0_v1",
+   "condition": "c2000",
+   "layout": "l3007",
+   "v5_1_pass": true,
+   "win_control": 173,
+   "review_flags": [
+    "v5.1 pass"
+   ],
+   "live_v4_pass": false
+  }
+ ],
+ "notes": {
+  "selection_bias": "P1's validation count is selection-biased (the best of 4 candidates on the same 8 layouts).",
+  "D5": "If no candidate beats P0 on 3000-3007, P1 goes to step 8 labelled \"P1, no A-validation improvement\"."
+ },
+ "code_sha256": {
+  "release_gate_v5_1.py": "5e900d6e6f48a7aa1fed17cdaa253f86451e13dedd8e0e4059553c6d09692876",
+  "stages_r2.py": "4c08f687449e60ec5c3315247e69df349f93cce8ce1db6ef8d68221aadc46e56",
+  "stages.py": "f8c835b33240d1218df35e020d9840ec94fdb1edaef23c918061cb3e97ebd7a6",
+  "score_step8.py": "8406460be54e1481c517e259981b7e9e061b71a64345180a6978cb10356186e1",
+  "score_select_step7.py": "ecd31d410a0e22572cea5db7d5b548679b1e78cc0dd41faa8a9730f885d2453a"
+ },
+ "adjudicated_from": "select_v1_adjudication.json",
+ "adjudicated_sha256": "9045454412ef27329ecd86c4d300ab92de624376b4d094dcbfc5fd07e56e7328",
+ "adjudicated_wins": {
+  "P0": 6,
+  "c500": 0,
+  "c1000": 1,
+  "c1500": 3,
+  "c2000": 3
+ },
+ "choice": {
+  "P1": "c1500",
+  "wins": 3,
+  "P0_wins": 6,
+  "improves_on_P0": false,
+  "label": "P1, no A-validation improvement",
+  "final": true
+ }
+}

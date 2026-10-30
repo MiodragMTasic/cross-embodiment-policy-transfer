@@ -1,0 +1,529 @@
+/* Study notebook: Miodrag's handwritten notes as a double ring steno pad whose pages turn over
+   the top, the way the pad was made. assets/notebook.js builds the pad inside .steno-pad.
+   Lengths inside the pad are in cqw of the pad's width: 1 cm of the 15.2 cm page = 6.58cqw. */
+
+/* a page leaning toward the reader mid-turn is wider than the column; keep it from adding a
+   horizontal scrollbar, while letting it rise above the pad */
+.steno-wrap {
+  overflow-x: clip;
+}
+
+.steno {
+  --kraft: #c58b64; /* the cover's own kraft, sampled from the photo */
+  --kraft-inside: #c9926b;
+  --kraft-edge: #9d6a47;
+  --wire: #2b2e33;
+  --wire-hi: rgba(255, 255, 255, 0.4);
+  --slot: var(--surface);
+  --edge-paper: #eeebe4;
+  --edge-line: rgba(60, 50, 40, 0.22);
+  --pad-shadow:
+    0 1px 1px rgba(0, 0, 0, 0.06), 0 22px 34px -22px rgba(0, 0, 0, 0.42);
+  --step: 1.5px; /* how far each sheet below the top one shows at the bottom of the stack */
+  --board: 3px; /* the back board's front edge */
+  --hinge: 1.965%; /* the wire runs through slots 0.45 cm below the top edge */
+  container-type: inline-size;
+  /* the whole page and its controls fit a laptop screen; 480-600px wide on a desktop */
+  width: min(100%, max(480px, min(600px, (100vh - 7.5rem) / 1.53)));
+  width: min(100%, max(480px, min(600px, (100svh - 7.5rem) / 1.53)));
+  margin: 1.75rem auto 0;
+  position: relative; /* the page buttons flank the pad on wider screens */
+}
+.steno-book {
+  position: relative;
+  border-radius: 0.25rem;
+  outline: none;
+  touch-action: manipulation; /* taps turn pages; the page scrolls under a finger as usual */
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.steno-book:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 0.75rem;
+}
+
+.steno-pad {
+  position: relative;
+  aspect-ratio: 15.2 / 22.9;
+  /* room above for the rings, below for the stack's edge and the back board */
+  margin: 1.7cqw 0 calc(13 * var(--step) + var(--board) + 0.5rem);
+  perspective: 2400px;
+  perspective: 420cqw;
+  perspective-origin: 50% 40%;
+  cursor: pointer;
+}
+.steno-pad.is-last {
+  cursor: default;
+}
+
+/* ---------- the turned-up corner: "this page turns" ---------- */
+@property --ear {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 0px;
+}
+.steno-pad {
+  --ear-size: 7cqw;
+}
+/* pointing at the page (not the rings, which go back), focusing the pad, or pointing at the next
+   button lifts the corner further */
+@media (hover: hover) {
+  .steno-pad:hover:not(:has(.steno-top:hover)),
+  .steno:has(.steno-next:hover:not([aria-disabled="true"])) .steno-pad {
+    --ear-size: 11cqw;
+  }
+}
+.steno-book:focus-visible .steno-pad,
+.steno:has(.steno-next:focus-visible) .steno-pad {
+  --ear-size: 11cqw;
+}
+/* two triangles in the sheet's bottom corner: the paper under the lifted corner, in its shadow,
+   and the folded flap showing the back of the sheet */
+.steno-sheet > .steno-ear {
+  inset: auto 0 0 auto;
+  width: var(--ear);
+  height: var(--ear);
+  pointer-events: none;
+}
+.steno-ear::before,
+.steno-ear::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+.steno-ear::after {
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+  border-bottom-right-radius: 1.2cqw;
+  background:
+    linear-gradient(
+      135deg,
+      transparent 50%,
+      rgba(70, 50, 30, 0.3) 50%,
+      rgba(70, 50, 30, 0.08) 68%,
+      rgba(70, 50, 30, 0) 90%
+    ),
+    var(--edge-paper);
+}
+.steno-ear::before {
+  z-index: 1;
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+  background: linear-gradient(
+    135deg,
+    #fcfbf8 0%,
+    #f1ede5 26%,
+    #ddd5c8 44%,
+    #c4bba9 50%
+  );
+  filter: drop-shadow(0 0 0.5px rgba(60, 40, 20, 0.35));
+}
+.steno-sheet.is-cover .steno-ear::before {
+  background: linear-gradient(
+    135deg,
+    #dcab86 0%,
+    var(--kraft-inside) 26%,
+    #b47c56 44%,
+    #9d6a47 50%
+  );
+}
+/* the flap's own shadow on the page it lies on */
+.steno-sheet > .steno-ear {
+  filter: drop-shadow(-0.35cqw -0.35cqw 0.55cqw rgba(50, 35, 20, 0.28));
+}
+
+/* first visit only: one line on the cover until the first turn (notebook.js) */
+.steno-hint {
+  position: absolute;
+  left: 50%;
+  top: 31%;
+  z-index: 1002;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.5rem 0.95rem 0.5rem 0.75rem;
+  border-radius: 999px;
+  background: var(--card-bg);
+  color: var(--card-text);
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  line-height: 1.2;
+  white-space: nowrap;
+  box-shadow: 0 10px 24px -12px rgba(0, 0, 0, 0.55);
+  pointer-events: none;
+  transition: opacity 0.18s ease;
+}
+.steno-hint svg {
+  width: 1rem;
+  height: 1rem;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.steno-hint.is-gone {
+  opacity: 0;
+}
+.steno-book.is-dragging .steno-pad {
+  cursor: grabbing;
+}
+
+/* the back board: kraft, as deep as the sheets still on it */
+.steno-board {
+  position: absolute;
+  inset: 0 0 auto;
+  height: calc(100% + var(--left, 12) * var(--step) + var(--board));
+  border-radius: 0.6cqw 0.6cqw 1.45cqw 1.45cqw;
+  background: var(--kraft);
+  box-shadow:
+    inset 0 calc(-1 * var(--board)) 0 var(--kraft-edge),
+    var(--pad-shadow);
+}
+/* the rest of the stack under the top sheet: plain paper where a photographed sheet is narrower
+   (a curled corner), and at the bottom one edge per sheet, thinning out as pages turn */
+.steno-edges {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 7%; /* below every torn top */
+  bottom: calc(-1 * var(--left, 12) * var(--step));
+  border-radius: 0 0 1.45cqw 1.45cqw;
+  background:
+    repeating-linear-gradient(
+        to top,
+        var(--edge-line) 0 0.5px,
+        var(--edge-paper) 0.5px var(--step)
+      )
+      0 100% / 100% calc(var(--left, 12) * var(--step) + 1.45cqw) no-repeat,
+    var(--edge-paper);
+}
+.steno-edges[hidden] {
+  display: none;
+}
+
+.steno-sheet {
+  position: absolute;
+  inset: 0;
+  transform-origin: 50% var(--hinge);
+  /* the top sheet's bottom corner is turned up (.steno-ear). --ear is 0 on every other sheet and
+     eases out as a sheet starts to turn, so the corner relaxes while the page lifts */
+  --ear: 0px;
+  transition: --ear 0.24s cubic-bezier(0.3, 0.7, 0.3, 1);
+}
+.steno-sheet.is-top {
+  --ear: var(--ear-size);
+}
+.steno-sheet.is-turning {
+  will-change: transform;
+}
+.steno-sheet > *,
+.steno-back > * {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.steno-sheet img {
+  display: block;
+  pointer-events: none;
+  -webkit-user-drag: none;
+}
+/* the back of a sheet: its own silhouette as plain paper, with the faint ruling of the back */
+.steno-back {
+  opacity: 0;
+}
+.steno-paper {
+  filter: brightness(0) invert(0.925) sepia(0.1);
+}
+.steno-lines {
+  background:
+    linear-gradient(
+      to right,
+      transparent calc(49.7% - 0.5px),
+      rgba(222, 110, 124, 0.28) calc(49.7% - 0.5px) calc(49.7% + 0.5px),
+      transparent calc(49.7% + 0.5px)
+    ),
+    linear-gradient(
+        to bottom,
+        transparent calc(100% - 1px),
+        rgba(70, 80, 90, 0.11) 0
+      )
+      0 0 / 100% 3.048%;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
+.steno-back > .steno-inside {
+  top: auto; /* set from the cover's crop line */
+  height: auto;
+  border-radius: 0 0 1.45cqw 1.45cqw;
+  background: var(--kraft-inside);
+}
+/* light falling off as a sheet turns edge-on: its silhouette in black, faded in */
+.steno-shade {
+  filter: brightness(0);
+  opacity: 0;
+}
+/* the soft shadow a lifting sheet throws on the one beneath */
+.steno-cast {
+  position: absolute;
+  inset: var(--hinge) 0 0;
+  transform-origin: 50% 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.17),
+    rgba(0, 0, 0, 0.15) 80%,
+    rgba(0, 0, 0, 0)
+  );
+  opacity: 0;
+  pointer-events: none;
+}
+
+.steno-rings {
+  position: absolute;
+  left: 0;
+  top: -1.092%; /* 0.25 cm above the top edge */
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  z-index: 1000;
+  pointer-events: none;
+}
+.steno-rings .slot {
+  fill: url(#steno-slot);
+}
+.steno-rings .slot-lip {
+  fill: rgba(255, 236, 214, 0.28);
+}
+.steno-rings .wire,
+.steno-rings .wire-hi,
+.steno-rings .wire-shadow {
+  fill: none;
+  stroke-linecap: round;
+}
+.steno-rings .wire {
+  stroke: var(--wire);
+  stroke-width: 0.062;
+}
+.steno-rings .wire-hi {
+  stroke: var(--wire-hi);
+  stroke-width: 0.016;
+}
+.steno-rings .wire-shadow {
+  stroke: rgba(30, 15, 5, 0.22);
+  stroke-width: 0.07;
+}
+/* the rings and the strip under them turn back a page */
+.steno-top {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -1.7cqw;
+  height: calc(1.7cqw + 6.5%);
+  z-index: 1001;
+}
+.steno-top[hidden] {
+  display: none;
+}
+
+/* page buttons. Phones: under the pad, one at each bottom corner, under the thumbs. From 760px:
+   round buttons either side of the pad at its middle (77cqw = the rings' 1.7cqw + half the
+   15.2 x 22.9 page), the count alone under the pad. */
+.steno-controls {
+  --btn: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+.steno-controls button {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  width: var(--btn);
+  height: var(--btn);
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text);
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.06),
+    0 10px 20px -12px rgba(0, 0, 0, 0.45);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    background-color 0.16s,
+    border-color 0.16s,
+    color 0.16s,
+    box-shadow 0.16s,
+    transform 0.16s;
+}
+.steno-controls svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.16s;
+}
+@media (hover: hover) {
+  .steno-controls button:hover:not([aria-disabled="true"]) {
+    border-color: var(--text);
+    background: var(--text);
+    color: var(--surface);
+    box-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.1),
+      0 14px 24px -12px rgba(0, 0, 0, 0.55);
+  }
+  .steno-prev:hover:not([aria-disabled="true"]) svg {
+    transform: translateX(-2px);
+  }
+  .steno-next:hover:not([aria-disabled="true"]) svg {
+    transform: translateX(2px);
+  }
+}
+.steno-controls button:active:not([aria-disabled="true"]) {
+  transform: scale(0.93);
+}
+.steno-controls button:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 3px;
+}
+/* first and last page: flat, pale, still focusable so the count stays reachable */
+.steno-controls button[aria-disabled="true"] {
+  border-color: var(--border-subtle);
+  background: var(--surface-muted);
+  color: var(--text-subtle);
+  box-shadow: none;
+  cursor: default;
+}
+.steno-count {
+  min-width: 5.5em;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (min-width: 760px) {
+  .steno-controls {
+    --btn: 52px;
+    justify-content: center;
+  }
+  .steno-controls button {
+    position: absolute;
+    top: calc(77cqw - var(--btn) / 2);
+  }
+  .steno-prev {
+    right: calc(100% + clamp(0.75rem, 2.2vw, 2rem));
+  }
+  .steno-next {
+    left: calc(100% + clamp(0.75rem, 2.2vw, 2rem));
+  }
+}
+/* "Read this page": a typed transcript of the current page, under the pad */
+.steno-read {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  width: fit-content;
+  min-height: 2.75rem;
+  margin: 0.25rem auto 0;
+  padding: 0 0.75rem;
+  border: 0;
+  background: none;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: color 0.15s;
+}
+.steno-read[hidden] {
+  display: none;
+}
+.steno-read:hover:not([aria-disabled="true"]) {
+  color: var(--text);
+}
+.steno-read:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 0;
+  border-radius: 0.375rem;
+}
+.steno-read[aria-disabled="true"] {
+  opacity: 0.45;
+  cursor: default;
+}
+.steno-read svg {
+  width: 0.95rem;
+  height: 0.95rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.2s;
+}
+.steno-read[aria-expanded="true"] svg {
+  transform: rotate(180deg);
+}
+.steno-text {
+  margin-top: 0.25rem;
+  padding: 0.9rem 1.1rem 1.1rem;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  background: var(--surface-muted);
+}
+.steno-text-note {
+  margin: 0 0 0.8rem;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  line-height: 1.4;
+  color: var(--text-muted);
+}
+/* one div per written line; a wrapped line hangs under its own indent or tree branch */
+.steno-text-body {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  line-height: 1.6;
+  color: var(--text-body);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.steno-mark {
+  color: var(--text-muted);
+}
+.steno-text-body s {
+  text-decoration-thickness: 1px;
+}
+/* words written above or below the line: small, and kept from opening up the line spacing */
+.steno-text-body sup,
+.steno-text-body sub {
+  font-size: 0.8em;
+  line-height: 0;
+  color: var(--text-muted);
+}
+
+.steno-sr,
+.steno-status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media print {
+  .steno-controls,
+  .steno-read,
+  .steno-top {
+    display: none;
+  }
+}

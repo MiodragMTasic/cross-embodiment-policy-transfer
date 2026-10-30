@@ -1,0 +1,4 @@
+# Required by installed Isaac Sim 5.1 core metadata; applied after upstream locked RoboLab sync.
+filelock==3.13.1
+fsspec==2024.6.1
+networkx==3.3

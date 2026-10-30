@@ -1,0 +1,42 @@
+{
+ "review/roger_bravo_one_shot_v1/evidence/roger_B_P1_l4003_assisted_v1/gate_trace.jsonl": {
+  "robot": "B",
+  "pass": true,
+  "success_control": 1071,
+  "pass_at_end": true,
+  "end_on_bowl": true,
+  "qualifying_open": {
+   "control": 1006,
+   "dxy_root_m": 0.0498,
+   "centre_above_bowl_top_m": 0.1053
+  },
+  "eligible_opens": [
+   1006
+  ],
+  "fail_reason": null,
+  "rows": 3600,
+  "events": [
+   {
+    "time_s": 47.6,
+    "event": "lift_armed"
+   },
+   {
+    "time_s": 67.06666666666666,
+    "event": "eligible_open_command"
+   },
+   {
+    "time_s": 67.13333333333333,
+    "event": "detached_near_bowl"
+   },
+   {
+    "time_s": 67.2,
+    "event": "landed_on_bowl"
+   },
+   {
+    "time_s": 68.2,
+    "event": "measured_open_release"
+   }
+  ],
+  "after_first_rest": []
+ }
+}

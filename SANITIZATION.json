@@ -1,0 +1,577 @@
+{
+ "schema": "public-sanitization/v1",
+ "updated": "2026-10-27",
+ "summary": "Every shipped file whose bytes differ from its private original. The private originals are preserved unchanged in the private project. Paths under private_source are relative to the private project folder, written as <project-root>/. Runtime paths under /home/miodrag/robot-transfer/bowl/ are kept everywhere (the root the runners hardcode and the locks record).",
+ "token_meanings": {
+  "<project-root>/": "the private project folder on the author's Mac",
+  "<vm-instance-id>": "the Nebius compute instance ID of the project VM (also its hostname)"
+ },
+ "files": [
+  {
+   "public_path": "experiments/scoring_v5/score_step8_mock/score_step8-mock.json",
+   "private_source": "<project-root>/experiments/scoring_v5/score_step8_mock/score_step8-mock.json",
+   "kind": "redaction",
+   "original_sha256": "6e4443faba0079aa0b37d1b2740d4e375822b722cd97f44966bd1ff9bb0cac31",
+   "public_sha256": "b30aeacc795ebb5bd025fb4e73aa0d8b515ddb3e3490272661cae92e4434d030",
+   "changes": [
+    {
+     "original_lines": "5-8,32,37,90,95,133,138,191,207,212,265,270,307,312,349,354,396,401,435,440,493,498,536,541,582,587,628,633,686,691,744,749,787,790,797,837,840,847,888,891,898,939,942,949,985,988,995,1029,1032,1039",
+     "public_lines": "5-8,32,37,90,95,133,138,191,207,212,265,270,307,312,349,354,396,401,435,440,493,498,536,541,582,587,628,633,686,691,744,749,787,790,797,837,840,847,888,891,898,939,942,949,985,988,995,1029,1032,1039",
+     "occurrences": 53,
+     "pattern_class": "absolute local Mac project path prefix (/Users/<user>/Desktop/<project>/)",
+     "placeholder": "<project-root>/"
+    }
+   ],
+   "reason": "Personal machine path (user name and folder layout); carries no information needed to score or reproduce. Same replacement as the 25 October redactions.",
+   "recorded": "2026-10-27",
+   "note": "Locked (r1-lock-package.sha256 line 13). SCORING_V5.md line 477, itself locked, still cites the original sha256; verify_locks.py reports this entry as SANITIZED.",
+   "pinned_by": [
+    {
+     "lock": "experiments/scoring_v5/r1-lock-package.sha256",
+     "line": 13,
+     "locked_sha256": "6e4443faba0079aa0b37d1b2740d4e375822b722cd97f44966bd1ff9bb0cac31"
+    }
+   ]
+  },
+  {
+   "public_path": "experiments/scoring_v5/validation-pose-variant.json",
+   "private_source": "<project-root>/experiments/scoring_v5/validation-pose-variant.json",
+   "kind": "redaction",
+   "original_sha256": "1322c5493435c4139ac5abc903197c279c18e73219f268a62330220d2221fc5c",
+   "public_sha256": "3324b603fb65ebf81eaab410cb4542d4e1e5b1dea50c2a945b4154e9cbf9e675",
+   "changes": [
+    {
+     "original_lines": "13,28,43,58,73,88,103,118,133,148,163,178,193,208,223,238,253,268,283,298,313,328,343,358,373,388,403,418,433,448,463,478,518,533,548,563,578,593,608",
+     "public_lines": "13,28,43,58,73,88,103,118,133,148,163,178,193,208,223,238,253,268,283,298,313,328,343,358,373,388,403,418,433,448,463,478,518,533,548,563,578,593,608",
+     "occurrences": 39,
+     "pattern_class": "absolute local Mac project path prefix (/Users/<user>/Desktop/<project>/)",
+     "placeholder": "<project-root>/"
+    }
+   ],
+   "reason": "Personal machine path (user name and folder layout); carries no information needed to score or reproduce. Same replacement as the 25 October redactions.",
+   "recorded": "2026-10-27",
+   "note": "Locked (pose-variant.sha256 line 4); verify_locks.py reports this entry as SANITIZED. Regenerating it with validate_pose_variant.py writes the local absolute paths again.",
+   "pinned_by": [
+    {
+     "lock": "experiments/scoring_v5/pose-variant.sha256",
+     "line": 4,
+     "locked_sha256": "1322c5493435c4139ac5abc903197c279c18e73219f268a62330220d2221fc5c"
+    }
+   ]
+  },
+  {
+   "public_path": "experiments/scoring_v5/score_step8_before/score_step8-before.json",
+   "private_source": "<project-root>/experiments/scoring_v5/score_step8_before/score_step8-before.json",
+   "kind": "redaction",
+   "original_sha256": "372bdd0f10424179e8c47e1966a542dfa3f2f8682479d64623d73be697443aa5",
+   "public_sha256": "c37b17f38876f8a9c5ca802c0a7595f29e8eef8705c5d09c937051d33f682df4",
+   "changes": [
+    {
+     "original_lines": "5,29-30,33,40,81-82,85,92,133-134,137,144,185-186,189,196,234-235,238,245,298-299,302,309,362-363,366,373,426-427,430,437,490-491,494,501,554-555,558,565,618-619,622,629,682-683,686,693,736,739,746,799,802,809,853,856,863,916,919,926,979,982,1015,1055,1058,1091,1131,1134,1167,1221,1224,1257,1297,1300,1307,1360,1363,1370,1408,1411,1418,1471,1474,1481",
+     "public_lines": "5,29-30,33,40,81-82,85,92,133-134,137,144,185-186,189,196,234-235,238,245,298-299,302,309,362-363,366,373,426-427,430,437,490-491,494,501,554-555,558,565,618-619,622,629,682-683,686,693,736,739,746,799,802,809,853,856,863,916,919,926,979,982,1015,1055,1058,1091,1131,1134,1167,1221,1224,1257,1297,1300,1307,1360,1363,1370,1408,1411,1418,1471,1474,1481",
+     "occurrences": 85,
+     "pattern_class": "absolute local Mac project path prefix (/Users/<user>/Desktop/<project>/)",
+     "placeholder": "<project-root>/"
+    }
+   ],
+   "reason": "Personal machine path (user name and folder layout); carries no information needed to score or reproduce. Same replacement as the 25 October redactions.",
+   "recorded": "2026-10-25",
+   "note": "Not lock-pinned. experiments/intent_demo_v1/validation/checker-offline-v1.json records the original sha256, i.e. the unredacted score file.",
+   "pinned_by": []
+  },
+  {
+   "public_path": "experiments/scoring_v5/pose_variant_before",
+   "private_source": "<project-root>/experiments/scoring_v5/pose_variant_before",
+   "kind": "redaction",
+   "original_sha256": "fa81c88bb346bd2607432a9f1fb7348d6451b6f5cf81830d8f6d0f1700412d78",
+   "public_sha256": "5c589173af85785778a9eb4255aa009ce1f46986078f0680aa43660b125ddf86",
+   "changes": [
+    {
+     "original_lines": "4",
+     "public_lines": "4",
+     "occurrences": 1,
+     "pattern_class": "absolute local Mac project path prefix (/Users/<user>/Desktop/<project>/)",
+     "placeholder": "<project-root>/"
+    }
+   ],
+   "reason": "Personal machine path (user name and folder layout); carries no information needed to score or reproduce. Same replacement as the 25 October redactions.",
+   "recorded": "2026-10-25",
+   "note": "Not lock-pinned.",
+   "pinned_by": []
+  },
+  {
+   "public_path": "experiments/scoring_v5/score_step8_after/score_step8-after.json",
+   "private_source": "<project-root>/experiments/scoring_v5/score_step8_after/score_step8-after.json",
+   "kind": "redaction",
+   "original_sha256": "3f945e1fe3b848848a83025788e01d4079b0457e9d83605bcdabadd8652b7198",
+   "public_sha256": "94d85a79b2643a662c20feca89d551fcf978e5064fe8195f87bd5084a2124040",
+   "changes": [
+    {
+     "original_lines": "5-6,30-31,34,41,82-83,86,93,134-135,138,145,186-187,190,197,235-236,239,246,299-300,303,310,363-364,367,374,427-428,431,438,491-492,495,502,555-556,559,566,619-620,623,630,683-684,687,694,737-738,741,748,790-791,794,801,842-843,846,853,891-892,895,902,946-947,950,957,999-1000,1003,1010,1050-1051,1054,1061,1114-1115,1118,1125,1166-1167,1170,1177,1218-1219,1222,1229,1273-1274,1277,1284,1337-1338,1341,1348,1389-1390,1393,1400,1438-1439,1442,1449,1486,1489,1496,1549,1552,1559,1603,1606,1613,1666,1669,1676,1729,1732,1765,1805,1808,1841,1881,1884,1917,1971,1974,2007,2047,2050,2057,2110,2113,2120,2158,2161,2168,2221,2224,2231,2284,2287,2320,2360,2363,2370,2414,2417,2424,2465,2468,2475,2516,2519,2526,2564,2567,2574,2611,2614,2621,2662,2665,2672,2712,2715,2722,2763,2766,2773,2810,2813,2846,2888,2891,2924",
+     "public_lines": "5-6,30-31,34,41,82-83,86,93,134-135,138,145,186-187,190,197,235-236,239,246,299-300,303,310,363-364,367,374,427-428,431,438,491-492,495,502,555-556,559,566,619-620,623,630,683-684,687,694,737-738,741,748,790-791,794,801,842-843,846,853,891-892,895,902,946-947,950,957,999-1000,1003,1010,1050-1051,1054,1061,1114-1115,1118,1125,1166-1167,1170,1177,1218-1219,1222,1229,1273-1274,1277,1284,1337-1338,1341,1348,1389-1390,1393,1400,1438-1439,1442,1449,1486,1489,1496,1549,1552,1559,1603,1606,1613,1666,1669,1676,1729,1732,1765,1805,1808,1841,1881,1884,1917,1971,1974,2007,2047,2050,2057,2110,2113,2120,2158,2161,2168,2221,2224,2231,2284,2287,2320,2360,2363,2370,2414,2417,2424,2465,2468,2475,2516,2519,2526,2564,2567,2574,2611,2614,2621,2662,2665,2672,2712,2715,2722,2763,2766,2773,2810,2813,2846,2888,2891,2924",
+     "occurrences": 178,
+     "pattern_class": "absolute local Mac project path prefix (/Users/<user>/Desktop/<project>/)",
+     "placeholder": "<project-root>/"
+    }
+   ],
+   "reason": "Personal machine path (user name and folder layout); carries no information needed to score or reproduce. Same replacement as the 25 October redactions.",
+   "recorded": "2026-10-25",
+   "note": "Not lock-pinned.",
+   "pinned_by": []
+  },
+  {
+   "public_path": "experiments/scoring_v5/score_select_v1_raw/score_step8-select.json",
+   "private_source": "<project-root>/experiments/scoring_v5/score_select_v1_raw/score_step8-select.json",
+   "kind": "redaction",
+   "original_sha256": "534b54196e57ecc05d10f841d8680988a9135aa3da791dd04a6c82302782f1c4",
+   "public_sha256": "b2b4c4fed1a27a042479d74347bac03825ed163f83b156f2de46d3e95a6c9a12",
+   "changes": [
+    {
+     "original_lines": "5,29-30,33,40,93-94,97,104,148-149,152,159,203-204,207,214,267-268,271,278,319-320,323,330,383-384,387,394,438-439,442,449,502-503,506,513,549-550,553,560,601-602,605,612,649-650,653,660,713-714,717,724,765-766,769,776,817-818,821,828,868-869,872,879,920-921,924,931,968-969,972,979,1017-1018,1021,1028,1066-1067,1070,1077,1130-1131,1134,1141,1181-1182,1185,1192,1229-1230,1233,1240,1293-1294,1297,1304,1357-1358,1361,1368,1421-1422,1425,1432,1485-1486,1489,1496,1537-1538,1541,1548,1589-1590,1593,1600,1638-1639,1642,1649,1689-1690,1693,1700,1741-1742,1745,1752,1805-1806,1809,1816,1853-1854,1857,1864,1901-1902,1905,1912,1949-1950,1953,1960,1997-1998,2001,2008,2046-2047,2050,2057,2091-2092,2095,2102,2139-2140,2143,2150",
+     "public_lines": "5,29-30,33,40,93-94,97,104,148-149,152,159,203-204,207,214,267-268,271,278,319-320,323,330,383-384,387,394,438-439,442,449,502-503,506,513,549-550,553,560,601-602,605,612,649-650,653,660,713-714,717,724,765-766,769,776,817-818,821,828,868-869,872,879,920-921,924,931,968-969,972,979,1017-1018,1021,1028,1066-1067,1070,1077,1130-1131,1134,1141,1181-1182,1185,1192,1229-1230,1233,1240,1293-1294,1297,1304,1357-1358,1361,1368,1421-1422,1425,1432,1485-1486,1489,1496,1537-1538,1541,1548,1589-1590,1593,1600,1638-1639,1642,1649,1689-1690,1693,1700,1741-1742,1745,1752,1805-1806,1809,1816,1853-1854,1857,1864,1901-1902,1905,1912,1949-1950,1953,1960,1997-1998,2001,2008,2046-2047,2050,2057,2091-2092,2095,2102,2139-2140,2143,2150",
+     "occurrences": 161,
+     "pattern_class": "absolute local Mac project path prefix (/Users/<user>/Desktop/<project>/)",
+     "placeholder": "<project-root>/"
+    }
+   ],
+   "reason": "Personal machine path (user name and folder layout); carries no information needed to score or reproduce. Same replacement as the 25 October redactions.",
+   "recorded": "2026-10-25",
+   "note": "Not lock-pinned.",
+   "pinned_by": []
+  },
+  {
+   "public_path": "experiments/scoring_v5/score_select_v1_adj/score_step8-select.json",
+   "private_source": "<project-root>/experiments/scoring_v5/score_select_v1_adj/score_step8-select.json",
+   "kind": "redaction",
+   "original_sha256": "194c47eec8aa7a846ba710edeb700da381aee27423b2e2b6c2af9949b811e1f3",
+   "public_sha256": "099e248791610bffaa3caa7e29cf974d7d65a03e2ff777f05cde8432da1018da",
+   "changes": [
+    {
+     "original_lines": "5,29-30,33,40,93-94,97,104,148-149,152,159,203-204,207,214,267-268,271,278,319-320,323,330,383-384,387,394,438-439,442,449,502-503,506,513,549-550,553,560,601-602,605,612,649-650,653,660,713-714,717,724,765-766,769,776,817-818,821,828,868-869,872,879,920-921,924,931,968-969,972,979,1017-1018,1021,1028,1066-1067,1070,1077,1130-1131,1134,1141,1181-1182,1185,1192,1229-1230,1233,1240,1293-1294,1297,1304,1357-1358,1361,1368,1421-1422,1425,1432,1485-1486,1489,1496,1537-1538,1541,1548,1589-1590,1593,1600,1638-1639,1642,1649,1689-1690,1693,1700,1741-1742,1745,1752,1805-1806,1809,1816,1853-1854,1857,1864,1901-1902,1905,1912,1949-1950,1953,1960,1997-1998,2001,2008,2046-2047,2050,2057,2091-2092,2095,2102,2139-2140,2143,2150",
+     "public_lines": "5,29-30,33,40,93-94,97,104,148-149,152,159,203-204,207,214,267-268,271,278,319-320,323,330,383-384,387,394,438-439,442,449,502-503,506,513,549-550,553,560,601-602,605,612,649-650,653,660,713-714,717,724,765-766,769,776,817-818,821,828,868-869,872,879,920-921,924,931,968-969,972,979,1017-1018,1021,1028,1066-1067,1070,1077,1130-1131,1134,1141,1181-1182,1185,1192,1229-1230,1233,1240,1293-1294,1297,1304,1357-1358,1361,1368,1421-1422,1425,1432,1485-1486,1489,1496,1537-1538,1541,1548,1589-1590,1593,1600,1638-1639,1642,1649,1689-1690,1693,1700,1741-1742,1745,1752,1805-1806,1809,1816,1853-1854,1857,1864,1901-1902,1905,1912,1949-1950,1953,1960,1997-1998,2001,2008,2046-2047,2050,2057,2091-2092,2095,2102,2139-2140,2143,2150",
+     "occurrences": 161,
+     "pattern_class": "absolute local Mac project path prefix (/Users/<user>/Desktop/<project>/)",
+     "placeholder": "<project-root>/"
+    }
+   ],
+   "reason": "Personal machine path (user name and folder layout); carries no information needed to score or reproduce. Same replacement as the 25 October redactions.",
+   "recorded": "2026-10-25",
+   "note": "Not lock-pinned.",
+   "pinned_by": []
+  },
+  {
+   "public_path": "experiments/charlie_bravo_perception_v1/runner-provenance.json",
+   "private_source": "<project-root>/experiments/charlie_bravo_perception_v1/runner-provenance.json",
+   "kind": "redaction",
+   "original_sha256": "8fe858cf89ffd17c1ba4f85fba13c9292495d8b8904d0a54d7abe267af4e31f6",
+   "public_sha256": "56f495d99b5970973f4c7802b923f40db5dc4857b2fe5b89a708253134edfba0",
+   "changes": [
+    {
+     "original_lines": "2",
+     "public_lines": "2",
+     "occurrences": 1,
+     "pattern_class": "absolute local Mac project path prefix (/Users/<user>/Desktop/<project>/)",
+     "placeholder": "<project-root>/"
+    }
+   ],
+   "reason": "Personal machine path (user name and folder layout); carries no information needed to score or reproduce. Same replacement as the 25 October redactions.",
+   "recorded": "2026-10-25",
+   "note": "Not lock-pinned.",
+   "pinned_by": []
+  },
+  {
+   "public_path": "experiments/charlie_bravo_perception_v1/preflight.py",
+   "private_source": "<project-root>/experiments/charlie_bravo_perception_v1/preflight.py",
+   "kind": "redaction",
+   "original_sha256": "4c26d74efd14af3013ecdbc9a3418743ab6734fa284692b6fa55b613400e5ae4",
+   "public_sha256": "3778689d2240603275f12abb77a97a0802ab0d1050155ec08bce608955c76a8d",
+   "changes": [
+    {
+     "original_lines": "5",
+     "public_lines": "5",
+     "occurrences": 1,
+     "pattern_class": "Nebius compute instance ID (computeinstance-…)",
+     "placeholder": "<vm-instance-id>"
+    }
+   ],
+   "reason": "Ties the repository to a specific cloud account resource; a re-runner needs their own VM and ID. Same placeholder as the 25 October Charlie perception redaction.",
+   "recorded": "2026-10-25",
+   "note": "Pinned by the original lock (shipped as source-lock.original.json): SANITIZED there; the export snapshot source-lock.json pins the public copy: OK there.",
+   "pinned_by": [
+    {
+     "lock": "experiments/charlie_bravo_perception_v1/source-lock.original.json",
+     "line": 9,
+     "locked_sha256": "4c26d74efd14af3013ecdbc9a3418743ab6734fa284692b6fa55b613400e5ae4"
+    }
+   ]
+  },
+  {
+   "public_path": "experiments/charlie_bravo_perception_v1/permit.example.json",
+   "private_source": "<project-root>/experiments/charlie_bravo_perception_v1/permit.example.json",
+   "kind": "redaction",
+   "original_sha256": "fef19bfaf76b03b9f1242c98514575e43d9bfd1da9b506a011294c17c1e3a35e",
+   "public_sha256": "2600a1510f615c9727c47fdecaf9bbf69d9320354904ed194dbdf22739fb5355",
+   "changes": [
+    {
+     "original_lines": "15",
+     "public_lines": "15",
+     "occurrences": 1,
+     "pattern_class": "Nebius compute instance ID (computeinstance-…)",
+     "placeholder": "<vm-instance-id>"
+    }
+   ],
+   "reason": "Ties the repository to a specific cloud account resource; a re-runner needs their own VM and ID. Same placeholder as the 25 October Charlie perception redaction.",
+   "recorded": "2026-10-25",
+   "note": "Not lock-pinned.",
+   "pinned_by": []
+  },
+  {
+   "public_path": "experiments/roger_bravo_one_shot_v1/preflight.py",
+   "private_source": "<project-root>/experiments/roger_bravo_one_shot_v1/preflight.py",
+   "kind": "redaction",
+   "original_sha256": "818896a1786120873300b56ef9fb6f536b69acb7ed8666fc209ff78eaa4e25a2",
+   "public_sha256": "67ce9c7f497633d1c182588e19b6a80991e56a04c8427fb02650b6fa313d39aa",
+   "changes": [
+    {
+     "original_lines": "5",
+     "public_lines": "5",
+     "occurrences": 1,
+     "pattern_class": "Nebius compute instance ID (computeinstance-…)",
+     "placeholder": "<vm-instance-id>"
+    }
+   ],
+   "reason": "Ties the repository to a specific cloud account resource; a re-runner needs their own VM and ID. Same placeholder as the 25 October Charlie perception redaction.",
+   "recorded": "2026-10-26",
+   "note": "Pinned by source-lock.json (unchanged, sha256 166a1bb9…a1a91b83, the hash the run's launch permit pinned): SANITIZED there. The launcher compares this constant with the VM's hostname; the 43 offline tests pass with the placeholder.",
+   "pinned_by": [
+    {
+     "lock": "experiments/roger_bravo_one_shot_v1/source-lock.json",
+     "line": 6,
+     "locked_sha256": "818896a1786120873300b56ef9fb6f536b69acb7ed8666fc209ff78eaa4e25a2"
+    }
+   ]
+  },
+  {
+   "public_path": "experiments/roger_bravo_one_shot_v1/permit.example.json",
+   "private_source": "<project-root>/experiments/roger_bravo_one_shot_v1/permit.example.json",
+   "kind": "redaction",
+   "original_sha256": "3a54b1a7647dacec4c893aac37c95e6af72ff33b159f392e0a0ca4f124fbf70e",
+   "public_sha256": "ea92fe6103b80f2d3a9506f700e58cc95a04ade458b2014565d978c0e2b16fa8",
+   "changes": [
+    {
+     "original_lines": "15",
+     "public_lines": "15",
+     "occurrences": 1,
+     "pattern_class": "Nebius compute instance ID (computeinstance-…)",
+     "placeholder": "<vm-instance-id>"
+    }
+   ],
+   "reason": "Ties the repository to a specific cloud account resource; a re-runner needs their own VM and ID. Same placeholder as the 25 October Charlie perception redaction.",
+   "recorded": "2026-10-26",
+   "note": "Not lock-pinned.",
+   "pinned_by": []
+  },
+  {
+   "public_path": "experiments/bowl_step6/B_P0_DIAGNOSIS.md",
+   "private_source": "<project-root>/experiments/bowl_step6/B_P0_DIAGNOSIS.md",
+   "kind": "redaction",
+   "original_sha256": "b1d947cc1abf3ffcae214b3c24c37ad43c858d41b177b554f3f066f824165d22",
+   "public_sha256": "785a0066449e68c336602d1f77dbf12bdd5efed011ae95c3fadae7b7b6c33530",
+   "changes": [
+    {
+     "op": "replace",
+     "original_lines": "55",
+     "public_lines": "55",
+     "pattern_class": "internal reviewer model nickname → 'Codex adversary review'",
+     "placeholder": "neutral wording (see pattern_class)"
+    },
+    {
+     "op": "replace",
+     "original_lines": "61",
+     "public_lines": "61",
+     "pattern_class": "internal model nickname and setting → '[setting name removed in the public copy]'",
+     "placeholder": "neutral wording (see pattern_class)"
+    },
+    {
+     "op": "replace",
+     "original_lines": "68",
+     "public_lines": "68",
+     "pattern_class": "internal reviewer model nickname → 'The independent Codex adversary trace review'",
+     "placeholder": "neutral wording (see pattern_class)"
+    }
+   ],
+   "reason": "Named an internal reviewer model by its nickname and setting; replaced by a neutral description.",
+   "recorded": "2026-10-25",
+   "note": "Not lock-pinned.",
+   "pinned_by": []
+  },
+  {
+   "public_path": "experiments/bowl_step6/inspect_kinova_mechanics.py",
+   "private_source": "<project-root>/experiments/bowl_step6/inspect_kinova_mechanics.py",
+   "kind": "licence_header",
+   "original_sha256": "7aa19c4e7629b183a85bf2dbc595cd02d3e2e429c7d896940ceff1e35ec032a6",
+   "public_sha256": "77ab6744fc7ec38d3bab48984811e7c80b7f576d2b0b0821907f9d65e8eeb17b",
+   "changes": [
+    {
+     "op": "insert",
+     "original_lines": "after 0",
+     "public_lines": "1-5"
+    }
+   ],
+   "reason": "Derived from NVIDIA RoboLab examples/run_kinova_jointpos.py (Apache-2.0); SPDX header and attribution added (see NOTICE). Code unchanged.",
+   "recorded": "2026-10-24",
+   "note": "Not lock-pinned.",
+   "pinned_by": []
+  },
+  {
+   "public_path": "experiments/charlie_bravo_v1/tests/test_vision_images.py",
+   "private_source": "<project-root>/experiments/charlie_bravo_v1/tests/test_vision_images.py",
+   "kind": "export_test_adjustment",
+   "original_sha256": "9d6bd0e78ac47ded3e1bd37df2ba925203ff1baba14b43256291ea52e56dbb00",
+   "public_sha256": "9bc87abe6a3ea6affaedfa0ec8c9fa04b49824d4621a5b5664d337edcd669799",
+   "changes": [
+    {
+     "op": "insert",
+     "original_lines": "after 10",
+     "public_lines": "11"
+    }
+   ],
+   "reason": "The saved-frame pixel test needs a licensed image fixture that is not shipped; it now skips when the fixture is absent. Synthetic image tests still run.",
+   "recorded": "2026-10-25",
+   "note": "Pinned by the original lock (shipped as source-lock.original.json): SANITIZED there; the export snapshot source-lock.json pins the public copy: OK there.",
+   "pinned_by": [
+    {
+     "lock": "experiments/charlie_bravo_v1/source-lock.original.json",
+     "line": 12,
+     "locked_sha256": "9d6bd0e78ac47ded3e1bd37df2ba925203ff1baba14b43256291ea52e56dbb00"
+    }
+   ]
+  },
+  {
+   "public_path": "experiments/charlie_bravo_v1/source-lock.json",
+   "private_source": "<project-root>/experiments/charlie_bravo_v1/source-lock.json",
+   "kind": "export_snapshot_lock",
+   "original_sha256": "e6019e48ac93d8d3bd731e3fbcb3229382fa6cb7f79058784ed30d2ea8e16505",
+   "public_sha256": "08b53827dbf480a591370d8c6c61ce5f0d20708703b5bfabd973c43d84edbab7",
+   "changes": [
+    {
+     "op": "delete",
+     "original_lines": "2",
+     "public_lines": "after 1"
+    },
+    {
+     "op": "replace",
+     "original_lines": "12",
+     "public_lines": "11"
+    }
+   ],
+   "reason": "Export snapshot lock describing the shipped files: the private review entry REVIEW_RESPONSE_2.md is omitted and the tests/test_vision_images.py hash is the adjusted copy's. The original lock ships unchanged as source-lock.original.json.",
+   "recorded": "2026-10-25",
+   "note": "Not lock-pinned.",
+   "pinned_by": []
+  },
+  {
+   "public_path": "experiments/charlie_bravo_perception_v1/source-lock.json",
+   "private_source": "<project-root>/experiments/charlie_bravo_perception_v1/source-lock.json",
+   "kind": "export_snapshot_lock",
+   "original_sha256": "240e60c7f3881a31b852a4561fc202481e0cb84545cb93a48f7efa88718b849e",
+   "public_sha256": "ad8db1f8287442954ffff3982f42f1b7dd97f1cfe44c6291619e58d103546ae6",
+   "changes": [
+    {
+     "op": "replace",
+     "original_lines": "9",
+     "public_lines": "9"
+    }
+   ],
+   "reason": "Export snapshot lock describing the shipped files: the preflight.py hash is the redacted copy's. The original lock ships unchanged as source-lock.original.json.",
+   "recorded": "2026-10-25",
+   "note": "Not lock-pinned.",
+   "pinned_by": []
+  },
+  {
+   "public_path": "experiments/roger_bravo_one_shot_v1/README.md",
+   "private_source": "<project-root>/experiments/roger_bravo_one_shot_v1/README.md",
+   "kind": "public_readme",
+   "original_sha256": "28baa324a6febeda2bb0bca86ee7a182f0ed1090483f4a31e76777fa36176064",
+   "public_sha256": "4f473328813f89d1feb74d8a7507c0bc72f3c3d54fe51df3823c12c315761f76",
+   "changes": [
+    {
+     "op": "insert",
+     "original_lines": "after 0",
+     "public_lines": "1-2"
+    }
+   ],
+   "reason": "Public-copy note prepended (points to the result in the top-level README); the original text follows unchanged.",
+   "recorded": "2026-10-26",
+   "note": "Not lock-pinned.",
+   "pinned_by": []
+  },
+  {
+   "public_path": "experiments/charlie_bravo_v1/README.md",
+   "private_source": "<project-root>/experiments/charlie_bravo_v1/README.md",
+   "kind": "public_readme",
+   "original_sha256": "8f0472af1176df0847e6083cdf198dfa25c140ec5e9917a02e007978ec942689",
+   "public_sha256": "5ea4594675e16dd64326cc0f4103498db39a14fc29793507a4bef58eff2cb5ea",
+   "changes": [
+    {
+     "op": "replace",
+     "original_lines": "1",
+     "public_lines": "1"
+    },
+    {
+     "op": "replace",
+     "original_lines": "3",
+     "public_lines": "3"
+    },
+    {
+     "op": "delete",
+     "original_lines": "5-6",
+     "public_lines": "after 4"
+    }
+   ],
+   "reason": "Rewritten for the public copy: opens with 'Prepared, never run'; private status and review pointers removed.",
+   "recorded": "2026-10-26",
+   "note": "Not lock-pinned.",
+   "pinned_by": []
+  },
+  {
+   "public_path": "experiments/charlie_bravo_perception_v1/README.md",
+   "private_source": "<project-root>/experiments/charlie_bravo_perception_v1/README.md",
+   "kind": "public_readme",
+   "original_sha256": "3d8b3abcec3b641bade8643e48f9da204162aabaeb4a1930a818854f8e46bc41",
+   "public_sha256": "35c66a06273a90b88c3c3ae9c7e4ed3d89edebcd7f684a6b7fc110ae4e47825e",
+   "changes": [
+    {
+     "op": "replace",
+     "original_lines": "1",
+     "public_lines": "1"
+    },
+    {
+     "op": "replace",
+     "original_lines": "3",
+     "public_lines": "3"
+    },
+    {
+     "op": "delete",
+     "original_lines": "5-41",
+     "public_lines": "after 4"
+    }
+   ],
+   "reason": "Rewritten for the public copy: opens with 'Prepared, never run'; private status and review pointers removed.",
+   "recorded": "2026-10-26",
+   "note": "Not lock-pinned.",
+   "pinned_by": []
+  },
+  {
+   "public_path": "nemotron/README.md",
+   "private_source": "<project-root>/nemotron/README.md",
+   "kind": "public_readme",
+   "original_sha256": "08169c0719caa523b2c279101985e1a51f89c59b281ac201e5d9748ae4fb1dc4",
+   "public_sha256": "41d819643c3002aa39076aca9af26d7162cae1f8f95e5eb90b05e5c99b6e1475",
+   "changes": [
+    {
+     "op": "rewrite",
+     "original_lines": "1-81",
+     "public_lines": "1-18",
+     "hunks": 9
+    }
+   ],
+   "reason": "Rewritten for the public copy as a code README; results are reported in the top-level README.",
+   "recorded": "2026-10-26",
+   "note": "Not lock-pinned.",
+   "pinned_by": []
+  }
+ ],
+ "renamed_byte_identical": [
+  {
+   "public_path": "experiments/charlie_bravo_v1/source-lock.original.json",
+   "private_source": "<project-root>/experiments/charlie_bravo_v1/source-lock.json",
+   "sha256": "e6019e48ac93d8d3bd731e3fbcb3229382fa6cb7f79058784ed30d2ea8e16505"
+  },
+  {
+   "public_path": "experiments/charlie_bravo_perception_v1/source-lock.original.json",
+   "private_source": "<project-root>/experiments/charlie_bravo_perception_v1/source-lock.json",
+   "sha256": "240e60c7f3881a31b852a4561fc202481e0cb84545cb93a48f7efa88718b849e"
+  },
+  {
+   "public_path": "evidence/abba_l4003/copy-manifest.run.json",
+   "private_source": "<project-root>/review/roger_bravo_one_shot_v1/evidence/roger_B_P1_l4003_assisted_v1/copy-manifest.json",
+   "sha256": "611d039caf2a2d286e0c50e3711ab7d0d8b0bee3d62b8ccbfb8be4e6d3cae365"
+  },
+  {
+   "public_path": "evidence/abba_l4003/copy-manifest.supervisor.json",
+   "private_source": "<project-root>/review/roger_bravo_one_shot_v1/evidence/roger_B_P1_l4003_assisted_v1-supervisor/copy-manifest.json",
+   "sha256": "43b8d158e549794117437f6fbd26db05929f73b90c53211a03473a396166afaf"
+  }
+ ],
+ "relocated_byte_identical": [
+  {
+   "public_prefix": "frozen_B_adapter_v1r2/",
+   "private_prefix": "<project-root>/assets/report/evidence/2026-10-23/bowl-step6/frozen_B_adapter_v1r2/"
+  },
+  {
+   "public_prefix": "setup/",
+   "private_prefix": "<project-root>/assets/report/evidence/2026-10-21/bowl-install/"
+  },
+  {
+   "public_prefix": "prerequisites/runs/step5_training_layout2002_v4/",
+   "private_prefix": "<project-root>/assets/report/evidence/2026-10-21/bowl-training-feasibility-v4/step5_training_layout2002_v4/"
+  },
+  {
+   "public_prefix": "evidence/abba_l4003/",
+   "private_prefix": "<project-root>/review/roger_bravo_one_shot_v1/evidence/roger_B_P1_l4003_assisted_v1/ (api-ledger.jsonl from the -supervisor folder; SCORE_V51.json and COPY_VERIFICATION.json from review/roger_bravo_one_shot_v1/)"
+  }
+ ],
+ "public_only": [
+  "README.md",
+  "NOTICE",
+  "LICENSE",
+  "SCAN.md",
+  "CHARLIE_EXPORT_PLAN.md",
+  "EXPORT_PROVENANCE.json",
+  "OFFLINE_EXPORT_CHECKS.md",
+  ".gitignore",
+  "SANITIZATION.json",
+  "SANITIZATION.md",
+  "PUBLIC_MANIFEST.sha256",
+  "tools/*",
+  "docs/*",
+  "experiments/intent_demo_v1/README.md",
+  "evidence/abba_l4003/MANIFEST.sha256"
+ ],
+ "not_shipped": [
+  {
+   "pattern": "RoboLab/robolab/*",
+   "reason": "Upstream RoboLab source at the pinned commit b6cfcf6ccd2113c4cd1216d35b33024a7d5691da; third-party, not redistributed (NOTICE)."
+  },
+  {
+   "pattern": "*RoboLab/policies/gr00t/client.py",
+   "reason": "Unmodified upstream RoboLab file; comes with the pinned clone (NOTICE, SCAN.md)."
+  },
+  {
+   "pattern": "*assets/report/evidence/2026-10-21/bowl-step6/kinematics_export_v1/joint_graphs.json",
+   "reason": "Body-frame dump extracted from RoboLab robot assets, some CC BY-NC-SA 4.0; regenerate with experiments/bowl_step6/extract_arm_kinematics.py (README, NOTICE)."
+  },
+  {
+   "pattern": "RoboLab/output/step5_training_layout2002_v4/*.hdf5",
+   "reason": "Step 5 run output (HDF5); size; not needed by any documented check."
+  },
+  {
+   "pattern": "datasets/training_layout2002_v4.npz",
+   "reason": "Derived training dataset; size; not needed by any documented check."
+  },
+  {
+   "pattern": "runs/step6_B_shadow_capture_v1/captures.hdf5",
+   "reason": "Step 6 shadow-capture output; size; not needed by any documented check."
+  },
+  {
+   "pattern": "experiments/charlie_bravo_v1/REVIEW_RESPONSE_2.md",
+   "reason": "Private review record; omitted from the export snapshot lock."
+  },
+  {
+   "pattern": "evidence/abba_l4003/*",
+   "lock": "evidence/abba_l4003/copy-manifest.*.json",
+   "reason": "ABBA run files held back from the repository (videos, PNG frames, HDF5, logs, permits, session monitor); see README 'Evidence shipped and held back'. Non-private ones are in the evidence-v1 release bundle."
+  }
+ ]
+}

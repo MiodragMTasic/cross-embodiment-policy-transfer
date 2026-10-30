@@ -1,0 +1,199 @@
+{
+ "episodes_checked": 21,
+ "diffs": [],
+ "m5_demo_reproduced": true,
+ "validation_cases_not_in_mock": [
+  "B dev lift l2002 s0"
+ ],
+ "S3_caveat_printed": true,
+ "S5_disagreement_flags": [],
+ "unscored_listed": [
+  [
+   "step5_controlled_layout1000_v3",
+   [
+    "no trace found"
+   ]
+  ]
+ ],
+ "n5_flagged": [
+  "step5_controlled_layout1007_v3",
+  "step5_training_layout2000_v4",
+  "step6_B_paint_live_base_s1_painted_v1",
+  "step6_B_paint_live_l2002_s0_painted_v1"
+ ],
+ "per_condition": {
+  "A/P0": "6/15 [0.1982, 0.6425]",
+  "B/painted": "0/3 [0.0, 0.5615]",
+  "B/unpainted": "0/3 [0.0, 0.5615]"
+ },
+ "synthetic_after": {
+  "checks": {
+   "cases": true,
+   "smoke_ignored": true,
+   "N4_truncated_A_flagged": true,
+   "failed_A_unscored": true,
+   "R4_A": true,
+   "A_win_discordant": true,
+   "canary_scored_not_paired": true,
+   "locked_classifier_gives_each_kept_abort_its_kind": true,
+   "P1_one_row_longer_scored": true,
+   "P1_step0_no_tracking_scored": true,
+   "P1_equal_lengths_scored": true,
+   "P2_class_kind_next_to_verdict": true,
+   "C1_zero_rows_unscored": true,
+   "B2_win_before_abort_is_a_win": true,
+   "safety_abort_flag_on_every_scored_abort": true,
+   "crash_unscored": true,
+   "R4_B": true,
+   "B_win_discordant": true,
+   "abort_counts": true,
+   "abort_counts_in_markdown": true
+  },
+  "locked_classifier": {
+   "4002": [
+    "safety_abort",
+    "B_joint_beyond_soft_limit",
+    1250
+   ],
+   "4003": [
+    "crash",
+    null,
+    0
+   ],
+   "4004": [
+    "crash",
+    null,
+    900
+   ],
+   "4005": [
+    "safety_abort",
+    "ik_action_A_to_B",
+    1700
+   ],
+   "4006": [
+    "safety_abort",
+    "B_joint_beyond_soft_limit",
+    1
+   ]
+  },
+  "flags_truncated_A": [
+   "v4 pass, v5.1 fail",
+   "fail, ends on bowl",
+   "fail, had an eligible open",
+   "fail, upstream predicate true at end"
+  ],
+  "fail_reason_truncated_A": "not_stable_by_end",
+  "mid_abort": {
+   "safety_abort": {
+    "kind": "B_joint_beyond_soft_limit",
+    "exit_status": 1,
+    "exception": "AssertionError",
+    "message": "",
+    "gate_trace_rows": 1250,
+    "tracking_rows": 1249,
+    "last_gate_trace_step": 1250,
+    "dropped_gate_rows": 1,
+    "scored_rows": 1249,
+    "marker_partial_trace": {
+     "gate_trace_rows": 1250,
+     "last_gate_trace_step": 1250,
+     "tracking_npz": true,
+     "failed_solve_json": false,
+     "checks_json": false
+    },
+    "empty_trace": false
+   },
+   "furthest": "grasp",
+   "stage_controls": {
+    "grasp": 675
+   },
+   "gate_fail_reason": "never_lifted",
+   "review_flags": [
+    "safety_abort"
+   ]
+  },
+  "step0_abort": {
+   "safety_abort": {
+    "kind": "B_joint_beyond_soft_limit",
+    "exit_status": 1,
+    "exception": "AssertionError",
+    "message": "",
+    "gate_trace_rows": 1,
+    "tracking_rows": 0,
+    "last_gate_trace_step": 1,
+    "dropped_gate_rows": 1,
+    "scored_rows": 0,
+    "marker_partial_trace": {
+     "gate_trace_rows": 1,
+     "last_gate_trace_step": 1,
+     "tracking_npz": false,
+     "failed_solve_json": false,
+     "checks_json": false
+    },
+    "empty_trace": true
+   },
+   "furthest": null,
+   "fail_reason": "safety_abort:B_joint_beyond_soft_limit",
+   "review_flags": [
+    "safety_abort"
+   ]
+  },
+  "abort_after_win": {
+   "safety_abort": {
+    "kind": "ik_action_A_to_B",
+    "exit_status": 1,
+    "exception": "AssertionError",
+    "message": "(1700, 'action_A_to_B', 'no converged solution')",
+    "gate_trace_rows": 1700,
+    "tracking_rows": 1700,
+    "last_gate_trace_step": 1700,
+    "dropped_gate_rows": 0,
+    "scored_rows": 1700,
+    "marker_partial_trace": {
+     "gate_trace_rows": 1700,
+     "last_gate_trace_step": 1700,
+     "tracking_npz": true,
+     "failed_solve_json": false,
+     "checks_json": false
+    },
+    "empty_trace": false
+   },
+   "win_control": 1554,
+   "M2": {
+    "qualifying_open_control": 1525,
+    "time_to_win_P0_s": 8.472,
+    "win_control": 1554,
+    "qualifying_open_s": 101.667,
+    "win_s": 103.6
+   },
+   "stage_controls": {
+    "grasp": 720,
+    "lift": 775,
+    "over_bowl": 963,
+    "open": 1525,
+    "landed": 1526,
+    "win": 1554
+   },
+   "review_flags": [
+    "v5.1 pass",
+    "safety_abort"
+   ]
+  },
+  "zero_rows": [
+   "marker_disagrees_with_classifier: marker safety_abort/ik_action_A_to_B, classifier crash/None"
+  ],
+  "crash": [
+   "crash: exit 1, RuntimeError"
+  ],
+  "B_P1_safety_aborts": {
+   "n": 3,
+   "wins": 1,
+   "by_kind": {
+    "B_joint_beyond_soft_limit": 2,
+    "ik_action_A_to_B": 1
+   },
+   "empty_trace": 1,
+   "aborted_row_dropped": 2
+  }
+ }
+}

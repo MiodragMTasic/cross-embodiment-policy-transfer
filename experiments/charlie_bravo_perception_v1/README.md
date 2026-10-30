@@ -1,0 +1,3 @@
+# RGB-D capture and geometry helpers
+
+**Prepared, never run.** Code-only snapshot, 25 October 2026; no RGB-D capture or perception run has happened in the simulator. ABBA's launcher (`../roger_bravo_one_shot_v1/launch.py`) was adapted from this package's capture supervisor; ABBA itself used RGB images only, no depth. The original frozen P0/P1 experiment scores are unchanged. See `../../CHARLIE_EXPORT_PLAN.md`, `../../EXPORT_PROVENANCE.json` and `../../OFFLINE_EXPORT_CHECKS.md` for omissions, adaptations and tested scope. Launch scripts require external evidence, upstream software and explicit run configuration; offline tests are not launch approval.

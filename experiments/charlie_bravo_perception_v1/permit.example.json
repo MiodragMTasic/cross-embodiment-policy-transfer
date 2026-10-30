@@ -1,0 +1,21 @@
+{
+  "scope": "single_capture",
+  "review_status": "PENDING",
+  "human_paid_approval": false,
+  "expires_unix": 0,
+  "api_cap_usd": 0,
+  "current_cloud_balance_usd": 0,
+  "balance_checked_unix": 0,
+  "cloud_spend_cap_usd": 2,
+  "hourly_compute_usd": 0,
+  "whole_session_seconds": 3600,
+  "stop_owner": "Miodrag",
+  "console_stop_timer_confirmed": false,
+  "guest_halt_backstop_approved": false,
+  "vm_id": "<vm-instance-id>",
+  "vm_started_unix": 0,
+  "checkpoint_manifest_path": "/home/miodrag/robot-transfer/bowl/runs/step8_after_v1-supervisor/P1-manifest.json",
+  "checkpoint_manifest_sha256": "1e324f2cfff1c821ae557b490ab4d949134f6b86796c115b6289c00d816d0168",
+  "source_lock_sha256": null,
+  "note": "INTENTIONALLY BLOCKED template. Fill fresh session facts and actual approvals; no API credentials needed. Capture does not authorize assisted DROP."
+}

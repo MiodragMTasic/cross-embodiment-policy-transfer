@@ -1,0 +1,11 @@
+{
+  "condition": "assisted",
+  "max_ticks": 3600,
+  "layout": 4003,
+  "policy": "P1",
+  "scope": "selected-case paused-simulation mechanism demo; not original step8; one selected attempt; not a causal comparison",
+  "primary_outcome": "offline v5.1 first stable rest on executed command; also report pass_at_end and post-DONE contact count",
+  "judge_exhaustion": "after three failed confirmations continue policy-only and retain episode in denominator",
+  "termination": "same v4 success, native/safety, 3600 ticks or wall deadline",
+  "source_sha256": "65a469a566a86cc405377375811279744768f337f1da5c6b8afd6c6884073872"
+}
