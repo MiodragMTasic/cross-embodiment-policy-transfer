@@ -307,6 +307,33 @@ section h3 {
   font-size: 1.1rem;
   color: var(--text);
 }
+/* the byline name links to LinkedIn and decodes like the miodragdev title (assets/decode.js);
+   the icon beside it takes the same chroma-flicker colours, and cycles faster on hover */
+.byline-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  color: inherit;
+  text-decoration: none;
+  font-kerning: none;
+}
+.byline-link:hover [data-decode],
+.byline-link:focus-visible [data-decode] {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+.li-icon {
+  width: 0.95em;
+  height: 0.95em;
+  flex: none;
+  color: var(--decode-1);
+  animation: lock-in 0.4s cubic-bezier(0.2, 0.9, 0.2, 1) 0.9s 1 both,
+    chroma-flicker 6s linear 1.3s infinite;
+}
+.byline-link:hover .li-icon,
+.byline-link:focus-visible .li-icon {
+  animation: chroma-flicker 1.2s linear infinite;
+}
 .venue {
   margin-top: 0.15rem;
   font-family: var(--font-sans);
@@ -1075,7 +1102,8 @@ footer p {
     scroll-behavior: auto !important;
   }
   .decode-lock,
-  .chroma-char {
+  .chroma-char,
+  .li-icon {
     animation: none;
   }
 }
